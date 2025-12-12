@@ -1,1 +1,1 @@
-# Valtakunnallisen liikennejärjestelmämallin yleiskuvaus
+# Valtakunnallisen liikennemallijärjestelmän (VALMA) yleiskuvaus
