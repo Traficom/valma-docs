@@ -2,10 +2,6 @@ remote_theme: just-the-docs/just-the-docs
 
 readme_index:
   with_frontmatter: true
-
-just_the_docs:
-  sidebar:
-    nav_minimal: false
     
 plugins:
   - jemoji
