@@ -6,9 +6,11 @@ title: Mallijärjestelmän käyttö
 
 # Mallijärjestelmän käyttö
 
+<!--Tähän yleisempää mallijärjestelmän käytöstä-->
+
 ## Malliajon ohje
 
-1. Lataa tarvitsemasi malliajon lähtötiedot Sharefilestä (linkki).
+1. Lataa tarvitsemasi malliajon lähtötiedot Sharefilestä<!--(linkki)-->.
    - Aluekohtaiset syöttötiedot; zone_data.
    - Liikenteen hintadata; cost_data (Tähän tiedostoon käyttäjä voi lisätä yleisiä korotuskertoimia sekä alueellisia kulkutapavalinnan kalibrointikertoimia. Lisätietoja saa Traficomilta.).
    - Lähtökysyntämatriisit (zip.) alueellisiin osamalliajoihin; baseline_data.
