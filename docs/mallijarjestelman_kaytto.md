@@ -10,8 +10,8 @@ title: Mallijärjestelmän käyttö
 
 ## Malliajon ohje
 
-1. Lataa tarvitsemasi malliajon tiedot [Sharefilestä](https://traficom.sharefile.eu/home/shared). Pyydä pääsyoikeutta Traficomilta.
-
+1. Lataa tarvitsemasi malliajon tiedot [Sharefilestä](https://traficom.sharefile.eu/home/shared). Pyydä pääsyoikeutta Traficomilta.- 
+   - Tarkasteluvuotesi EMME-verkot: Emme_network.
    - Aluekohtaiset syöttötiedot: zone_data.
    - Liikenteen hintadata: cost_data (Tähän tiedostoon käyttäjä voi lisätä yleisiä korotuskertoimia sekä alueellisia kulkutapavalinnan kalibrointikertoimia. Lisätietoja saa Traficomilta.).
    - Lähtökysyntämatriisit (zip.) alueellisiin osamalliajoihin: baseline_data.
@@ -38,6 +38,9 @@ title: Mallijärjestelmän käyttö
      - Voit tarvittaessa luoda Emme-projektiin useita pankkeja. Käyttöliittymän kautta pääset esim. luomaan yhden pankin nimeltään "koko_suomi" ja yhden nimeltään "alueelliset_osamallit". Käyttöliittymän ulkopuolella voit tarvittaessa kytkeä useampiakin pankkeja projektiin. Huolehdi siinä tapauksessa siitä, että emme-pankin otsikko on jonkin alueellisen osamallin mukainen (tai "koko_suomi" tai "alueelliset_osamallit").
      - Jos haluat että kaikentyyppiset verkot mahtuvat samaan pankkiin, valitse "Koko Suomi". Jos on tarkoitus luoda monta skenaariota jollekin alueelliselle osamallille, kannattaa kuitenkin luoda pienempi pankki. Koko Suomen verkko voi tarvittaessa olla omassa pankissa.
      - "Tallenna ajanjaksot erillisiin Emme-skenaarioihin" -valinta vaikuttaa ekstra-attribuuttien tilatarpeeseen. Emme-skenaariot tarvitsevat vähemmän ekstra-attribuuttitilaa jos on tarkoitus tallentaa ajanjaksot erillisiin skenaarioihin. Silloin pitää kuitenkin muistaa luoda tarpeeksi skenaarioita (normaalitapauksessa viisi Emme-skenaarioita per Valma-skenaario. Jos on tarkoitus tehdä vain pitkien matkojen ennuste, täppä on mahdollinen laittaa päälle säästäkseen levytilaa vaikka malliajossa olisi tarkoitus käyttää vain yhtä Emme-skenaariota (vrk-sijoitteluihin).
+   - Emme-pankin luominen avaa sen EMME-käyttöliittymään.
     
+8. Tuo verkko Emme-pankkiin Emmen Modeller Import Scenario työkalun avulla. Kopioi tarvittaessa skenaario Modellerin Copy Scenario työkalun avulla ja tee tarvittavat verkkomuutokset. Jos aiot tallentaa ajanjaksot erillisiin Emme-skenaarioihin, skenaarionumeroiden väliin pitää jättää neljä tyhjää skenaarionumeroa. <!--miksi ja mitä tarkoittaa?-->
 
+9. Vekkojen importoinnin ja mahdollisten muokkausten jälkeen luo VALMA-skenaario käyttöliittymässä. Voit luoda pitkien ja lyhyiden matkojen skenaariot sekä tavaraliikenteen skenaarion.
 
