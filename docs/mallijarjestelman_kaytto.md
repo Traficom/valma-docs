@@ -16,7 +16,7 @@ title: Mallijärjestelmän käyttö
    - Lähtökysyntämatriisit (zip.) alueellisiin osamalliajoihin: baseline_data.
 2. Alueellisten osamallien lähtökysyntämatriisien zip. -kansiot tulee purkaa. Pura tarvitsemasi kansiot Matrices-nimiseen kansioon niin, että Matrices-kansion alla on kansio(ita) nimetty alueellisen osamallin mukaan (esim. lounais_suomi). Matriisitiedostot ovat formaatissa .omx. Koko Suomen ajoihin et tarvitse lähtökysyntämatriiseja.
 3. Lataa tuorein mallijärjestelmä [täältä](https://github.com/Traficom/lem-model-system).
-4. Luo resurssinhallintaasi projektille kasio. VALMA-ajo tallentaa tänne käyttöliittymän projektin asetukset, EMME-projektin ja mallitulokset. 
+4. Luo resurssinhallintaasi projektille kasio, jossa ei tarvitse olla sisältöä. VALMA-ajo tallentaa tänne käyttöliittymän projektin asetukset, EMME-projektin ja mallitulokset. 
 5. Avaa käyttöliittymä, luo uusi VALMA-projekti ja määrittele sen asetukset:
-   - Valitse projektikansioksi tiedostoihisi tallentamasi kansio. Kansio voi olla tyhjä.
+   - Valitse projektikansioksi tiedostoihisi tallentamasi kansio.
    - 
