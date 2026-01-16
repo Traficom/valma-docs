@@ -34,13 +34,15 @@ title: Mallijärjestelmän käyttö
    - Tallenna asetukset.
   
 7. Luo seuraavaksi Emme-pankki käyttöliittymän kautta. Valitse osamalli ja skenaarioiden lukumäärä. Osamallin valinta vaikuttaa tässä vaiheessa vain Emme-pankin kokoon.
-   - HUOM:
-     - Voit tarvittaessa luoda Emme-projektiin useita pankkeja. Käyttöliittymän kautta pääset esim. luomaan yhden pankin nimeltään "koko_suomi" ja yhden nimeltään "alueelliset_osamallit". Käyttöliittymän ulkopuolella voit tarvittaessa kytkeä useampiakin pankkeja projektiin. Huolehdi siinä tapauksessa siitä, että emme-pankin otsikko on jonkin alueellisen osamallin mukainen (tai "koko_suomi" tai "alueelliset_osamallit").
-     - Jos haluat että kaikentyyppiset verkot mahtuvat samaan pankkiin, valitse "Koko Suomi". Jos on tarkoitus luoda monta skenaariota jollekin alueelliselle osamallille, kannattaa kuitenkin luoda pienempi pankki. Koko Suomen verkko voi tarvittaessa olla omassa pankissa.
-     - "Tallenna ajanjaksot erillisiin Emme-skenaarioihin" -valinta vaikuttaa ekstra-attribuuttien tilatarpeeseen. Emme-skenaariot tarvitsevat vähemmän ekstra-attribuuttitilaa jos on tarkoitus tallentaa ajanjaksot erillisiin skenaarioihin. Silloin pitää kuitenkin muistaa luoda tarpeeksi skenaarioita (normaalitapauksessa viisi Emme-skenaarioita per Valma-skenaario. Jos on tarkoitus tehdä vain pitkien matkojen ennuste, täppä on mahdollinen laittaa päälle säästäkseen levytilaa vaikka malliajossa olisi tarkoitus käyttää vain yhtä Emme-skenaariota (vrk-sijoitteluihin).
+   > HUOM:
+     > - Voit tarvittaessa luoda Emme-projektiin useita pankkeja. Käyttöliittymän kautta pääset esim. luomaan yhden pankin nimeltään "koko_suomi" ja yhden nimeltään "alueelliset_osamallit". Käyttöliittymän ulkopuolella voit tarvittaessa kytkeä useampiakin pankkeja projektiin. Huolehdi siinä tapauksessa siitä, että emme-pankin otsikko on jonkin alueellisen osamallin mukainen (tai "koko_suomi" tai "alueelliset_osamallit").
+     > - Jos haluat että kaikentyyppiset verkot mahtuvat samaan pankkiin, valitse "Koko Suomi". Jos on tarkoitus luoda monta skenaariota jollekin alueelliselle osamallille, kannattaa kuitenkin luoda pienempi pankki. Koko Suomen verkko voi tarvittaessa olla omassa pankissa.
+     > - "Tallenna ajanjaksot erillisiin Emme-skenaarioihin" -valinta vaikuttaa ekstra-attribuuttien tilatarpeeseen. Emme-skenaariot tarvitsevat vähemmän ekstra-attribuuttitilaa jos on tarkoitus tallentaa ajanjaksot erillisiin skenaarioihin. Silloin pitää kuitenkin muistaa luoda tarpeeksi skenaarioita (normaalitapauksessa viisi Emme-skenaarioita per Valma-skenaario. Jos on tarkoitus tehdä vain pitkien matkojen ennuste, täppä on mahdollinen laittaa päälle säästäkseen levytilaa vaikka malliajossa olisi tarkoitus käyttää vain yhtä Emme-skenaariota (vrk-sijoitteluihin).
    - Emme-pankin luominen avaa sen EMME-käyttöliittymään.
     
-8. Tuo verkko Emme-pankkiin Emmen Modeller Import Scenario työkalun avulla. Kopioi tarvittaessa skenaario Modellerin Copy Scenario työkalun avulla ja tee tarvittavat verkkomuutokset. Jos aiot tallentaa ajanjaksot erillisiin Emme-skenaarioihin, skenaarionumeroiden väliin pitää jättää neljä tyhjää skenaarionumeroa. <!--miksi ja mitä tarkoittaa?-->
+8. Tuo Emme-skenaarioksi tarvitsemasi verkko tai verkot Emme-pankkiin Emmen Modeller Import Scenario työkalun avulla. Kopioi tarvittaessa skenaario Modellerin Copy Scenario työkalun avulla ja tee tarvittavat verkkomuutokset. Jos aiot tallentaa ajanjaksot erillisiin Emme-skenaarioihin, skenaarionumeroiden väliin pitää jättää neljä tyhjää skenaarionumeroa. <!--miksi ja mitä tarkoittaa?-->
 
-9. Vekkojen importoinnin ja mahdollisten muokkausten jälkeen luo VALMA-skenaario käyttöliittymässä. Voit luoda pitkien ja lyhyiden matkojen skenaariot sekä tavaraliikenteen skenaarion.
+9. Emme-skenaarion luomisen ja verkkojen mahdollisten muokkausten jälkeen luo VALMA-skenaario käyttöliittymässä. Voit luoda pitkien ja lyhyiden matkojen skenaariot sekä tavaraliikenteen skenaarion.
+   - Pitkien matkojen skenaarion asetukset:
+      - Pitkien matkojen skenaariossa tulee käyttää koko Suomen verkkoa. Laita liikenneverkon sisälävä Emme-skenaarion numero samaksi kuin edellisessä kohdassa luodun Emme-skenaarion numero.  
 
