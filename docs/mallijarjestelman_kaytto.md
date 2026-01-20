@@ -25,10 +25,9 @@ title: Mallijärjestelmän käyttö
 5. Luo resurssinhallintaasi projektikansio, jonne VALMA-ajo tallentaa tänne käyttöliittymän projektin asetukset, EMME-projektin ja mallitulokset. Projektikansiossa ei tarvitse olla sisältöä, mutta VALMA ei aja siellä olevien tiedostojen päälle.
    
 6. Avaa käyttöliittymä, luo uusi VALMA-projekti ja määrittele sen asetukset:
-   - Nimeä projektisi. Vinkki: Nimeä VALMA-projekti saman nimiseksi kuin projektikansiosi.
+   - Nimeä projektisi saman nimiseksi kuin projektikansiosi.
    - Valitse projektikansioksi resurssinhallintaasi tallentamasi kansio.
-   - <!--varmista, miten python toimii muilla käyttäjillä-->
-   - Viittaa lataamasi mallijärjestelmän Scripts -kansioon kohdassa Valma Model System. <!--varmista tässäkin, että toimii näin yleisesti-->
+   - Viittaa lataamasi mallijärjestelmän Scripts -kansioon kohdassa Valma Model System.
    - Viittaa kansioon, joka sisältää Matrices-kansion kohdassa lähtödatan sisältävä kansio.
    - Aseta tarvittaessa kulkutapa- ja suuntautumismallien kalibrointiparametrit (.json) tai kunta-kunta-kalibroinnin tiedosto (.txt). Tiedostojen käytöstä voit lukea lisää täältä. <!--tähän linkki ohjesivuston oikeaan sivuun-->
    - Tallenna asetukset.
@@ -62,13 +61,10 @@ title: Mallijärjestelmän käyttö
       >- Jos ajat vain loppusijoittelun, kysyntämatriisit tulevat lähtödatasta. Jos haluat, että kysyntämatriisit tulevat projektikohtaisten pohjamatriisien sijaan jo tehdystä Valma-skenraariokohtaisesta kysyntäennusteesta, luo sille skenaariolle uusi aliskenaario.
       >- aliskenaarion luominen: 
      - Valitse osamalliksi jokin neljästä alueellisesta osamallista sen mukaan, minkä liikenneverkon sisältävän EMME-skenaarion valitsit. Käytä Koko Suomen osamallia vain silloin, kun käytät tallennetun nopeuden sijoittelua (koko Suomen ruuhkasijoittelu voi viedä aikaa jopa viikon).
-       >-  Tallennetun nopeuden sijoittelu valitaan lisävalinnoista ja se mahdollistaa nopeat tarkastelut. Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht (entä time_it). Nämä syntyvät automaattisesti perusmalliajosta.
-       >-  Koko Suomen osamallin tallennetun nopeuden sijoittelussa, valitaan vain tallennetun nopeude sijoittelu. Huomioi, että tarvitset edellä mainitut linkkimatka-ajat, joiden tulee olla  
-       >-
-       >
-       >-  
-       >-  Tallennetun nopeuden sijoittelussa voidaan myös käynnistää osamalliajoja ja käyttää niiden ruuhkamatka-aikoja koko Suomen verkolla. Voit käynnistää osamalliajot käyttöliittymän kautta viittaamalla ko. Emme-skenaarioihin. Tallennetut matka-ajat siirtyvät tällöin automaattisesti koko Suomen verkolle ennen tallennetun nopeuden sijoittelua.
-
+       >-  Tallennetun nopeuden sijoittelu mahdollistaa vaikutusten nopean arvioinnin ja se valitaan lisävalinnoista. Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht (entä time_it). Nämä syntyvät automaattisesti osamallien perusmalliajosta.
+       >-  Jos ajat koko Suomen osamallin tallennetun nopeuden sijoittelussa, valitse pelkästään tallennetun nopeude sijoittelu. Huomioi, että tarvitset edellä mainitut linkkimatka-ajat, jotka ajo osaa hakea automaattisesti kansioistasi.
+       >- Tallennetun nopeuden sijoittelussa voidaan myös käynnistää alueellisia osamalliajoja, joiden ruuhkamatka-aikoja voidaan käyttää koko Suomen verkolla. Valitse käyttöliittymästä tallennettu nopeus sekä valikoi alueen Emme-skenaarion numeroksi asettamasi alueellisen osamallin Emme-skenaarion numero. Tällöin tallennetut matka-ajat siirtyvät automaattisesti koko Suomen verkolle _ennen??_ tallennetun nopeuden sijoittelua / ennen skenaarioajoa.
+ 
     - Tavaraliikenteen skenaarion asetukset:
       - Viittaa kohdassa "Liikenneverkon sisältävä Emme-skenaario" luomaasi Emme-skenaarioon.
       - Viittaa lataamaasi aluekohtaiseen lähtötietoon (.gpkg) kohdassa syöttötiedot, jossa on ennustevuoden tavaraliikenteen aluedata.
