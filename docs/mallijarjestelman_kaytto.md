@@ -59,11 +59,14 @@ title: Mallijärjestelmän käyttö
      - Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
      - Pitkien matkojen kysyntäennuste voi tulla projektin lähtödatasta, jolloin valikoi "ota projektin lähtödatasta". Se voi tulla myös erillisestä malliajosta, jolloin valikoi "ota malliajon tuloskansiosta" ja viittaa toisessa Valma-skenaariossa luodun kysyntäennusteen matriisituloskansioon. Tuloskansio löytyy malliajon jälkeen polusta projektikansio/skenaarion_nimi/Matrices/koko_suomi. Voit luoda kansion valmiiksi ja viitata siihen, vaikka ajo ei olisi vielä suoritettu.
      - Valitse iteraatioiden enimmäismäärä tai pelkkä loppusijoittelu.
-       - Iteraatioiden enimmäismäärä riippuu...
-      >- Jos ajat vain loppusijoittelun, kysyntämatriisit tulevat lähtödatasta. Jos haluat, että kysyntämatriisit tulevat projektikohtaisten pohjamatriisien sijaan jo tehdystä Valma-skenraariokohtaisesta kysyntäennusteesta, luo sille skenaariolle uusi aliskenaario. <!--Miten luodaa aliseknaario-->
+      >- Jos ajat vain loppusijoittelun, kysyntämatriisit tulevat lähtödatasta. Jos haluat, että kysyntämatriisit tulevat projektikohtaisten pohjamatriisien sijaan jo tehdystä Valma-skenraariokohtaisesta kysyntäennusteesta, luo sille skenaariolle uusi aliskenaario.
+      >- aliskenaarion luominen: 
      - Valitse osamalliksi jokin neljästä alueellisesta osamallista sen mukaan, minkä liikenneverkon sisältävän EMME-skenaarion valitsit. Käytä Koko Suomen osamallia vain silloin, kun käytät tallennetun nopeuden sijoittelua (koko Suomen ruuhkasijoittelu voi viedä aikaa jopa viikon).
-       >-  Tallennetun nopeuden sijoittelu valitaan lisävalinnoista. Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht (entä time_it). Nämä syntyvät automaattisesti perusmalliajosta. Tallennetun nopeuden sijoittelu mahdollistaa nopeat tarkastelut esim. pienistä muutoksista joukkoliikennetarjonnassa.
-       >-  Jos kyse on koko Suomen tallennetun nopeuden sijoittelusta, voit tuoda linkkimatka-ajat osamalliajoista.
+       >-  Tallennetun nopeuden sijoittelu valitaan lisävalinnoista ja se mahdollistaa nopeat tarkastelut. Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht (entä time_it). Nämä syntyvät automaattisesti perusmalliajosta.
+       >-  Koko Suomen osamallin tallennetun nopeuden sijoittelussa, valitaan vain tallennetun nopeude sijoittelu. Huomioi, että tarvitset edellä mainitut linkkimatka-ajat, joiden tulee olla  
+       >-
+       >
+       >-  
        >-  Tallennetun nopeuden sijoittelussa voidaan myös käynnistää osamalliajoja ja käyttää niiden ruuhkamatka-aikoja koko Suomen verkolla. Voit käynnistää osamalliajot käyttöliittymän kautta viittaamalla ko. Emme-skenaarioihin. Tallennetut matka-ajat siirtyvät tällöin automaattisesti koko Suomen verkolle ennen tallennetun nopeuden sijoittelua.
 
     - Tavaraliikenteen skenaarion asetukset:
