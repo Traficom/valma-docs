@@ -14,7 +14,7 @@ VALMA UI -käyttöliittymän käyttö edellyttää EMME‑ohjelmistoa, tunnuksia
 
 Voit hankkia nämä [Bentleyn nettisivuilta](https://www.bentley.com/software/openpaths/).
 - Tarkemmat ohjeet ohjelmiston asentamiseen löydät [täältä](https://docs.bentley.com/LiveContent/web/OpenPaths%20Help-v1/en/GUID-91E9693E-4255-48EE-B011-27E105B8CD57.html).
-- <!--Pitääkö tässä huomioida jotain muuta? esimerkiksi ympäristömuuttuja, kuten HELMETissä?-->
+- <!--Pitääkö tässä huomioida jotain muuta? esimerkiksi ympäristömuuttuja, kuten HELMETissä?--> Kysy Jarkolta tai Juliukselta
 
 
 ## VALMA-käyttöliittymän asennus
