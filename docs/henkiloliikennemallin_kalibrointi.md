@@ -1,6 +1,6 @@
 ---
-nav_order: 4
-sort: 4
+nav_order: 5
+sort: 5
 title: Kalibrointi
 ---
 
@@ -67,10 +67,34 @@ Käyttöliittymässä kalibroinnin lisäkomponentit syötetään Valma-projektia
 Kunta–kunta‑kalibroinnilla voidaan räätälöidä matkojen suuntautuminen niin, että jokaiselle lähtökunnalle määritetään oma kohdekuntakohtainen kalibrointi. Kalibrointi toimii samalla logiikalla kuin edellä mainittu attraktiokalibrointi. Tällöin vain kunnasta lähtevien matkojen _suuntautuminen_ muuttuu ilman matkojen kokonaismäärän muuttumista. 
 
 Kalibroinnin tiedoston tulee olla sarkaineroteltu tekstitiedosto (.txt). Siinä kahden ensimmäisen sarakeotsikon nimet ovat aina _generation_ ja _attraction_. Seuraavat sarakeotsikot kertovat, mihin kulkutapoihin kalibrointi kohdistuu.
->Esimerkkinä tiedosto, jossa lähtökuntina ovat Espoo ja Kauniainen ja näiden kohdekuntina Helsinki. Kulkutavoiksi on valittu autolla tehtävä työmatka ja pyörä.
->| generation | attraction | car_work | bike |
->|:-----------|:-----------|:---:     |:---:|
->|Espoo       |Helsinki    |-0,1     |0,1   |
->|Kauniainen  |Helsinki    |0,1       |-0,1  |
 
-Käyttöliittymässä tekstitiedosto syötetään Valma-projektiasetuksissa txt-formaatissa kohdassa "kunta-kunta-kalibroinnin tiedosto (.txt)".
+<!--html-taulukko, koska GitHub Pages ei tue taulukoita blockquoten sisällä ja sarakkeet hajoavat.-->
+
+>Esimerkkinä tiedosto, jossa lähtökuntina ovat Espoo ja Kauniainen ja näiden kohdekuntina Helsinki. Kulkutavoiksi on valittu autolla tehtävä työmatka ja pyörä.
+><table>
+>  <thead>
+>    <tr>
+>      <th>generation</th>
+>      <th>attraction</th>
+>      <th>car_work</th>
+>      <th>bike</th>
+>    </tr>
+>  </thead>
+>  <tbody>
+>    <tr>
+>      <td>Espoo</td>
+>      <td>Helsinki</td>
+>      <td>-0,1</td>
+>      <td>0,1</td>
+>    </tr>
+>    <tr>
+>      <td>Kauniainen</td>
+>      <td>Helsinki</td>
+>      <td>0,1</td>
+>      <td>-0,1</td>
+>    </tr>
+>  </tbody>
+></table>
+
+Käyttöliittymässä tekstitiedosto syötetään Valma-projektiasetuksissa txt-formaatissa kohdassa
+“kunta-kunta-kalibroinnin tiedosto (.txt)”.
