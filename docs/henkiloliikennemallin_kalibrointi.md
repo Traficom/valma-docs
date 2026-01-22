@@ -20,10 +20,16 @@ Huomioi seuraavat _ennen_ kalibrointia:
 
 ## Kulkutapa- ja matkakohdevalinnan kalibrointi
    
-Kulkutapa- ja matkakohdevalinnan kalibroinnissa _lisätään_ vaihtoehtokohtainen komponentti hyötyfunktioon $`U`$. 
+Kulkutapa- ja matkakohdevalinnan kalibroinnissa *lisätään* vaihtoehtokohtainen komponentti hyötyfunktioon $U$.
 
-Logit-todennäköisyys $`(e^U/Σe^U)`$ toimii yleisesti niin, että valintajakauma muuttuu suhteellisesti lisäkomponentin $`e^x`$ mukaan. Sen takia karkea arvio lisäkomponentin tarpeen suuruudesta saadaan kaavalla `ln(todellisuus / kalibroimaton malli)`.
->Esim. jos ruuhkatunnin joukkoliikennematkustaminen Helsingin kantakaupunkiin on todellisuudessa 30 % suurempi kuin malli sanoo, sopiva lisäkomponentti on $`ln(1,3) = 0.26`$. 
+Logit-todennäköisyys $\frac{e^{U}}{\sum e^{U}}$ toimii yleisesti niin, että valintajakauma muuttuu suhteellisesti lisäkomponentin $e^{x}$ mukaan. Sen takia karkea arvio lisäkomponentin tarpeen suuruudesta saadaan kaavalla:
+
+$$
+\ln\left(\frac{\text{todellisuus}}{\text{kalibroimaton malli}}\right)
+$$
+
+> Esim. jos ruuhkatunnin joukkoliikennematkustaminen Helsingin kantakaupunkiin on todellisuudessa 30 % suurempi kuin malli sanoo, sopiva lisäkomponentti on  
+> $\ln(1.3) = 0.26$.
 
 Lisäattraktio eli matkakohde kohdennetaan johonkin _aggregaatiotasoon_ syöttötiedostoissa (.gpkg). Aggregaatiotaso on sarake nimeltään _aggregate_results_x_, missä _x_ on esimerkiksi _subarea_. Lisäattraktio voidaan kohdentaa myös suoraan sijoittelualueeseen ("zone"). <!--Mitä meinaa?-->
 
