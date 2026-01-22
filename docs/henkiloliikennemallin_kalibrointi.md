@@ -31,7 +31,7 @@ $$
 > Esim. jos ruuhkatunnin joukkoliikennematkustaminen Helsingin kantakaupunkiin on todellisuudessa 30 % suurempi kuin malli sanoo, sopiva lisäkomponentti on  
 > $\ln(1.3) = 0.26$.
 
-Lisäattraktio eli matkakohde kohdennetaan johonkin _aggregaatiotasoon_ syöttötiedostoissa (.gpkg). Aggregaatiotaso on sarake nimeltään _aggregate_results_x_, missä _x_ on esimerkiksi _subarea_. Lisäattraktio voidaan kohdentaa myös suoraan sijoittelualueeseen ("zone"). <!--Mitä meinaa?-->
+Matkakohteen lisäattraktio kohdennetaan johonkin _aggregaatiotasoon_ syöttötiedostoissa (.gpkg). Aggregaatiotaso on sarake nimeltään _aggregate_results_x_, missä _x_ on esimerkiksi _subarea_. Lisäattraktio voidaan kohdentaa myös suoraan sijoittelualueeseen ("zone"). <!--Mitä meinaa?-->
 
 Kalibrointia on hyvä hieman tasoittaa alueellisesti. Esim. jos lisätään attraktiota Helsingin kantakaupunkiin, olisi hyvä hieman lisätä attraktiota Helsingin esikaupunkialueillekin. Muuten malliin saattaa tulla erikoisia rajailmiöitä. Attraktio- ja kulkutapakalibrointi ei lisää kysyntää, vaan kysyntä siirretään tasaisesti kaikista matkakohteista tai kulkutavoista. Tämä tarkoittaa, että jos kalibroitu kulkutapa tai matkakohde muodostaa suuren osan todennäköisyydestä, kalibrointi pitää iteroida saavuttaakseen toivottu lopputulos.
 
