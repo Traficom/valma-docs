@@ -71,6 +71,7 @@ Kalibroinnin tiedoston tulee olla sarkaineroteltu tekstitiedosto (.txt). Siinä 
 <!--html-taulukko, koska GitHub Pages ei tue taulukoita blockquoten sisällä ja sarakkeet hajoavat.-->
 
 >Esimerkkinä tiedosto, jossa lähtökuntina ovat Espoo ja Kauniainen ja näiden kohdekuntina Helsinki. Kulkutavoiksi on valittu autolla tehtävä työmatka ja pyörä.
+><table style="text-align:center;">
 ><table>
 >  <thead>
 >    <tr>
