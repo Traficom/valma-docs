@@ -62,8 +62,8 @@ title: Mallijärjestelmän käyttö
       >- aliskenaarion luominen: 
      - Valitse osamalliksi jokin neljästä alueellisesta osamallista sen mukaan, minkä liikenneverkon sisältävän EMME-skenaarion valitsit. Käytä Koko Suomen osamallia vain silloin, kun käytät tallennetun nopeuden sijoittelua (koko Suomen ruuhkasijoittelu voi viedä aikaa jopa viikon).
        >-  Tallennetun nopeuden sijoittelu mahdollistaa vaikutusten nopean arvioinnin ja se valitaan lisävalinnoista. Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht (entä time_it). Nämä syntyvät automaattisesti osamallien perusmalliajosta.
-       >-  Jos ajat koko Suomen osamallin tallennetun nopeuden sijoittelussa, valitse pelkästään tallennetun nopeude sijoittelu. Huomioi, että tarvitset edellä mainitut linkkimatka-ajat, jotka ajo osaa hakea automaattisesti kansioistasi.
-       >- Tallennetun nopeuden sijoittelussa voidaan myös käynnistää alueellisia osamalliajoja, joiden ruuhkamatka-aikoja voidaan käyttää koko Suomen verkolla. Valitse käyttöliittymästä tallennettu nopeus sekä valikoi alueen Emme-skenaarion numeroksi asettamasi alueellisen osamallin Emme-skenaarion numero. Tällöin tallennetut matka-ajat siirtyvät automaattisesti koko Suomen verkolle _ennen??_ tallennetun nopeuden sijoittelua / ennen skenaarioajoa.
+       >-  Jos ajat koko Suomen osamallin tallennetun nopeuden sijoittelussa, valitse pelkästään tallennetun nopeude sijoittelu. Huomioi, että tarvitset edellä mainitut linkkimatka-ajat.
+       >   JOS EI OLE VIELÄ TEHNYT OSAMALLI-AJOJA: Tallennetun nopeuden sijoittelussa voidaan myös käynnistää alueellisia osamalliajoja, joiden ruuhkamatka-aikoja voidaan käyttää koko Suomen verkolla. Valitse käyttöliittymästä tallennettu nopeus sekä valikoi alueen Emme-skenaarion numeroksi asettamasi alueellisen osamallin Emme-skenaarion numero. Tällöin tallennetut matka-ajat siirtyvät automaattisesti koko Suomen verkolle _ennen_ koko Suomen malliajoa.
  
     - Tavaraliikenteen skenaarion asetukset:
       - Viittaa kohdassa "Liikenneverkon sisältävä Emme-skenaario" luomaasi Emme-skenaarioon.
