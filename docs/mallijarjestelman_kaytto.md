@@ -1,7 +1,7 @@
 ---
 nav_order: 4
 sort: 4
-title: Malliajo
+title: Malliajon ohjeet
 ---
 
 # Malliajon ohje
@@ -44,37 +44,49 @@ Tässä ohjeessa kerrotaan, mitstä löydät materiaalit malliajoihin ja miten s
     
 4. Tuo Emme-skenaarioksi lataamasi verkko tai verkot Emme-pankkiin Emmen Modeller Import Scenario työkalun avulla. Kopioi tarvittaessa skenaario Modellerin Copy Scenario työkalun avulla ja tee tarvittavat verkkomuutokset. Jos aiot tallentaa ajanjaksot erillisiin Emme-skenaarioihin, skenaarionumeroiden väliin pitää jättää neljä tyhjää skenaarionumeroa.
 
-## VALMA-skenaariot
+### VALMA-skenaariot
 
-1. Luo VALMA-skenaario käyttöliittymässä. Voit luoda henkilöliikenteen pitkien matkojen, tavaraliikenteen sekä osamallien (lyhyet matkat) skenaariot.
+1. Luo VALMA-skenaario käyttöliittymässä. Voit luoda henkilöliikenteen pitkien matkojen skenaarion, tavaraliikenteen skenaarion sekä osamallien (lyhyet matkat) skenaariot.
     
-2. __Pitkät matkat__:
-    - Pitkien matkojen skenaariossa tulee käyttää koko Suomen verkkoa. Laita _liikenneverkon sisälävä Emme-skenaario_ numero samaksi kuin luomasi Emme-skenaarion numero.
-        >- Jos Emme-projektissa on useita Emme-pankkeja, mallijärjestelmä yrittää löytää osamallin mukaan nimetyn Emme-pankin nimeltään "koko_suomi".
-      - Viittaa lataamaasi aluetietoon (.gpkg) kohdassa syöttötiedot.
-      - Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
-      - Osamalli on KoKo Suomi.
-      - Valitse skenaario ja käynnistä se.
+__Pitkät matkat__:    
+          
+- Pitkien matkojen skenaariossa tulee käyttää koko Suomen verkkoa. Laita _liikenneverkon sisälävä Emme-skenaario_ numero samaksi kuin luomasi Emme-skenaarion numero.
+  - Jos Emme-projektissa on useita Emme-pankkeja, mallijärjestelmä yrittää löytää osamallin mukaan nimetyn Emme-pankin nimeltään "koko_suomi".
+- Viittaa lataamaasi aluetietoon (.gpkg) kohdassa syöttötiedot.
+- Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
+- Osamalli on KoKo Suomi.
+- Valitse skenaario ja käynnistä se.
+
+__Tavaraliikenteen skenaario__:
+
+- Viittaa kohdassa "Liikenneverkon sisältävä Emme-skenaario" luomaasi Emme-skenaarioon.
+- Viittaa lataamaasi aluekohtaiseen lähtötietoon (.gpkg) kohdassa syöttötiedot, jossa on ennustevuoden tavaraliikenteen aluedata.
+- Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
+- Viittaa vienti- ja tuontidatassa...
+- Tavaraliikenne käyttää automnaattisesti koko Suomen osamallia.
+
         
-3. __Osamallien (lyhyiden matkojen) skenaario__:
-     -  Laita _liikenneverkon sisälävä Emme-skenaario_ numero samaksi kuin luomasi Emme-skenaarion numero.
-     > - Jos projektissa on useita Emme-pankkeja, mallijärjestelmä yrittää löytää osamallin mukaan nimetyn Emme-pankin nimeltään "alueelliset_osamallit". Katso kohta _tallennetun nopeuden sijoittelu_.
-     - Viittaa lataamaasi aluetietoon (.gpkg) kohdassa syöttötiedot.
-     - Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
-     - Pitkien matkojen kysyntäennuste voi tulla projektin lähtödatasta, jolloin valikoi "ota projektin lähtödatasta". Se voi tulla myös erillisestä malliajosta, jolloin valikoi "ota malliajon tuloskansiosta" ja viittaa toisessa Valma-skenaariossa luodun kysyntäennusteen matriisituloskansioon. Tuloskansio löytyy malliajon jälkeen polusta `projektikansio/skenaarion_nimi/Matrices/koko_suomi`. Voit luoda kansion valmiiksi ja viitata siihen, vaikka ajo ei olisi vielä suoritettu.
-     - Valitse iteraatioiden enimmäismäärä (yleensä 15) tai pelkkä loppusijoittelu.
-      >- Jos ajat vain loppusijoittelun, kysyntämatriisit tulevat lähtödatasta. Jos haluat, että kysyntämatriisit tulevat projektikohtaisten pohjamatriisien sijaan jo tehdystä Valma-skenraariokohtaisesta kysyntäennusteesta, luo sille skenaariolle uusi aliskenaario.
-      >- aliskenaarion luominen: 
-     - Valitse osamalliksi jokin neljästä alueellisesta osamallista sen mukaan, minkä liikenneverkon sisältävän EMME-skenaarion valitsit. Käytä Koko Suomen osamallia vain silloin, kun käytät tallennetun nopeuden sijoittelua (koko Suomen ruuhkasijoittelu voi viedä aikaa jopa viikon).
-       >-  Tallennetun nopeuden sijoittelu mahdollistaa vaikutusten nopean arvioinnin ja se valitaan lisävalinnoista. Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht (entä time_it). Nämä syntyvät automaattisesti osamallien perusmalliajosta.
-       >-  Jos ajat koko Suomen osamallin tallennetun nopeuden sijoittelussa, valitse pelkästään tallennetun nopeude sijoittelu. Huomioi, että tarvitset edellä mainitut linkkimatka-ajat.
+__Osamallien (lyhyiden matkojen) skenaario__:
+
+-  Laita _liikenneverkon sisälävä Emme-skenaario_ numero samaksi kuin luomasi Emme-skenaarion numero.
+   - Jos projektissa on useita Emme-pankkeja, mallijärjestelmä yrittää löytää osamallin mukaan nimetyn Emme-pankin nimeltään "alueelliset_osamallit". Katso kohta _tallennetun nopeuden sijoittelu_.
+- Viittaa lataamaasi aluetietoon (.gpkg) kohdassa syöttötiedot.
+- Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
+- Pitkien matkojen kysyntäennuste voi tulla projektin lähtödatasta, jolloin valikoi "ota projektin lähtödatasta". Se voi tulla myös erillisestä malliajosta, jolloin valikoi "ota malliajon tuloskansiosta" ja viittaa toisessa Valma-skenaariossa luodun kysyntäennusteen matriisituloskansioon. Tuloskansio löytyy malliajon jälkeen polusta `projektikansio/skenaarion_nimi/Matrices/koko_suomi`. Voit luoda kansion valmiiksi ja viitata siihen, vaikka ajo ei olisi vielä suoritettu.
+- Valitse iteraatioiden enimmäismäärä (yleensä 15) tai pelkkä loppusijoittelu.
+  - Jos ajat vain loppusijoittelun, kysyntämatriisit tulevat lähtödatasta. Jos haluat, että kysyntämatriisit tulevat projektikohtaisten pohjamatriisien sijaan jo tehdystä Valma-skenraariokohtaisesta kysyntäennusteesta, luo sille skenaariolle uusi aliskenaario.
+    - Aliskenaario luodaan...
+- Valitse osamalliksi jokin neljästä alueellisesta osamallista. Jos Emme-projektissa on useita emmepankkeja, mallijärjestelmä yrittää löytää osamallin mukaan nimetyn Emme-pankin tai Emme-pankin nimeltään "alueelliset_osamallit". Käytä Koko Suomen osamallia vain silloin, kun käytät tallennetun nopeuden sijoittelua (koko Suomen ruuhkasijoittelu voi viedä aikaa jopa viikon).
+
+__Tallennetun nopeuden sijoitttelu (koko Suomen koontiajo)__:
+
+-  Tallennetun nopeuden sijoittelu valitaan lyhyiden matkojen skenaarioasetusten lisävalinnoista ja se mahdollistaa vaikutusten nopean arvioinnin.
+-  Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht. Nämä syntyvät automaattisesti osamallien perusmalliajosta.
+-  Tallennetun nopeuden sijoittelu voidaan tehdä kahdella tavalla riippuen, onko sinulla osamallit jo ajettu vai ei.
+   -   Jos olet jo ajanut alueelliset osamallit ja saanut edellä mainitut linkkimatka-ajat, valikoi pelkästään tallennetun nopeuden sijoittelu. Valikoi osamalliksi koko Suomi.
+      
        >   JOS EI OLE VIELÄ TEHNYT OSAMALLI-AJOJA: Tallennetun nopeuden sijoittelussa voidaan myös käynnistää alueellisia osamalliajoja, joiden ruuhkamatka-aikoja voidaan käyttää koko Suomen verkolla. Valitse käyttöliittymästä tallennettu nopeus sekä valikoi alueen Emme-skenaarion numeroksi asettamasi alueellisen osamallin Emme-skenaarion numero. Tällöin tallennetut matka-ajat siirtyvät automaattisesti koko Suomen verkolle _ennen_ koko Suomen malliajoa.
  
-    - Tavaraliikenteen skenaarion asetukset:
-      - Viittaa kohdassa "Liikenneverkon sisältävä Emme-skenaario" luomaasi Emme-skenaarioon.
-      - Viittaa lataamaasi aluekohtaiseen lähtötietoon (.gpkg) kohdassa syöttötiedot, jossa on ennustevuoden tavaraliikenteen aluedata.
-      - Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
-      - Viittaa vienti- ja tuontidatassa...
-      - Tavaraliikenne käyttää automnaattisesti koko Suomen osamallia.
+    
    
 
