@@ -48,7 +48,7 @@ Tässä ohjeessa kerrotaan, mitstä löydät materiaalit malliajoihin ja miten s
 
 1. Luo VALMA-skenaario käyttöliittymässä. Voit luoda henkilöliikenteen pitkien matkojen skenaarion, tavaraliikenteen skenaarion sekä osamallien (lyhyet matkat) skenaariot.
     
-__Pitkät matkat__:    
+__Pitkien matkojen skenaario__:    
           
 - Pitkien matkojen skenaariossa tulee käyttää koko Suomen verkkoa. Laita _liikenneverkon sisälävä Emme-skenaario_ numero samaksi kuin luomasi Emme-skenaarion numero.
   - Jos Emme-projektissa on useita Emme-pankkeja, mallijärjestelmä yrittää löytää osamallin mukaan nimetyn Emme-pankin nimeltään "koko_suomi".
@@ -80,13 +80,9 @@ __Osamallien (lyhyiden matkojen) skenaario__:
 
 __Tallennetun nopeuden sijoitttelu (koko Suomen koontiajo)__:
 
--  Tallennetun nopeuden sijoittelu valitaan lyhyiden matkojen skenaarioasetusten lisävalinnoista ja se mahdollistaa vaikutusten nopean arvioinnin.
+-  Tallennetun nopeuden sijoittelua tulee käyttää aina koko Suomen osamalliajossa.
+-  Sijoittelu valitaan lyhyiden matkojen skenaarioasetusten lisävalinnoista ja se mahdollistaa vaikutusten nopean arvioinnin; perusmalliajon jälkeen voidaan nopeasti arvioida vaikutuksia esim. pienistä muutoksista joukkoliikennetarjonnassa.
 -  Sitä voidaan käyttää, jos verkolla on auton linkkimatka-ajat network fiel -attribuuteissa "time_aht", "time_pt" sekä "time_iht. Nämä syntyvät automaattisesti osamallien perusmalliajosta.
 -  Tallennetun nopeuden sijoittelu voidaan tehdä kahdella tavalla riippuen, onko sinulla osamallit jo ajettu vai ei.
-   -   Jos olet jo ajanut alueelliset osamallit ja saanut edellä mainitut linkkimatka-ajat, valikoi pelkästään tallennetun nopeuden sijoittelu. Valikoi osamalliksi koko Suomi.
-      
-       >   JOS EI OLE VIELÄ TEHNYT OSAMALLI-AJOJA: Tallennetun nopeuden sijoittelussa voidaan myös käynnistää alueellisia osamalliajoja, joiden ruuhkamatka-aikoja voidaan käyttää koko Suomen verkolla. Valitse käyttöliittymästä tallennettu nopeus sekä valikoi alueen Emme-skenaarion numeroksi asettamasi alueellisen osamallin Emme-skenaarion numero. Tällöin tallennetut matka-ajat siirtyvät automaattisesti koko Suomen verkolle _ennen_ koko Suomen malliajoa.
- 
-    
-   
-
+   - Jos olet jo ajanut alueelliset osamallit ja saanut edellä mainitut linkkimatka-ajat, valikoi pelkästään tallennetun nopeuden sijoittelu.
+   - Jos et ole vielä tehnyt alueellisia osamalli-ajoja, tallennetun nopeuden sijoittelulla voidaan myös käynnistää niitä. Valikoi tallennetun nopeuden sijoittelu sekä Emme-skenaarion numero. Numero vastaa asettamasi alueellisen osamallin Emme-skenaarion numeroa. Tällöin malli ajaa osamallit, tuottaa linkkimatka-ajat ja siirtää ne automaattisesti koko Suomen verkolle. Vasta tämän jälkeen se suorittaa koko Suomen malliajon tallennetun nopeuden sijoittelulla.
