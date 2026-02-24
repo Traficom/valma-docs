@@ -6,7 +6,7 @@ title: Malliajon ohjeet
 
 # Malliajon ohje
 
-Tässä ohjeessa kerrotaan, mitstä löydät materiaalit malliajoihin ja miten suoritat ne VALMA-käyttöliittymällä.
+Tässä ohjeessa kerrotaan, mitstä löydät materiaalit malliajoihin ja miten suoritat ajoja VALMA-käyttöliittymällä.
 
 ### Valmistelu
 
