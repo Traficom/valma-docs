@@ -1,10 +1,10 @@
 ---
-nav_order: 4
-sort: 4
-title: Malliajon ohjeet
+nav_order: 2
+sort: 2
+title: Mallijärjestelmän käyttö
 ---
 
-# Malliajon ohje
+# Mallijärjestelmän käyttö
 
 Tässä ohjeessa kerrotaan, mitstä löydät materiaalit malliajoihin ja miten suoritat ajoja VALMA-käyttöliittymällä.
 
