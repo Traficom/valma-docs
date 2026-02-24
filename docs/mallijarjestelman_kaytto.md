@@ -1,7 +1,6 @@
 ---
 nav_order: 2
 sort: 2
-title: Mallijärjestelmän käyttö
 ---
 
 # Mallijärjestelmän käyttö
