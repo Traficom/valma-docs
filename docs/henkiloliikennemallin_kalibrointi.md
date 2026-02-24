@@ -21,7 +21,7 @@ Huomioi seuraavat _ennen_ kalibrointia:
    
 Kulkutapa- ja matkakohdevalinnan kalibroinnissa *lisätään* vaihtoehtokohtainen komponentti hyötyfunktioon _U_.
 
-Logit-todennäköisyys '(e^U/Σe^U)' toimii yleisesti niin, että valintajakauma muuttuu suhteellisesti lisäkomponentin \( e^x \) mukaan. Sen takia karkea arvio lisäkomponentin tarpeen suuruudesta saadaan kaavalla:
+Logit-todennäköisyys 'e^U/Σe^U' toimii yleisesti niin, että valintajakauma muuttuu suhteellisesti lisäkomponentin e-potenssin mukaan. Sen takia karkea arvio lisäkomponentin tarpeen suuruudesta saadaan kaavalla:
 
 $$
 \ln\left(\frac{\text{todellisuus}}{\text{kalibroimaton malli}}\right)
