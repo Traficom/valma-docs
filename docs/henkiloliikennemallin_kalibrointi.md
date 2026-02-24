@@ -3,7 +3,6 @@ nav_order: 5
 sort: 5
 title: Henkilöliikennemallin kalibrointi
 ---
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 # Henkilöliikennemallin kalibrointi
 
