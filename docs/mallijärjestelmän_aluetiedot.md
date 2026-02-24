@@ -1,7 +1,6 @@
 ---
 nav_order: 4
 sort: 4
-title: Mallijärjestelmän aluetiedot
 ---
 
 # Mallijärjestelmän aluetiedot
