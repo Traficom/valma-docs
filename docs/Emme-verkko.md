@@ -1,6 +1,6 @@
 ---
-nav_order: 4
-sort: 4
+nav_order: 
+sort: 
 title: Malliajon ohjeet
 ---
 
