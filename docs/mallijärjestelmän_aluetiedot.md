@@ -28,7 +28,7 @@ __sh_age_7_17, sh_age_18_29, sh_age_30_49, sh_age_50_64, sh_age_65_99:__
    - Mikäli alueella on alle 50 asukasta, ikäryhmien osuudet on imputoitu kunnan keskiarvon perusteella.
    - Vaikuttaa vyöhykkeiden matkojen muodostukseen (matkan tarkoituksen mukaan). Ikäryhmä 7–17 tuottaa koulumatkoja jne.
      
-__sh_income_0_19, sh_income_20_39, sh_income_40_59, sh_income_60_79, sh_income_80_99, sh_income_100:___
+__sh_income_0_19, sh_income_20_39, sh_income_40_59, sh_income_60_79, sh_income_80_99, sh_income_100:__
    - Kotitalouksien osuus tuloluokittain (desimaali, 0–1).
    - 00_19 = Kotitalouden yhteenlasketut ansio- ja pääomatulot 0–19 999 €.
    - 20_39 = Kotitalouden yhteenlasketut ansio- ja pääomatulot 20 000–39 999 €.
