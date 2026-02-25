@@ -43,7 +43,7 @@ __households:__ ei enää käytössä. Kotitalouksien määrä johdetaan kotital
 __sh_hh1, sh_hh2, sh_hh3:__ kotitalouksien osuus kokoluokittain: 1, 2, 3+ henkilöä (desimaali, 0–1).   
 
 __sh_cars0_hh1 … sh_cars2_hh3:__ kotitalouksien osuus, joilla 0/1/2+ autoa eri kotitalouskokoluokissa (desimaali, 0–1).
-  - Muoto: sh_cars{N}_hh{M} → osuus M-henkisistä kotitalouksista, joilla N autoa.   
+  - Muoto: sh_cars{N}_hh{M} → osuus hhM kotitalouksista, joilla N autoa.   
 
 __land_area:__ alueen maapinta-ala (km²). Laskettu poistamalla vesialue kokonaispinta-alasta.   
 
