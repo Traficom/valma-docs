@@ -79,7 +79,7 @@ Pitkien matkojen ja osamallien (lyhyiden matkojen) skenaarioden tulostiedosto ei
 
 ## Matriisien kuvaukset
 
-Matriisitiedostot ovat omx -muodossa ja ne löytyvät alikansion kansiosta "Matrices".
+Matriisitiedostot ovat omx. -muodossa ja ne löytyvät alikansion kansiosta "Matrices".
 Kysyntä- ja vastusmatriisit ovat tuntimatriiseita
 
 | Koodi | Tunti           |
@@ -93,13 +93,13 @@ __Matriisit:__
 
 | Tiedoston nimi (jossa xxx on tunnin koodi) | Selite | Tarkempi kuvaus |
 |--------------------------------------------|--------|-----------------|
-| beeline_.txt | |  |
-| car_time_xxx.txt | |  |
-| cost_xxx.txt   | |  |
-| demand_xxx.txt |  |  |
-| dist_xxx.txt |  |  |
-| inv_time_xxx.txt   |  |  |
-| park_cost_xxx.txt   |  |  |
-| time_xxx.txt   |  |  |
-| toll_cost_xxx.txt   |  |  |
-| transfer_time_xxx.txt   |  |  |
+| beeline_.omx | |  |
+| car_time_xxx.omx | |  |
+| cost_xxx.omx   | |  |
+| demand_xxx.omx |  |  |
+| dist_xxx.omx |  |  |
+| inv_time_xxx.omx   |  |  |
+| park_cost_xxx.omx   |  |  |
+| time_xxx.omx   |  |  |
+| toll_cost_xxx.omx   |  |  |
+| transfer_time_xxx.omx   |  |  |
