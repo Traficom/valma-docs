@@ -14,6 +14,40 @@ VALMA-skenaarioajojen eli malliajojen tulokset tallentuvat projektikansion alika
 
 ## Tekstitiedostojen kuvaukset
 
+### Tulostiedostojen lyhenteet ja termit
+
+| Koodi | Selite           |
+|-------|-----------------|
+| hb   |  |
+| wb   |  |
+| ob    |   |
+
+| Koodi | Selite           |
+|-------|-----------------|
+| business    |   |
+| edu    |   |
+| escort    |   |
+| grocery    |   |
+| other    |   |
+| visit    |   |
+
+| Koodi   | Kiertomatkan tyyppi                         |
+|---------|---------------------------------------------|
+| work    |  |
+| leisure |                                  |
+| pax |                          |
+
+
+| Nimi          | Vastine suomeksi                   | Sijoitteluyksikkö |
+|---------------|------------------------------------|-------------------|
+| car          |                         |           |
+| bike          |                          |            |
+| transit   |  |            |
+| walk           |                         |           |
+
+
+
+
 ### Tiedostot
 
 Pitkien matkojen ja osamallien (lyhyiden matkojen) skenaarioden tulostiedosto eivät ole täysin samat. Alla olevaan taulukkoon on merkattu, kuuluuko tulostiedosto vain toisen vai molempien ajojen tuloksiin.
@@ -42,8 +76,6 @@ Pitkien matkojen ja osamallien (lyhyiden matkojen) skenaarioden tulostiedosto ei
 |zone_generation_by_mode/purpose.txt                        |  | | Molemmat |
 | zone_generation_dist_by_mode/purpose.txt                        |  | | Molemmat |
 | zonedata_input.txt                        |  | | Molemmat |
-
-### Lyhenteet ja termit
 
 ## Matriisien kuvaukset
 
