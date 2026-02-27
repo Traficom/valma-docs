@@ -16,6 +16,33 @@ VALMA-skenaarioajojen eli malliajojen tulokset tallentuvat projektikansion alika
 
 ### Tiedostot
 
+Pitkien matkojen ja osamallien (lyhyiden matkojen) skenaarioden tulostiedosto eivät ole täysin samat. Alla olevaan taulukkoon on merkattu, kuuluuko tulostiedosto vain toisen vai molempien ajojen tuloksiin.
+
+| Tiedoston nimi                               | Selite | Tarkempi kuvaus | Skenaario |
+|----------------------------------------------|--------|-----------------|-----------------|
+| accessibility.txt                             |  |  |Molemmat |
+| aggregated_demand_country/municipality/subarea/submodel.txt |  | | Molemmat |
+| aggregated_demand_ykr_km                        |  | | Pitkät |
+| car_ownership                            | Kotitalouden autonomistus | hh_lic, cars koostuu kotitaloudesta (hh), jossa voi olla 1 tai 2 aikuista, ajokortillisista henkilöistä (lic), joita voi olla 1 tai 2 sekä kotitalouden autoista, joita voi olla 0, 1 tai 2+.| Osamallit |
+| demand_convergence.txt                        |  |  | Molemmat |
+| link_lengths.txt                        |  |  | Pitkät |
+| municipality_boardings.txt                        |  |  | Pitkät |
+|netfield_links_koko_suomi.txt                        |  |  | Pitkät |
+| noise_areas.txt                        |  |  | Osamallit |
+| purpose_mode_shares.txt                        |  |  | Osamallit |
+| result_summary.txt                        |  |  | Pitkät |
+| tour_lengths.txt                        |  | | Molemmat |
+| transit_kms.txt                        |  |  | Pitkät |
+| vehicle_kms_county.txt                        |  | | Pitkät |
+| vehicle_kms_vdfs.txt                        |  | | Pitkät |
+| vehicle_kms_vdfs_county.txt                        |  | | Pitkät |
+| within_zone_tours.txt                        |  | | Molemmat |
+| zone_attraction_by_mode/purpose.txt                        |  | | Molemmat |
+| zone_attraction_dist_by_mode/purpose.txt                        |  | | Molemmat |
+|zone_generation_by_mode/purpose.txt                        |  | | Molemmat |
+| zone_generation_dist_by_mode/purpose.txt                        |  | | Molemmat |
+| zonedata_input.txt                        |  | | Molemmat |
+
 ### Lyhenteet ja termit
 
 ## Matriisien kuvaukset
