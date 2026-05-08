@@ -4,7 +4,6 @@ sort: 4
 ---
 
 # Aluetiedot (Zonedata)
-
 Malli käyttää lähtötietona Zonedata geopackage-tiedostoa, jossa on esitetty maankäytön kuvaus. Aluetiedot koostuvat pakollisista ja vapaaehtoisista sarakkeista.
 
 Pakollisia tietoja ovat mallin käyttämät alueiden hallinnolliset luokitukset ja maankäyttöä kuvaavat tunnusluvut, jotka toimivat kysyntämallien muuttujina. Väestön määrä kertoo matkojen kokonaismääristä, kun taas eri toimialojen työpaikkojen lukumäärä ja koulujen oppilaspaikkojen määrät ohjaavat matkojen suuntautumista.
@@ -12,13 +11,12 @@ Pakollisia tietoja ovat mallin käyttämät alueiden hallinnolliset luokitukset 
 Vapaaehtoisia aluetietoja ovat "aggregate_results" etuliitteellä esitetyt alueluokitukset. Näitä käytetään vain valmiiden mallitulosten ryhmittelyyn ja ne ovat vapaasti käyttäjän määritettävissä. Lisäämällä aluetietoihin sarakkeen "aggregate_results" etuliitteellä voi käyttäjä saada valmiiksi lasketut matkamäärät tälle samalle jaolle.
 
 ## Alueluokitukset
-
 | Kenttä | Kuvaus |
 | --- | --- |
 | __input_zone_id__ | Alueen yksilöllinen tunniste. |
-| __municipality__ | Alueen kunnan nimi merkkijonona. Kunnan nimi kirjoitettu ilman "ä" ja "ö" kirjaimia. Käyttäjän ei tule muuttaa tätä arvoa. |
-| __county__ | Alueen maakunta, jota käytetään aggregoinnissa ja yhteenvedoissa. Käyttäjän ei tule muuttaa tätä arvoa. |
-| __submodel__ | Alueen osamalli merkkijonona. Käyttäjän ei tule muuttaa tätä arvoa. |
+| __municipality__ | Alueen kunnan nimi. Käyttäjän ei tule muuttaa tätä saraketta. |
+| __county__ | Alueen maakunnan nimi. Käyttäjän ei tule muuttaa tätä saraketta. |
+| __submodel__ | Alueen osamallin nimi. Käyttäjän ei tule muuttaa tätä saraketta. |
 | __koko_suomi__ | Alueiden ryhmittely eri osamalleissa. Kun ajetaan "uusimaa"-osamallia, Uudenmaan ulkopuoliset alueet aggregoidaan kunta- tai maakuntatasolle tämän tiedot avulla. Käyttäjän ei tule muuttaa tätä saraketta. |
 | __ita_suomi__ | kts. koko_suomi |
 | __lounais_suomi__ | kts. koko_suomi |
@@ -26,7 +24,6 @@ Vapaaehtoisia aluetietoja ovat "aggregate_results" etuliitteellä esitetyt aluel
 | __uusimaa__ | kts. koko_suomi |
 
 ## Väestötiedot
-
 | Kenttä | Kuvaus |
 | --- | --- |
 | __population__ | Alueen asukasluku 31.12. lähtien, kokonaislukuna. |
@@ -41,10 +38,9 @@ Ikäryhmien laskennassa ikäryhmien osuudet on imputoitu kunnan keskiarvon perus
 Väestön määrä ja ikäjakauma vaikuttaa ensisijaisesti alueelta lähtevien matkojen lukumäärään. Lisäksi väestön määrä vaikuttaa alueelle saapuvien vierailumatkojen määriin. Ajokortillisten osuutta käytetään muuttujana autonomistusta kuvaavassa mallissa.
 
 ## Kotitaloustiedot
-
 | Kenttä | Kuvaus |
 | --- | --- |
-| __sh_income_0_19__ | Kotitalouksien osuus tuloluokittain desimaalimuodossa 0–1. Tuloluokka on 0–19 999 euroa. Tulotaso vaikuttaa auton omistukseen ja siten kulkutapamalleihin. |
+| __sh_income_0_19__ | Kotitalouksien osuus tuloluokittain desimaalimuodossa 0–1. Tuloluokka on 0–19 999 euroa. |
 | __sh_income_20_39__ | Tuloluokka on 20 000–39 999 euroa.  |
 | __sh_income_40_59__ | Tuloluokka on 40 000–59 999 euroa.  |
 | __sh_income_60_79__ | Tuloluokka on 60 000–79 999 euroa.  |
@@ -55,10 +51,9 @@ Väestön määrä ja ikäjakauma vaikuttaa ensisijaisesti alueelta lähtevien m
 | __sh_hh3__ | Kotitalouksien osuus kokoluokassa 3+ henkilöä, desimaalimuodossa 0–1. |
 | __sh_cars0_hh1 … sh_cars2_hh3__ | Kotitalouksien osuudet eri autokokoluokissa: 0, 1 ja 2+ autoa kotitalouskokoluokissa 1, 2 ja 3+. Muoto on sh_cars{N}_hh{M}, eli osuus hhM-kotitalouksista, joilla on N autoa. |
 
-Kotitaloustietoja käytetään autonomistusta kuvaavassa mallissa.
+Tulotaso vaikuttaa auton omistukseen ja siten kulkutapamalleihin. Tietoja kotitalouden koostumuksesta käytetään autonomistusta kuvaavassa mallissa.
 
 ## Työpaikkatiedot
-
 | Kenttä | Kuvaus |
 | --- | --- |
 | __workplaces__ | Työpaikkojen määrä alueella kokonaislukuna.  |
@@ -74,7 +69,6 @@ Työpaikkojen lukumäärä vaikuttaa eri tyypisten matkojen määränpään vali
 Toimistoammateissa työskentelevien osuus vaikuttaa alueelle saapuvien työmatkojen joukkoliikenteen käyttöön. Toimistoammatit perustuvat Ammattiluokitus 2010 -luokitukseen ja sisältävät johtajat, erityisasiantuntijat, asiantuntijat, toimisto- ja asiakaspalvelutyöntekijät sekä palvelu- ja myyntityöntekijät.
 
 ## Muut tiedot
-
 | Kenttä | Kuvaus |
 | --- | --- |
 | __students_comprehensive__ | Perusopetuksen oppilaiden määrä kokonaislukuna. Luku vaikuttaa perusopetuksen matkojen kohdevalintaan. |
@@ -90,15 +84,14 @@ Toimistoammateissa työskentelevien osuus vaikuttaa alueelle saapuvien työmatko
 Pysäköintitiedot vaikuttavat voimakkaasti alueelle saapuvien matkojen kulkutapajakaumaan. Niitä on siksi syytä päivittää alueellisissa malleissa, jos tiedossa on tarkempia tietoja pysäköinnistä.
 
 # Kustannustiedot (Cost)
-
-Aluetietojen ohella mallin lähtötiedoksi annetaan kustannustiedot (cost.json), jotka kertovat eri kulkutavoilla tehdyillä matkoilla syntyvät kilometri- tai lippukustannukset.
+Aluetietojen lisäksi mallin lähtötiedoksi annetaan kustannustiedot (cost.json), jotka kuvaavat liikkumisen aiheuttamia euromääräisiä kustannuksia eri kulkutavoilla.
 
 | Kenttä | Kuvaus |
 | --- | --- |
-| __vehicle_km_cost__ | Auton kilometrikustannus vuoden 2025 hintatasossa. Kustannus koostuu polttoainekustannuksista, huoltokustannuksista ja arvon alenemasta. |
-| __transit_cost__ | Joukkoliikenteen lippukustannus, joka esitetään kahdessa osassa: vakio (nousukustannus) ja pituudesta riippuva osuus (km-kustannus). |
+| __vehicle_km_cost__ | Auton kilometrikustannus vuoden 2025 hintatasossa [eur / km]. Kustannus koostuu polttoainekustannuksista, huoltokustannuksista ja arvon alenemasta. |
+| __transit_cost__ | Joukkoliikenteen lippukustannus, joka esitetään kahdessa osassa: nousukohtainen [eur / nousu] ja pituudesta riippuva [eur / km]. |
 
 Auton kilometrikustannus on laskettu valtakunnallisella tasolla perustuen autokannan koostumukseen. Kilometrikustannus vaikuttaa auton kulkutapavalintaan, mutta siinä ei tyypillisesti ole suurta alueellista vaihtelua, joten valtakunnallinen keskiarvo toimii alueellisissa tarkasteluissa hyvin.
 
-Joukkoliikenteen lippukustannus on laskettu valtakunnallisella tasolla erikseen viranomaisalueille hakemalla lippujen hintoja eri pituisille matkoille ja muodostamalla näistä lineaarinen regressiomalli. Hinnat ovat siis likimääräisiä, joten alueellisissa tarkasteluissa lippuhintoja on suositeltavaa tarkentaa todellisilla taksoilla.
+Joukkoliikenteen lippukustannus on laskettu valtakunnallisella tasolla erikseen viranomaisalueille hakemalla lippujen hintoja eri pituisille matkoille ja muodostamalla näistä lineaarinen regressiomalli. Hinnat ovat siten likimääräisiä, joten alueellisissa tarkasteluissa lippuhintoja on suositeltavaa tarkentaa todellisilla taksoilla.
 
