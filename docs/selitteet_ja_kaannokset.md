@@ -4,6 +4,17 @@ sort: 5
 ---
 
 # Selitteet ja käännökset
+
+### Matka ja kiertomatka
+Malli kuvaa liikkumista kiertomatkoina (tour) ja matkoina (trip). Kysyntämallit kuvaavat kiertomatkoja, jotka muunnetaan matkoiksi ennen liikenneverkolle sijotitelua.
+
+* Kiertomatka (tour) kuvaa liikkumista kiertomatkan alkupisteestä yhden tai useamman matkan avulla takaisin samaan pisteeseen. Kiertomatka sisältää edestakaiset matkat ja mahdollisesti pysähdyksiä toissijaisiin matkakohteisiin. Tyypillinen kiertomatka voi olla esimerkiksi koti – kauppa –työpaikka – koti, joka muodostaa yhden kiertomatkan ja kolme matkaa. 
+
+* Matkalla (trip) tarkoitetaan siirtymistä paikasta toiseen pihapiirin ulkopuolella. Matka voi sisältää pieniä pysähdyksiä, esimerkiksi kioskille. Jos matka kuitenkin keskeytyy pidemmäksi aikaa, tästä syntyy kaksi matkaa.
+
+* Matka voidaan kulkea yhdellä tai usealla kulkutavalla, joista yksi on pääasiallinen kulkutapa. Mallissa kuvaataan tämän pääkulkutavan käyttöä matkoilla.
+
+### Matkaryhmät
 Alla esitetty mallin kuvaamien matkaryhmien nimet ja selitteet. Matkaryhmä määrittyy lähtöpaikan ja pääasiallisen matkakohteen perusteella.
 
 | Koodi   | Kiertomatkan tyyppi                         |
@@ -32,7 +43,7 @@ Pääasiallinen matkakohde määritetään kiertomatkan aikana käydyistä paiko
 
 Eli pääasialliseksi kohteeksi katsotaan ensisijaisestityöpaikka tai opiskelupaikka, jos kiertomatkan aikana on käyty näissä kohteissa. Mikäli kiertomatkalla on useampi kohden samalla prioriteetilla, on pääasiallinen kohde se paikka, jossa on vietetty eniten aikaa. 
 
-## Aikajaksot
+### Aikajaksot
 Malli kuvaa matkavalintoja ja liikennettä vuoden keskimääräisenä päivänä. Poikkeuksena joukkoliikenteen tarjonta kuvaa arkipäivän vuorotarjontaa ja palvelutasoa. Mallin tulosten laajentaminen vuositasolle tapahtuu kertoimella 365.
 
 | Nimi          | Vastine suomeksi                   | Määritelmä |
@@ -45,7 +56,7 @@ Malli kuvaa matkavalintoja ja liikennettä vuoden keskimääräisenä päivänä
 | IT          | Iltatunti  | Käytössä vain joukkoliikenteelle. Kellonajat klo 18-22. |
 | VRK   | Vuorokausi | Koko vuorokausi |
 
-## Kulkutavat liikenneverkolla
+### Kulkutavat liikenneverkolla
 Alla on esitetty liikenneverkolle sijoiteltavien kulkutapojen nimet ja yksiköt. 
 
 | Nimi          | Vastine suomeksi                   | Sijoitteluyksikkö |
@@ -57,7 +68,7 @@ Alla on esitetty liikenneverkolle sijoiteltavien kulkutapojen nimet ja yksiköt.
 | walk           | Kävely | Henkilöä / [vrk/aht/iht/pt] |
 | airplane           | Lentokone | Henkilöä / [vrk/aht/iht/pt] |
 
-## Kulkutavat kysyntämallissa
+### Kulkutavat kysyntämallissa
 Alla on esitetty kysyntämallin kuvaamien kulkutapojen nimet ja yksiköt. 
 
 | Nimi          | Vastine suomeksi                   | Sijoitteluyksikkö |
