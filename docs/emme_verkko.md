@@ -4,6 +4,13 @@ sort: 3
 ---
 
 # EMME-verkon kuvaus
-
-## Tie- ja katuverkko
-Tie- ja katuverkon kuvauksessa on käytetty Digiroadia, joka on Väyläviraston avoin ja kansallinen avoimen datan tietojärjestelmä. Siihen on koottu koko Suomen tie- ja katuverkon keskilinjageometria sekä tärkeimmät ominaisuustiedot. Digiroad-verkko on ladattu aineistopalvelun kautta kesäkuussa 2025.
+## Liikenneverkko
+### Solmut
+### Kulkumuodot
+### Linkit
+### Tie- ja katuverkon koodausperiaatteet
+## Joukkoliikenne
+### Joukkoliikenteen ajoneuvotyypit
+### Joukkoliikennelinjojen pysähtymiskäyttäytyminen
+### Joukkoliikennelinjastot
+## Tavaraliikenne
