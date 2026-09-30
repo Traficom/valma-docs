@@ -18,6 +18,43 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liikenne kytkeytyy varsinaiseen liikenneverkkoon sentroidien ja niitä ympäröivien konnektoreiden avulla.
 
 ### Kulkumuodot
+*Taulukko 7. Kulkumuotojen (modes) kuvaus*
+
+| **Kulkumuoto** | **Kuvaus** |
+|---|---|
+| `c` | Henkilöauto |
+| `v` | Pakettiauto |
+| `k` | Kuorma-auto |
+| `y` | Perävaunullinen kuorma-auto |
+| `r` | Lähijuna |
+| `j` | Kaukojuna |
+| `t` | Raitiovaunu |
+| `p` | Pikaraitiovaunu |
+| `m` | Metro |
+| `b` | Linja-auto |
+| `g` | Runkobussi |
+| `e` | Pitkän matkan linja-auto |
+| `a` | Kävely |
+| `f` | Pyöräily |
+| `l` | Lentoliikenne |
+| `w` | Lautta |
+| `d` | Pitkän matkan lautta |
+| `D` | Dieseljuna |
+| `J` | Sähköjuna |
+| `W` | Kotimaan vesiliikenne |
+| `C` | Konttialus |
+| `G` | Yleinen rahtialus |
+| `L` | LNG-tankkeri |
+| `O` | Öljytankkeri |
+| `P` | Tuotetankkeri |
+| `R` | Ro-ro-alus |
+| `T` | Raakapuu syöttöliikenne |
+| `F` | Tavaraliikenne syöttöliikenne|
+| `u` | Liityntäpysäköinti |
+| `h` | Päämoodi |
+
+
+
 ### Linkit
 ### Tie- ja katuverkon koodausperiaatteet
 ## Joukkoliikenne
