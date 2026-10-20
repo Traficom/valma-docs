@@ -420,7 +420,11 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 | #street_name      |     |
 | #traffic_light      |     |
 
+#### Syöttölinkit
+Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään verkkoon. Jokaisesta sentroidista on olemassa yksi autoliikenteen ja yksi kävely- ja pyöräliikenteen syöttölinkki lähimpiin solmuihin. Autoliikenteen syöttölinkkiä ei saa yhdistää moottoritiehen, ramppeihin, liikenneympyröihin tai kaksiajorataisiin katuihin/teihin.
 
+
+*Taulukko x. Sijoittelufunktioiden jako väylätyyppeihin*
 | linkkityyp | toiminn_lk | kaistojen_lkm | nopeusrajoitus | type | VDF | ul1 | ul2 |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | 1 | | 1,2 | 120 | 101 | 1 | 2100 | 113 |
