@@ -387,6 +387,40 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 
 
 ### Linkit
+
+*Taulukko x. Linkkien ominaisuudet*
+
+| kenttä          | kuvaus                                                 |
+|-----------------|--------------------------------------------------------------|
+| type            | ks. taulukko x                                              |
+| length          | linkin pituus                                                             |
+| lanes           | kaistamäärä |
+| modes           | kulkumuodot (taulukko x)                                                    |
+| vdf             | sijoittelufunktion nro                                       |
+| ul1 | linkin yhden kaistan kapasiteetti |
+| ul2             | linkin vapaa nopeus                                          |
+| ul3             | VAPAA  |
+| @ferry_wait_time |                          |
+| @toll_cost_vrk      |     |
+| @freight_gate      |     |
+| #car_time_aht      |     |
+| #car_time_iht      |     |
+| #car_time_it      |     |
+| #car_time_pt      |     |
+| #car_time_vrk      |     |
+| #dr_leveys      |     |
+| #dr_linkkityyp      |     |
+| #dr_nopeusrajoitus      |     |
+| #dr_toiminn_lk      |     |
+| #extra_cost      |     |
+| #hinta_vrk      |     |
+| #road_number      |     |
+| #road_part_nr_max      |     |
+| #road_part_nr_min      |     |
+| #street_name      |     |
+| #traffic_light      |     |
+
+
 | linkkityyp | toiminn_lk | kaistojen_lkm | nopeusrajoitus | type | VDF | ul1 | ul2 |
 |---:|---:|---:|---:|---:|---:|---:|---:|
 | 1 | | 1,2 | 120 | 101 | 1 | 2100 | 113 |
