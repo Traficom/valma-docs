@@ -14,6 +14,21 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 - liikenneverkon solmut
 - sijoittelualueiden sentroidit
 
+*Taulukko x. Solmujen attribuuttitiedot*
+
+| attribuutti      |       | selitys                                                      |
+|------------------|-------|--------------------------------------------------------------|
+| solmuattribuutti | ui1   | 1 = important                                    |
+| solmuattribuutti | ui2   | VAPAA                                |
+| solmuattribuutti | ui3   | VAPAA |
+| network field | #park_cost_n | Kunnan nimi |
+| network field | #subarea | Liityntäpysäköinnin hinta (e/h) |
+| network field | #transit_stop_b | Bussipysäkki |
+| network field | #transit_stop_e | Kaukobussipysäkki |
+| network field | #transit_stop_g | Runkobussipysäkki |
+| network field | #transit_stop_p | Pikaratikkapysäkki |
+| network field | #transit_stop_t | Ratikkapysäkki |
+
 #### Sentroidit
 Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liikenne kytkeytyy varsinaiseen liikenneverkkoon sentroidien ja niitä ympäröivien konnektoreiden avulla.
 
@@ -333,7 +348,7 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 
 
 ### Kulkumuodot
-*Taulukko 7. Kulkumuotojen (modes) kuvaus*
+*Taulukko x. Kulkumuotojen (modes) kuvaus*
 
 | **Kulkumuoto** | **Kuvaus** |
 |---|---|
