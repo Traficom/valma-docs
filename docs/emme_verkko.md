@@ -21,8 +21,9 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 | solmuattribuutti | ui1   | 1 = important                                    |
 | solmuattribuutti | ui2   | VAPAA                                |
 | solmuattribuutti | ui3   | VAPAA |
-| network field | #park_cost_n | Kunnan nimi |
-| network field | #subarea | Liityntäpysäköinnin hinta (e/h) |
+| network field | #municipality | Kunnan nimi |
+| network field | #park_cost_n | Liityntäpysäköinnin hinta (e/h) |
+| network field | #subarea | 1 = osamallialue, 2 = osamallin bufferialue, 3 = bufferialueen ulkopuolinen alue |
 | network field | #transit_stop_b | Bussipysäkki |
 | network field | #transit_stop_e | Kaukobussipysäkki |
 | network field | #transit_stop_g | Runkobussipysäkki |
