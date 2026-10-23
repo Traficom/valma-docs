@@ -161,6 +161,13 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 ## Joukkoliikenne
 ### Joukkoliikenteen ajoneuvotyypit
 ### Joukkoliikennelinjojen pysähtymiskäyttäytyminen
+Joukkoliikennelinjoilla on linja-attribuutti `@keep_stops`, jolla määritetään, miten linjan pysähtymiskäyttäytyminen määräytyy.
+
+- **`@keep_stops = 1`:** Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä. Pysähtyminen määräytyy noodien kulkumuotokohtaisten attribuuttien `#transit_stop_b`, `#transit_stop_e`, `#transit_stop_g`, `#transit_stop_p` ja `#transit_stop_t` perusteella.
+- **`@keep_stops = 0`:** Linja pysähtyy niillä pysäkeillä, jotka on määritetty pysäkkisegmenteille.
+
+Attribuutti `@keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (kaukobussi), `g` (runkobussi), `p` (pikaratikka) ja `t` (ratikka).
+
 ### Joukkoliikennelinjastot
 ## Tavaraliikenne
 
