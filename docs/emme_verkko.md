@@ -169,6 +169,29 @@ Joukkoliikennelinjoilla on linja-attribuutti `#keep_stops`, jolla määritetää
 Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (kaukobussi), `g` (runkobussi), `p` (pikaratikka) ja `t` (ratikka).
 
 ### Joukkoliikennelinjastot
+
+*Taulukko x. Joukkoliikennelinjan perusattribuutit*
+
+| attribuutti | kuvaus |
+|---|---|
+| `line` | Linjan yksilöivä tunnus. |
+| `mode` | Linjan kulkumuoto, esim. `b`, `e`, `g`, `p` tai `t`. |
+| `vehicle` | Ajoneuvotyyppi |
+| `description` | Linjan kuvaus |
+| `ut1` | Joukkoliikennelinjan hinta-id |
+| `ut2` | VAPAA |
+| `ut3` | VAPAA |
+| `#agency_name` | Operaattorin nimi |
+| `#departures_per_day` | Vuorojen määrä per vrk |
+| `#hdw_aht` | Vuoroväli aamuhuipputunnissa (klo 6-9) |
+| `#hdw_iht` | Vuoroväli iltahuipputunnissa (klo 15-18) |
+| `#hdw_it` | Vuoroväli iltatunnissa (klo 18-21) |
+| `#hdw_pt` | Vuoroväli päivätunnissa (klo 9-15) |
+| `#hdw_vrk` | Vuorokauden keskimääräinen vuoroväli |
+| `#keep_stops` | 1 = Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä. |
+| `#route_short_name` | Route short name (GTFS) |
+| `#trip_short_name` | Trip short name (GTFS) |
+
 ## Tavaraliikenne
 
 ##### Sentroidien numerointi kunnittain
