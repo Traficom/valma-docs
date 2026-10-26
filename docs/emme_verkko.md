@@ -80,6 +80,9 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 
 | kenttä          | kuvaus                                                 |
 |-----------------|--------------------------------------------------------------|
+| id              | link identifier |
+| i               | I-node of link |
+| j               | J-node of link |
 | type            | ks. taulukko x                                              |
 | length          | linkin pituus                                                             |
 | lanes           | kaistamäärä |
@@ -88,25 +91,26 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 | ul1 | linkin yhden kaistan kapasiteetti |
 | ul2             | linkin vapaa nopeus                                          |
 | ul3             | VAPAA  |
-| @ferry_wait_time |                          |
-| @toll_cost_vrk      |     |
-| @freight_gate      |     |
-| #car_time_aht      |     |
-| #car_time_iht      |     |
-| #car_time_it      |     |
-| #car_time_pt      |     |
-| #car_time_vrk      |     |
-| #dr_leveys      |     |
-| #dr_linkkityyp      |     |
-| #dr_nopeusrajoitus      |     |
-| #dr_toiminn_lk      |     |
-| #extra_cost      |     |
-| #hinta_vrk      |     |
-| #road_number      |     |
-| #road_part_nr_max      |     |
-| #road_part_nr_min      |     |
-| #street_name      |     |
-| #traffic_light      |     |
+| @ferry_wait_time |  Lauttojen odotusaika                        |
+| @toll_cost_vrk      | Tienkäyttömaksu VRK-ajanjaksolla |
+| @freight_gate      |  Positiivinen (lähde) tai negatiivinen (kohde) sentroidin tunniste tavaraliikenteen kulun analysointia varten  |
+| #buslane            | Tosi, jos linkillä on joukkoliikennekaista |
+| #car_time_aht      | Ennalta määritetty auton matka-aika (AHT)    |
+| #car_time_iht      |  Ennalta määritetty auton matka-aika (IHT)   |
+| #car_time_it      |  Ennalta määritetty auton matka-aika (IT)   |
+| #car_time_pt      | Ennalta määritetty auton matka-aika (PT)    |
+| #car_time_vrk      |  Ennalta määritetty auton matka-aika (VRK)   |
+| #dr_leveys      | Linkin leveys (Digiroad) |
+| #dr_linkkityyp      | Linkin tyyppi (Digiroad) |
+| #dr_nopeusrajoitus      | Linkin nopeusrajoitus (Digiroad) |
+| #dr_toiminn_lk      | Linkin toiminnallinen luokka (Digiroad) |
+| #extra_cost      | Ennalta määritetty lisäkustannus    |
+| #hinta_vrk      | Hinta VRK-ajanjaksolla |
+| #road_number      |  Tien numero valtion omistamilla teillä   |
+| #road_part_nr_max      |  Suurin tienosan numero linkillä   |
+| #road_part_nr_min      | Pienin tienosan numero linkillä    |
+| #street_name      | Kadun nimi suomeksi    |
+| #traffic_light      | Tosi, jos linkki on lähellä liikennevaloa    |
 
 #### Syöttölinkit
 Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään verkkoon. Jokaisesta sentroidista on olemassa yksi autoliikenteen ja yksi kävely- ja pyöräliikenteen syöttölinkki lähimpiin solmuihin. Autoliikenteen syöttölinkkiä ei saa yhdistää moottoritiehen, ramppeihin, liikenneympyröihin tai kaksiajorataisiin katuihin/teihin.
@@ -191,6 +195,25 @@ Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (
 | `#keep_stops` | 1 = Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä. |
 | `#route_short_name` | Route short name (GTFS) |
 | `#trip_short_name` | Trip short name (GTFS) |
+
+*Taulukko x. Joukkoliikennesegmenttien perusattribuutit*
+
+| attribuutti | kuvaus |
+|---|---|
+| `id` | Joukkoliikennesegmentin tunniste |
+| `line` | Joukkoliikennelinja |
+| `i` | Segmentin I-solmu |
+| `j` | Segmentin J-solmu |
+| `loop_index` | Segmentin indeksi saman linkin segmenttien joukossa reitillä |
+| `dwt` | Pysähdyksen kesto |
+| `noali` | Ei poistumista I-solmusta |
+| `noboa` | Ei nousemista I-solmusta |
+| `dwfac` | Pysähdyksen kestoa kuvaava kerroin |
+| `ttf` | Joukkoliikenteen matka-aikafunktio |
+| `us1` | GTFS-matka-aika pysäkkien välillä |
+| `us2` | VAPAA |
+| `us3` | VAPAA |
+
 
 ## Tavaraliikenne
 
