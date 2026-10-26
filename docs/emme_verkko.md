@@ -23,7 +23,7 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 | solmuattribuutti | ui3   | VAPAA |
 | network field | #municipality | Kunnan nimi |
 | network field | #park_cost_n | Liityntäpysäköinnin hinta (e/h) |
-| network field | #subarea | 1 = osamallialue, 2 = osamallin bufferialue, 3 = bufferialueen ulkopuolinen alue |
+| network field | #subarea | 1 = osamallialue, 2 = osamallin puskurivyöhyke, 3 = muu Suomi |
 | network field | #transit_stop_b | Bussipysäkki |
 | network field | #transit_stop_e | Kaukobussipysäkki |
 | network field | #transit_stop_g | Runkobussipysäkki |
@@ -37,6 +37,9 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 
 
 ### Kulkumuodot
+
+Pääkulkumuodon (auto) h on oltava linkillä sallittu.
+
 *Taulukko x. Kulkumuotojen (modes) kuvaus*
 
 | **Kulkumuoto** | **Kuvaus** |
@@ -70,7 +73,7 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 | `T` | Raakapuu syöttöliikenne |
 | `F` | Tavaraliikenne syöttöliikenne|
 | `u` | Liityntäpysäköinti |
-| `h` | Päämoodi |
+| `h` | Pääkulkumuoto |
 
 
 
@@ -112,42 +115,44 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 | #street_name      | Kadun nimi suomeksi    |
 | #traffic_light      | Tosi, jos linkki on lähellä liikennevaloa    |
 
+Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto omassa attribuutissa. Joukkoliikennekaistat huomioidaan mallijärjestelmässä viivytysfunktioissa.
+
 #### Syöttölinkit
 Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään verkkoon. Jokaisesta sentroidista on olemassa yksi autoliikenteen ja yksi kävely- ja pyöräliikenteen syöttölinkki lähimpiin solmuihin. Autoliikenteen syöttölinkkiä ei saa yhdistää moottoritiehen, ramppeihin, liikenneympyröihin tai kaksiajorataisiin katuihin/teihin.
 
 
 *Taulukko x. Sijoittelufunktioiden jako väylätyyppeihin*
-| linkkityyp | toiminn_lk | kaistojen_lkm | nopeusrajoitus | type | VDF | ul1 | ul2 |
+| Kuvaus | Toiminnallinen luokka | Kaistojen lukumäärä | Nopeusrajoitus | Type | VDF | Ul1 | Ul2 |
 |---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | | 1,2 | 120 | 101 | 1 | 2100 | 113 |
-| 1 | | 3,4,5 | 120 | 103 | 1 | 1900 | 113 |
-| 1 | | 1,2 | 100 | 104 | 1 | 2000 | 97 |
-| 1 | | 3,4,5 | 100 | 105 | 1 | 1800 | 97 |
-| 1 | | 1,2 | 80 | 106 | 1 | 2000 | 81 |
-| 1 | | 3,4,5 | 80 | 107 | 1 | 1800 | 81 |
-| 6 | | | 120 | 102 | 1 | 2000 | 113 |
-| | 1 | | 100 | 108 | 2 | 1900 | 97 |
+| moottoritie | | 1,2 | 120 | 101 | 1 | 2100 | 113 |
+| moottoritie, kaistoja => 3 | | 3,4,5 | 120 | 103 | 1 | 1900 | 113 |
+| moottoritie | | 1,2 | 100 | 104 | 1 | 2000 | 97 |
+| moottoritie, kaistoja => 3 | | 3,4,5 | 100 | 105 | 1 | 1800 | 97 |
+| moottoritie | | 1,2 | 80 | 106 | 1 | 2000 | 81 |
+| moottoritie, kaistoja => 3 | | 3,4,5 | 80 | 107 | 1 | 1800 | 81 |
+| Ei moottoritie, kuitenkin 120 km/h | | | 120 | 102 | 1 | 2000 | 113 |
+|Valtatie | 1 | | 100 | 108 | 2 | 1900 | 97 |
 | | 1 | | 90 | 110 | 2 | 1900 | 90 |
 | | 1 | | 80 | 112 | 2 | 1850 | 81 |
 | | 1 | | 70 | 114 | 2 | 1600 | 73 |
 | | 1 | | 60 | 116 | 2 | 1600 | 63 |
-| | 2,3,4 | | 100 | 109 | 3 | 1700 | 97 |
+| Seututie, kantatie, yhdystie | 2,3,4 | | 100 | 109 | 3 | 1700 | 97 |
 | | 2,3,4 | | 90 | 111 | 3 | 1700 | 90 |
 | | 2,3,4 | | 80 | 113 | 3 | 1650 | 81 |
 | | 2,3,4 | | 70 | 115 | 3 | 1400 | 68 |
 | | 2,3,4 | | 60 | 117 | 3 | 1400 | 63 |
-| | 5 | | 100 | 118 | 5 | 700 | 50 |
+| Yksityistie | 5 | | 100 | 118 | 5 | 700 | 50 |
 | | 5 | | 90 | 119 | 5 | 700 | 50 |
 | | 5 | | 80 | 120 | 5 | 600 | 40 |
 | Varaus: useampikaistaiset pääkadut, valot | | | 70 | 121 | 3 | 1450 | 61 |
 | | 5 | | 70 | 122 | 5 | 800 | 60 |
 | Varaus: useampikaistaiset pääkadut, valot | | | 60 | 123 | 3 | 1250 | 54 |
 | | 5 | | 60 | 124 | 5 | 800 | 50 |
-| | 1 | | 50 | 125 | 4 | 900 | 50 |
+| Valtatie | 1 | | 50 | 125 | 4 | 900 | 50 |
 | | 1 | | 40 | 128 | 4 | 900 | 41 |
 | | 1 | | 30 | 135 | 5 | 700 | 30 |
 | | 1 | | 20 | 139 | 5 | 700 | 20 |
-| | 2,3,4 | | 50 | 126 | 4 | 1050 | 54 |
+| Seututie, kantatie, yhdystie | 2,3,4 | | 50 | 126 | 4 | 1050 | 54 |
 | Varaus: esik. pääkadut, valot | | | 50 | 127 | 4 | 1000 | 44 |
 | | 2,3,4 | | 40 | 129 | 4 | 900 | 38 |
 | Varaus: keskustan pääkadut, valot | | | 50 | 131 | 4 | 900 | 41 |
@@ -156,7 +161,7 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 | | 2,3,4 | | 30 | 136 | 5 | 600 | 30 |
 | Varaus: keskustan, pienet kadut | | | 30 | 138 | 5 | 500 | 23 |
 | | 2,3,4 | | 20 | 140 | 5 | 500 | 20 |
-| | 5 | | 50 | 130 | 5 | 800 | 40 |
+| Yksityistie | 5 | | 50 | 130 | 5 | 800 | 40 |
 | | 5 | | 40 | 134 | 5 | 600 | 30 |
 | | 5 | | 30 | 137 | 5 | 500 | 30 |
 | | 5 | | 20 | 141 | 5 | 500 | 20 |
