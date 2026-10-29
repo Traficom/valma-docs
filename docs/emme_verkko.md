@@ -14,11 +14,33 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 - liikenneverkon solmut
 - sijoittelualueiden sentroidit
 
+*Taulukko x. Solmuavaruuden jako, sentroidit*
+
+| numeroavaruus | selitys |
+|---------------|---------|
+| 100 - 35 999      | sentroidit, Suomen sisäiset |
+| 36 000 – 36 999 | sentroidit, Tornionjokilaakso (Ruotsi) |
+| 37 000 – 50 099 | VAPAA |
+| 50 100 - 50 199 | ulkomaan rajapaikat ja satamat |
+| 50 200 - 59 999 | ulkomaan sentroidit (Eurooppa ja muu maailma) |
+| 60 000 - 60 999 | ulkomaan sentroidit (Viro, Ruotsi, Norja, Tanska, Latvia) |
+| 61 000 - 99 999 | VAPAA |
+
+*Taulukko x. Solmuavaruuden jako, muut solmut kuin sentroidit*
+
+| numeroavaruus | selitys |
+|---------------|---------|
+| 100 000 - 899 999    | käytetyt solmut |
+| 900 000 - 999 999 | VAPAA |
+
+
+
+
 *Taulukko x. Solmujen attribuuttitiedot*
 
 | attribuutti      |       | selitys                                                      |
 |------------------|-------|--------------------------------------------------------------|
-| solmuattribuutti | ui1   | 1 = important                                    |
+| solmuattribuutti | ui1   | väliaikainen tieto, VAPAA               |
 | solmuattribuutti | ui2   | VAPAA                                |
 | solmuattribuutti | ui3   | VAPAA |
 | network field | #municipality | Kunnan nimi |
@@ -115,7 +137,7 @@ Pääkulkumuodon (auto) h on oltava linkillä sallittu.
 | #street_name      | Kadun nimi suomeksi    |
 | #traffic_light      | Tosi, jos linkki on lähellä liikennevaloa    |
 
-Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto omassa attribuutissa. Joukkoliikennekaistat huomioidaan mallijärjestelmässä viivytysfunktioissa.
+
 
 *Taulukko 9. Linkkityypit (link type)*
 
@@ -182,7 +204,16 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 
 ### Tie- ja katuverkon koodausperiaatteet
 
-Valma-ajon yhteydessä linkkien ul1 (vapaa nopeus), ul2 (kapasiteetti) ja vdf (viivytysfunktio) -arvot ylikirjoitetaan linkkityypin perusteella, joten niitä ei tarvitse määritellä erikseen linkeille.
+Aluesyötöt yhdistetään lähimpään solmuun, joka on saavutettavissa ajoneuvoilla. Solmusta täytyy lähteä linkki, joka on tyyppiä "Yksiajorataisen tien osa". Toisin sanoen autoliikenteen syöttölinkkiä ei yhdistetä moottoritiehen, ramppeihin, liikenneympyriin tai kaksiajorataisiin katuihin/teihin.
+Jokaisesta centroidista tehdään lisäksi yksi kävelylinkkisyöttö vastakkaiseen suunnan lähimpään solmuun. Tämän solmun täytyy olla aluetta kuvaavan polygonin sisällä.
+
+Valma-ajon yhteydessä linkkien ul1 (vapaa nopeus), ul2 (kapasiteetti) ja vdf (viivytysfunktio) -arvot ylikirjoitetaan linkkityypin perusteella, joten niitä ei tarvitse määritellä erikseen linkeille. 
+
+Eritasoliittymien erkanemis- ja liittymiskaistoja ei lähtökohtaisesti ole huomioitu kaistamäärissä. Jos liittymis- ja erkanemiskaistat ulottuvat toisiinsa asti kattaen kahden eritasoliittymän välisen matkan kokonaan, ne on otettu huomioon kaistamäärässä.
+
+Tasoliittymien kääntymiskaistoja ei ole lähtökohtaisesti huomioitu, vaan kaistamäärä on kuvattu pääsuunnan liittymän läpi kulkevien kaistojen määrän perusteella. Tilanteessa, jossa kääntymiskaista ulottuu yli viereisen liittymän siten, että kääntymiskaistan vuoksi seuraavassa liittymässä on useampi läpi kulkeva kaista, kääntymiskaista on huomioitu myös liittymien välisellä osuudella. 
+
+Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto omassa attribuutissa. Joukkoliikennekaistat huomioidaan mallijärjestelmässä viivytysfunktioissa.
 
 ## Joukkoliikenne
 ### Joukkoliikenteen ajoneuvotyypit
@@ -195,6 +226,8 @@ Joukkoliikennelinjoilla on linja-attribuutti `#keep_stops`, jolla määritetää
 Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (kaukobussi), `g` (runkobussi), `p` (pikaratikka) ja `t` (ratikka).
 
 ### Joukkoliikennelinjastot
+
+Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinkertaisesti EMME-mallissa. Tämä on ongelma seudullisilla junilla, joita voi käyttää paikallisen toimivaltaisen viranomaisen lipuilla (HSL, NYSSE), mutta alueen ulkopuolella tarvitaan VR:n lippu. Tästä johtuen HSL:n ja NYSSE:n alueelle päättyvät R, T, Z, M ja D-junat on lisätty malliin tuplana: Toisella linjalla nousut/poistumiset on kielletty HSL/NYSSE-alueella siten, että linjaa voi käyttää vain seuturajat ylittävään matkaan. Toinen linja on katkaistu seudun sisälle, jolloin sitä käytetään vain seudun sisäisiin matkoihin. Näille linjoille on eri hintafunktiot. Tässä on hyödynnetty custom transit lines –ominaisuutta. 
 
 *Taulukko x. Joukkoliikennelinjan perusattribuutit*
 
