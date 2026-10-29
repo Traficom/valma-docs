@@ -163,50 +163,54 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 
 
 *Taulukko x. Sijoittelufunktioiden jako väylätyyppeihin*
-| Linkkityyppi | Kuvaus | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) | Nopeusrajoitus (km/h) |
-|---:|---|:---:|---:|---:|---:|
-| 101 | moottoritie | 1 | 2100 | 113 | 120 |
-| 102 | moottoritie | 1 | 2100 | 113 | 120 |
-| 103 | moottoritie, kaistoja ≥3 | 1 | 1900 | 113 | 120 |
-| 104 | moottoritie | 1 | 2000 | 97 | 100 |
-| 105 | moottoritie, kaistoja ≥3 | 1 | 1800 | 97 | 100 |
-| 106 | moottoritie | 1 | 2000 | 81 | 80 |
-| 107 | moottoritie, kaistoja ≥3 | 1 | 1800 | 81 | 80 |
-| 108 | valtatie | 2 | 1900 | 97 | 100 |
-| 109 | kantatie, seututie, yhdystie | 2 | 1700 | 97 | 100 |
-| 110 | valtatie | 2 | 1900 | 90 | 90 |
-| 111 | kantatie, seututie, yhdystie | 2 | 1700 | 90 | 90 |
-| 112 | valtatie | 2 | 1850 | 81 | 80 |
-| 113 | kantatie, seututie | 2 | 1650 | 81 | 80 |
-| 114 | valtatie | 2 | 1600 | 73 | 70 |
-| 115 | kantatie, seututie, yhdystie | 2 | 1500 | 73 | 70 |
-| 116 | valtatie | 2 | 1600 | 63 | 60 |
-| 117 | kantatie, seututie | 2 | 1400 | 63 | 60 |
-| 118 | liityntäkatu tai tärkeä yksityistie | 3 | 1400 | 97 | 100 |
-| 119 | liityntäkatu tai tärkeä yksityistie | 3 | 1400 | 90 | 90 |
-| 120 | liityntäkatu tai tärkeä yksityistie | 3 | 1350 | 81 | 80 |
-| 121 | yhdystie | 3 | 1200 | 58 | 60-80 |
-| 122 | liityntäkatu tai tärkeä yksityistie | 3 | 1100 | 73 | 70 |
-| 123 | useampikaistaiset pääkadut, valot | 3 | 1250 | 54 | 60 |
-| 124 | kantatie, seututie, yhdystie, liityntäkatu tai tärkeä yksityistie | 3 | 1100 | 63 | 60-80 |
-| 125 | seudullinen pääkatu | 4 | 1150 | 48 | 50 |
-| 126 | pääkatu tai alueellinen kokoojakatu | 4 | 1050 | 48 | 50 |
-| 127 | yhdystie tai kokoojakatu | 4 | 1000 | 44 | 50 |
-| 128 | pääkatu | 4 | 1000 | 41 | 30-40 |
-| 129 | pääkatu tai kokoojakatu | 4 | 900 | 41 | 40 |
-| 130 | kokoojakatu | 5 | 900 | 48 | 50 |
-| 131 | keskustan pääkatu, valot | 5 | 900 | 41 | 50 |
-| 132 | keskustan pääkatu, valot | 5 | 900 | 36 | 40 |
-| 133 | keskustan kokoojakatu | 5 | 750 | 36 | 40 |
-| 134 | tonttikatu | 5 | 600 | 36 | 40 |
-| 135 | pääkatu | 5 | 700 | 30 | 30 |
-| 136 | pääkatu | 5 | 600 | 25 | 30 |
-| 137 | pääkatu tai kokoojakatu | 5 | 550 | 20 | 30 |
-| 138 | tonttikatu | 5 | 500 | 18 | 30 |
-| 139 | pääkatu tai kokoojakatu | 5 | 700 | 20 | 20 |
-| 140 | paikalliskatu | 5 | 600 | 15 | 20 |
-| 141 | paikalliskatu | 5 | 500 | 12 | 20 |
-| 144 | lautta | 11 | 500 | 20 |
+| Linkkityyppi | Kuvaus | Toiminnallinen luokka | Nopeusrajoitus (km/h) | Tien leveys | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) |
+|---:|---|---:|---:|---|:---:|---:|---:|
+| 101 | moottoritie | 1 | 120 | | 1 | 2100 | 113 |
+| 103 | moottoritie, kaistoja ≥3 | 1| 120 | | 1 | 1900 | 113 |
+| 104 | moottoritie |1 | 100 | | 1 | 2000 | 97 |
+| 105 | moottoritie, kaistoja ≥3 | 1| 100 | | 1 | 1800 | 97 |
+| 106 | moottoritie | 1| 80 | | 1 | 2000 | 81 |
+| 107 | moottoritie, kaistoja ≥3 |1 | 80 | | 1 | 1800 | 81 |
+| 116 | ramppi |1-4 | 60–120 | | 2 | 1600 | 63 |
+| 125 | ramppi |1-4 | 50 | | 4 | 1150 | 48 |
+| 128 | ramppi |1-4 | 20–40 | | 4 | 1000 | 41 |
+| 108 | valtatie | 1 | 100 | | 2 | 1900 | 97 |
+| 110 | valtatie | 1 | 90 | | 2 | 1900 | 90 |
+| 112 | valtatie | 1 | 80 | | 2 | 1850 | 81 |
+| 114 | valtatie | 1 | 70 | | 2 | 1600 | 73 |
+| 116 | valtatie | 1 | 60 | | 2 | 1600 | 63 |
+| 109 | kantatie, seututie, yhdystie | 2-4 | 100 | | 2 | 1700 | 97 |
+| 111 | kantatie, seututie, yhdystie | 2-4 | 90 | | 2 | 1700 | 90 |
+| 113 | kantatie, seututie, yhdystie | 2-3 | 80 | ≥6m | 2 | 1650 | 81 |
+| 114 | kantatie, seututie, yhdystie | 4 | 80 | ≥6m | 2 | 1600 | 73 |
+| 115 | kantatie, seututie, yhdystie | 2-3 | 80 | <6m | 2 | 1500 | 73 |
+| 117 | kantatie, seututie, yhdystie | 4 | 80 | <6m | 2 | 1400 | 63 |
+| 115 | kantatie, seututie, yhdystie | 2-4 | 70 | | 2 | 1500 | 73 |
+| 117 | kantatie, seututie, yhdystie | 2-3 | 60 | ≥6m | 2 | 1400 | 63 |
+| 121 | kantatie, seututie, yhdystie | 4 | 60 | ≥6m | 3 | 1200 | 58 |
+| 124 | kantatie, seututie, yhdystie | 2-4 | 60 | <6m | 3 | 1100 | 63 |
+| 122 | yksityistie | 5 | 100 | | 3 | 1100 | 73 |
+| 122 | yksityistie | 5 | 90 | | 3 | 1100 | 73 |
+| 122 | yksityistie | 5 | 80 | ≥6m | 3 | 1100 | 73 |
+| 124 | yksityistie | 5 | 80 | <6m | 3 | 1100 | 63 |
+| 124 | yksityistie | 5 | 70 | | 3 | 1100 | 63 |
+| 124 | yksityistie | 5 | 60 | ≥6m | 3 | 1100 | 63 |
+| 126 | yksityistie | 5 | 60 | <6m | 4 | 1050 | 48 |
+| 125 | valtatie | 1 | 50 | | 4 | 1150 | 48 |
+| 128 | valtatie | 1 | 40 | | 4 | 1000 | 41 |
+| 135 | valtatie | 1 | 30 | | 5 | 700 | 30 |
+| 139 | valtatie | 1 | 20 | | 5 | 700 | 20 |
+| 126 | kantatie, seututie, yhdystie |2-3 | 50 | | 4 | 1050 | 48 |
+| 127 | kantatie, seututie, yhdystie |4 | 50 | | 4 | 1000 | 44 |
+| 129 | kantatie, seututie, yhdystie |2-3 | 40 | | 4 | 900 | 41 |
+| 133 | kantatie, seututie, yhdystie |4 | 40 | | 5 | 750 | 36 |
+| 136 | kantatie, seututie, yhdystie |2-3 | 30 | | 5 | 600 | 25 |
+| 137 | kantatie, seututie, yhdystie |4 | 30 | | 5 | 550 | 20 |
+| 140 | kantatie, seututie, yhdystie |2-4 | 20 | | 5 | 600 | 15 |
+| 133 | yksityistie |5 | 50 | | 5 | 750 | 36 |
+| 134 | yksityistie |5 | 40 | | 5 | 600 | 36 |
+| 138 | yksityistie |5 | 30 | | 5 | 500 | 18 |
+| 141 | yksityistie |5 | 20 | | 5 | 500 | 12 |
 
 ### Tie- ja katuverkon koodausperiaatteet
 
