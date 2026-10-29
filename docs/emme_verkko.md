@@ -165,7 +165,7 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 *Taulukko x. Sijoittelufunktioiden jako väylätyyppeihin*
 
 | Linkkityyppi | Kuvaus | Toiminnallinen luokka | Nopeusrajoitus (km/h) | Tien leveys | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) |
-|---:|---|---:|---:|---|:---:|---:|---:|
+|---|---|---|---|---|---|---|---|
 | 101 | moottoritie | 1 | 120 | | 1 | 2100 | 113 |
 | 103 | moottoritie, kaistoja ≥3 | 1| 120 | | 1 | 1900 | 113 |
 | 104 | moottoritie |1 | 100 | | 1 | 2000 | 97 |
@@ -233,7 +233,7 @@ Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto 
 *Taulukko x. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.
 
 | Ajoneuvotyyppi (vehicle) | Kuvaus | Kulkumuoto (mode) |
-|---:|---|:---:|
+|---|---|---|
 | 1 | Linja-auto | `b` |
 | 2 | Raitiovaunu | `t` |
 | 3 | Juna | `j` |
