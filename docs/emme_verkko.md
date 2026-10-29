@@ -163,6 +163,7 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 
 
 *Taulukko x. Sijoittelufunktioiden jako väylätyyppeihin*
+
 | Linkkityyppi | Kuvaus | Toiminnallinen luokka | Nopeusrajoitus (km/h) | Tien leveys | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) |
 |---:|---|---:|---:|---|:---:|---:|---:|
 | 101 | moottoritie | 1 | 120 | | 1 | 2100 | 113 |
@@ -230,6 +231,7 @@ Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto 
 ### Joukkoliikenteen ajoneuvotyypit
 
 *Taulukko x. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.
+
 | Ajoneuvotyyppi (vehicle) | Kuvaus | Kulkumuoto (mode) |
 |---:|---|:---:|
 | 1 | Linja-auto | `b` |
@@ -300,7 +302,7 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 | `dwt` | Pysähdyksen kesto |
 | `noali` | Ei poistumista I-solmusta |
 | `noboa` | Ei nousemista I-solmusta |
-| `ttf` | Joukkoliikenteen matka-aikafunktio |
+| `ttf` | Joukkoliikenteen matka-aikafunktio (määrittyy malliajon aikana automaattisesti) |
 | `us1` | Matka-aika pysäkkien välillä (min) |
 | `us2` | VAPAA |
 | `us3` | VAPAA |
