@@ -60,42 +60,48 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 
 ### Kulkumuodot
 
-Pääkulkumuodon (auto) h on oltava linkillä sallittu.
+EMMEssä kulkumuodot määrittävät, millä verkon linkeillä eri liikennemuodot voivat kulkea. Kulkumuotojen kuvauksessa on eroteltu tavaraliikenteen käyttämät kulkumuodot (isot kirjaimet) ja henkilöliikenteen käyttämät kulkumuodot (pienet kirjaimet).
+
+Valtakunnallisessa liikennemallissa autoliikenteen pääkulkumuoto on h (auto). Kaikilla aux. auto -kulkumuotoa käyttävillä linkeillä on sallittava myös pääkulkumuoto h.
+
+Joukkoliikenteen kulkumuodot (transit) määrittävät joukkoliikennelinjojen käyttämät linkit. Joukkoliikenteen apukulkumuodoilla (aux. transit) kuvataan esimerkiksi kävelyä pysäkeille ja vaihtoyhteyksiä linjojen välillä.
+
+
 
 *Taulukko x. Kulkumuotojen (modes) kuvaus*
 
-| **Kulkumuoto** | **Kuvaus** |
-|---|---|
-| `c` | Henkilöauto |
-| `v` | Pakettiauto |
-| `k` | Kuorma-auto |
-| `y` | Perävaunullinen kuorma-auto |
-| `r` | Lähijuna |
-| `j` | Kaukojuna |
-| `t` | Raitiovaunu |
-| `p` | Pikaraitiovaunu |
-| `m` | Metro |
-| `b` | Linja-auto |
-| `g` | Runkobussi |
-| `e` | Pitkän matkan linja-auto |
-| `a` | Kävely |
-| `f` | Pyöräily |
-| `l` | Lentoliikenne |
-| `w` | Lautta |
-| `d` | Pitkän matkan lautta |
-| `D` | Dieseljuna |
-| `J` | Sähköjuna |
-| `W` | Kotimaan vesiliikenne |
-| `C` | Konttialus |
-| `G` | Yleinen rahtialus |
-| `L` | LNG-tankkeri |
-| `O` | Öljytankkeri |
-| `P` | Tuotetankkeri |
-| `R` | Ro-ro-alus |
-| `T` | Raakapuu syöttöliikenne |
-| `F` | Tavaraliikenne syöttöliikenne|
-| `u` | Liityntäpysäköinti |
-| `h` | Pääkulkumuoto |
+| **Kulkumuoto** | **Kuvaus** | **Tyyppi** 
+|---|---|---|
+| `h` | Pääkulkumuoto | auto |
+| `c` | Henkilöauto | aux. auto |
+| `v` | Pakettiauto | aux. auto |
+| `k` | Kuorma-auto | aux. auto |
+| `y` | Perävaunullinen kuorma-auto | aux. auto |
+| `r` | Lähijuna | transit |
+| `j` | Kaukojuna | transit |
+| `t` | Raitiovaunu | transit |
+| `p` | Pikaraitiovaunu | transit |
+| `m` | Metro | transit |
+| `b` | Linja-auto | transit |
+| `g` | Runkobussi | transit |
+| `e` | Pitkän matkan linja-auto | transit |
+| `l` | Lentoliikenne | transit |
+| `w` | Lautta | transit |
+| `d` | Pitkän matkan lautta | transit |
+| `a` | Kävely | aux. transit |
+| `f` | Pyöräily | aux. transit |
+| `u` | Liityntäpysäköinti | aux. transit |
+| `D` | Dieseljuna | transit |
+| `J` | Sähköjuna | transit |
+| `W` | Kotimaan vesiliikenne | transit |
+| `C` | Konttialus | transit |
+| `G` | Yleinen rahtialus | transit |
+| `L` | LNG-tankkeri | transit |
+| `O` | Öljytankkeri | transit |
+| `P` | Tuotetankkeri | transit |
+| `R` | Ro-ro-alus | transit |
+| `T` | Raakapuu syöttöliikenne | aux. transit |
+| `F` | Tavaraliikenne syöttöliikenne| aux. transit |
 
 
 
@@ -113,8 +119,8 @@ Pääkulkumuodon (auto) h on oltava linkillä sallittu.
 | lanes           | kaistamäärä |
 | modes           | kulkumuodot (taulukko x)                                                    |
 | vdf             | sijoittelufunktion nro                                       |
-| ul1 | linkin yhden kaistan kapasiteetti |
-| ul2             | linkin vapaa nopeus                                          |
+| ul1 | linkin yhden kaistan kapasiteetti (ajon./h/kaista) |
+| ul2             | linkin vapaa nopeus (km/h)                                         |
 | ul3             | VAPAA  |
 | @ferry_wait_time |  Lauttojen odotusaika                        |
 | @toll_cost_vrk      | Tienkäyttömaksu VRK-ajanjaksolla |
@@ -207,7 +213,7 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 Aluesyötöt yhdistetään lähimpään solmuun, joka on saavutettavissa ajoneuvoilla. Solmusta täytyy lähteä linkki, joka on tyyppiä "Yksiajorataisen tien osa". Toisin sanoen autoliikenteen syöttölinkkiä ei yhdistetä moottoritiehen, ramppeihin, liikenneympyriin tai kaksiajorataisiin katuihin/teihin.
 Jokaisesta centroidista tehdään lisäksi yksi kävelylinkkisyöttö vastakkaiseen suunnan lähimpään solmuun. Tämän solmun täytyy olla aluetta kuvaavan polygonin sisällä.
 
-Valma-ajon yhteydessä linkkien ul1 (vapaa nopeus), ul2 (kapasiteetti) ja vdf (viivytysfunktio) -arvot ylikirjoitetaan linkkityypin perusteella, joten niitä ei tarvitse määritellä erikseen linkeille. 
+Jokaisen malliajon yhteydessä linkkien ul1 (kapasiteetti), ul2 (vapaa nopeus) ja vdf (viivytysfunktio) -arvot ylikirjoitetaan linkkityypin perusteella, joten niitä ei tarvitse määritellä erikseen linkeille. 
 
 Eritasoliittymien erkanemis- ja liittymiskaistoja ei lähtökohtaisesti ole huomioitu kaistamäärissä. Jos liittymis- ja erkanemiskaistat ulottuvat toisiinsa asti kattaen kahden eritasoliittymän välisen matkan kokonaan, ne on otettu huomioon kaistamäärässä.
 
@@ -216,12 +222,41 @@ Tasoliittymien kääntymiskaistoja ei ole lähtökohtaisesti huomioitu, vaan kai
 Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto omassa attribuutissa. Joukkoliikennekaistat huomioidaan mallijärjestelmässä viivytysfunktioissa.
 
 ## Joukkoliikenne
+
 ### Joukkoliikenteen ajoneuvotyypit
+
+*Taulukko x. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.
+| Ajoneuvotyyppi (vehicle) | Kuvaus | Kulkumuoto (mode) |
+|---:|---|:---:|
+| 1 | Linja-auto | `b` |
+| 2 | Raitiovaunu | `t` |
+| 3 | Juna | `j` |
+| 4 | Metro | `m` |
+| 5 | Lautta | `w` |
+| 6 | Lentokone | `l` |
+| 7 | Pikaraitiovaunu | `p` |
+| 8 | Pitkän matkan linja-auto | `e` |
+| 9 | Lähijuna | `r` |
+| 10 | Runkobussi | `g` |
+| 11 | VR:n lähijuna | `j` |
+| 12 | Kiskobussi | `j` |
+| 13 | Pitkän matkan yölautta | `d` |
+| 14 | Pitkän matkan päivälautta | `d` |
+| 20 | Kotimaan vesialus | `W` |
+| 23 | Konttialus | `C` |
+| 24 | Yleinen rahtialus | `G` |
+| 25 | LNG-tankkeri | `L` |
+| 26 | Öljytankkeri | `O` |
+| 27 | Tuotetankkeri | `P` |
+| 28 | Ro-ro-alus | `R` |
+| 30 | Tavarajuna, diesel | `D` |
+| 31 | Tavarajuna, sähkö | `J` |
+
 ### Joukkoliikennelinjojen pysähtymiskäyttäytyminen
 Joukkoliikennelinjoilla on linja-attribuutti `#keep_stops`, jolla määritetään, miten linjan pysähtymiskäyttäytyminen määräytyy.
 
 - **`#keep_stops = 1`:** Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä. Pysähtyminen määräytyy noodien kulkumuotokohtaisten attribuuttien `#transit_stop_b`, `#transit_stop_e`, `#transit_stop_g`, `#transit_stop_p` ja `#transit_stop_t` perusteella.
-- **`#keep_stops = 0`:** Linja pysähtyy niillä pysäkeillä, jotka on määritetty pysäkkisegmenteille.
+- **`#keep_stops = 0`:** Linja pysähtyy niillä pysäkeillä, jotka on määritetty pysäkkisegmenteille (attribuutit noali ja noboa).
 
 Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (kaukobussi), `g` (runkobussi), `p` (pikaratikka) ja `t` (ratikka).
 
@@ -255,20 +290,30 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 
 | attribuutti | kuvaus |
 |---|---|
-| `id` | Joukkoliikennesegmentin tunniste |
 | `line` | Joukkoliikennelinja |
 | `i` | Segmentin I-solmu |
 | `j` | Segmentin J-solmu |
-| `loop_index` | Segmentin indeksi saman linkin segmenttien joukossa reitillä |
 | `dwt` | Pysähdyksen kesto |
 | `noali` | Ei poistumista I-solmusta |
 | `noboa` | Ei nousemista I-solmusta |
-| `dwfac` | Pysähdyksen kestoa kuvaava kerroin |
 | `ttf` | Joukkoliikenteen matka-aikafunktio |
-| `us1` | GTFS-matka-aika pysäkkien välillä |
+| `us1` | Matka-aika pysäkkien välillä (min) |
 | `us2` | VAPAA |
 | `us3` | VAPAA |
 
 
 ## Tavaraliikenne
+Tavara- ja henkilöliikenteen verkot ovat pääosin yhteisiä ja ne on tehty mallissa samaan verkkokuvaukseen/skenaarioon. Prosessilla on mahdollista tuottaa myös pelkästään henkilöliikennettä koskeva kuvaus. Tavaraliikenteen kuvaus hyödyntää muutamia täydentäviä tietolähteitä raiteista ja vesiväylistä ja tietyt terminaalit/lastauspaikat ovat vaatineet erityiskäsittelyä verkossa. 
+
+Rautatie- ja vesiväylien sijoittelu- ja vastuslaskennan periaatteena on EMME:n joukkoliikennepohjainen sijoittelu. Jokaista vesiväylä- ja raidelinkkiä kohden on tehty "joukkoliikennelinja", jolla kuljetukset tapahtuvat. 
+
+Rautatieverkolle on liitetty tieto, kulkeeko siinä tavaraliikennettä vai ei. Lisäksi on tiedot raiteiden sähköistyksestä sekä tavaraliikenteen keskimääräisestä kuljetusnopeudesta. Tieto rataosien sähköistyksestä pohjautuu Väyläviraston Rautateiden verkkoselostukseen 2026. Tavaraliikenteen keskimääräinen kuljetusnopeus perustuu todellisiin kuljetustietoihin. Kuljetukset kuvataan kahdella kulkumuodolla, dieseljunalla ja sähköllä kulkevalla junalla. Liikennepaikoille on merkitty käsin tieto, käytetäänkö paikkaa raakapuun, muun tavaran vai molempien lastaukseen. Liikennepaikkatieto pohjautuu rataverkkoselostukseen. Näille paikoille on tehty linkit, joissa kuorma-auton liittyminen asemaan on mahdollista. Muiden kuin valtion omistuksessa olevat rataverkon osat (teollisuusraiteet) ja niillä sijaitsevat liikennepaikat kuvattu verkkoon erikseen suurimpien teollisuuslaitosten osalta.
+
+Satamat yhdistyvät aina vesiväyliin ja niiden osalta, joihin on merkitty tieto yhdistymisestä raiteisiin, on luotu lähimpään rautatiesolmuun yhdistävä linkki.
+
+Verkolle on muodostettu myös @freight_gate attribuutti, joka kertoo satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id:n. Tämä attribuutti palvelee kuorma-autolla tehtävien osamatkojen tallennusta matriisimuotoiseksi sijoittelun yhteydessä. Attribuuttia käytetään EMME:n traversal matrix työkalussa.
+
+Digiroadin ajoneuvon suurin sallittu pituus ja suurin sallittu massa -kenttiä on hyödynnetty raskaan liikenteen rajoitusten kuvaamisessa. Jos linkillä ajoneuvon suurin sallittu pituus on vähintään 22 metriä tai massarajoitus 42 000 kg, on sen käyttö kielletty yhdistelmäajoneuvoilta. Jos ajoneuvon suurin sallittu pituus on 6 metriä tai massarajoitus 8000 kg, on linkeillä lisäksi kielletty kuorma-autot.
+
+Tiekuljetukset voivat käyttää pääosin kaikkea tieverkkoa. Suurten kaupunkien keskusta-alueille on kuitenkin kuvattu raskaiden ajoneuvojen rajoituksia. Kattavaa tietoa rajoituksista ei ole. Rajoituksia voidaan jatkossa kuvata myös muille, nyt rajoittamattomille alueille tai yksittäisille tienkohdille. Rajoitukset on kuvattu siten, että rajoitusalueen läpi ei pääse ajamaan, mutta jokaiselle osa-alueelle pääsee yhtä reittiä myös eri ajoneuvoluokkien raskailla ajoneuvoilla.
 
