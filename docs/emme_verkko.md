@@ -38,19 +38,22 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 
 *Taulukko x. Solmujen attribuuttitiedot*
 
-| attribuutti      |       | selitys                                                      |
-|------------------|-------|--------------------------------------------------------------|
-| solmuattribuutti | ui1   | väliaikainen tieto, VAPAA               |
-| solmuattribuutti | ui2   | VAPAA                                |
-| solmuattribuutti | ui3   | VAPAA |
-| network field | #municipality | Kunnan nimi |
-| network field | #park_cost_n | Liityntäpysäköinnin hinta (e/h) |
-| network field | #subarea | 1 = osamallialue, 2 = osamallin puskurivyöhyke, 3 = muu Suomi |
-| network field | #transit_stop_b | Bussipysäkki |
-| network field | #transit_stop_e | Kaukobussipysäkki |
-| network field | #transit_stop_g | Runkobussipysäkki |
-| network field | #transit_stop_p | Pikaratikkapysäkki |
-| network field | #transit_stop_t | Ratikkapysäkki |
+| attribuutti      | selitys                                                      | Pakollinen |
+|-------|------|------|
+| i   |  yksilöllinen tunniste          |  ✓ |
+| ui1   | väliaikainen tieto, VAPAA               |
+| ui2   | VAPAA                                |
+| ui3   | VAPAA |
+| #municipality | Kunnan nimi |
+| #park_cost_n | Liityntäpysäköinnin hinta (e/h) |
+| #subarea | 1 = osamallialue, 2 = osamallin puskurivyöhyke, 3 = muu Suomi |  ✓ |
+| #transit_stop_b | Bussipysäkki |
+| #transit_stop_e | Kaukobussipysäkki |
+| #transit_stop_g | Runkobussipysäkki |
+| #transit_stop_p | Pikaratikkapysäkki |
+| #transit_stop_t | Ratikkapysäkki |
+
+*✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
 #### Sentroidit
 Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liikenne kytkeytyy varsinaiseen liikenneverkkoon sentroidien ja niitä ympäröivien konnektoreiden avulla.
@@ -107,21 +110,20 @@ Joukkoliikenteen kulkumuodot (transit) määrittävät joukkoliikennelinjojen k�
 
 ### Linkit
 
+Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linkillä sallitut kulkumuodot (modes) sekä kaistamäärä (lanes). Malliajossa määritetään linkkityypin perusteella automaattisesti muut tarvittavat attribuutit, eli sijoittelufunktion numero (vdf), kaistakapasiteetti (ul1) sekä vapaa nopeus (ul2).
+
 *Taulukko x. Linkkien ominaisuudet*
 
-| kenttä          | kuvaus                                                 |
-|-----------------|--------------------------------------------------------------|
-| id              | link identifier |
-| i               | I-node of link |
-| j               | J-node of link |
-| type            | ks. taulukko x                                              |
-| length          | linkin pituus                                                             |
-| lanes           | kaistamäärä |
-| modes           | kulkumuodot (taulukko x)                                                    |
-| vdf             | sijoittelufunktion nro                                       |
-| ul1 | linkin yhden kaistan kapasiteetti (ajon./h/kaista) |
-| ul2             | linkin vapaa nopeus (km/h)                                         |
-| ul3             | VAPAA  |
+| kenttä          | kuvaus                                                 | Pakollinen |
+|-----------------|--------|---|
+| type            | ks. taulukko x  |  ✓ |
+| length          | linkin pituus   |  |
+| lanes           | kaistamäärä |  ✓ |
+| modes           | kulkumuodot (taulukko x)   |  ✓ |
+| vdf             | sijoittelufunktion nro (määritetään malliajossa automaattisesti)   |
+| ul1 | linkin yhden kaistan kapasiteetti (ajon./h/kaista) (määritetään malliajossa automaattisesti) |
+| ul2             | linkin vapaa nopeus (km/h) (määritetään malliajossa automaattisesti)      |
+| ul3             | (ei käytössä)  |
 | @ferry_wait_time |  Lauttojen odotusaika                        |
 | @toll_cost_vrk      | Tienkäyttömaksu VRK-ajanjaksolla |
 | @freight_gate      |  Positiivinen (lähde) tai negatiivinen (kohde) sentroidin tunniste tavaraliikenteen kulun analysointia varten  |
@@ -268,11 +270,13 @@ Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (
 
 ### Joukkoliikennelinjastot
 
-Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinkertaisesti EMME-mallissa. Tämä on ongelma seudullisilla junilla, joita voi käyttää paikallisen toimivaltaisen viranomaisen lipuilla (HSL, NYSSE), mutta alueen ulkopuolella tarvitaan VR:n lippu. Tästä johtuen HSL:n ja NYSSE:n alueelle päättyvät R, T, Z, M ja D-junat on lisätty malliin tuplana: Toisella linjalla nousut/poistumiset on kielletty HSL/NYSSE-alueella siten, että linjaa voi käyttää vain seuturajat ylittävään matkaan. Toinen linja on katkaistu seudun sisälle, jolloin sitä käytetään vain seudun sisäisiin matkoihin. Näille linjoille on eri hintafunktiot. Tässä on hyödynnetty custom transit lines –ominaisuutta. 
+Joukkoliikenteen matka-ajat tulevat suoraan segmenttikohtaisesta attribuutista us1, paitsi busseille. Bussien (kulkumuodot b, g ja e) ajoajat määritetään automaattisesti malliajon autosijoittelussa, paitsi jos tiellä on erillinen bussikaista, jolloin ajoaika määräytyy linkin vapaan nopeuden mukaan. Sijoittelussa otetaan huomioon dwell time (dwt) -attribuutissa busseille merkatut yli kahden minuutin pysähtymisajat, muuten ajoaikaan lisätään kiinteä viive 24 sekuntia per pysäkki.
 
 ### Joukkoliikenteen hinnoittelu
 
 Jokaiselle joukkoliikennelinjalle tulee määrittää hintatunnus eli hinta-id (attribuutti ut1). Hinta-id kuvaa linjalla käytettävää hinnoitteluperustetta, ja sitä vastaavat varsinaiset hinnat on määritetty mallijärjestelmän puolella. Hinta-id ja niiden selitykset on esitetty taulukossa x.
+
+Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinkertaisesti EMME-mallissa. Tämä on ongelma seudullisilla junilla, joita voi käyttää paikallisen toimivaltaisen viranomaisen lipuilla (HSL, NYSSE), mutta alueen ulkopuolella tarvitaan VR:n lippu. Tästä johtuen HSL:n ja NYSSE:n alueelle päättyvät R, T, Z, M ja D-junat on lisätty malliin tuplana: Toisella linjalla nousut/poistumiset on kielletty HSL/NYSSE-alueella siten, että linjaa voi käyttää vain seuturajat ylittävään matkaan. Toinen linja on katkaistu seudun sisälle, jolloin sitä käytetään vain seudun sisäisiin matkoihin. Näille linjoille on eri hintafunktiot. Tässä on hyödynnetty custom transit lines –ominaisuutta. 
 
 *Taulukko x. Joukkoliikennelinjojen hintatunnukset*
 
@@ -323,26 +327,27 @@ Jokaiselle joukkoliikennelinjalle tulee määrittää hintatunnus eli hinta-id (
 *Taulukko x. Joukkoliikennelinjan perusattribuutit*
 
 | Attribuutti | Kuvaus | Pakollinen |
-|---|---|:---:|
-| `line` | Linjan yksilöivä tunnus. | ✓ |
+|---|---|---|
+| `name` | Linjan yksilöivä tunnus. | ✓ |
+| `description` | Linjan kuvaus. | |
 | `mode` | Linjan kulkumuoto, esim. `b`, `e`, `g`, `p` tai `t`. | ✓ |
 | `vehicle` | Ajoneuvotyyppi. | ✓ |
-| `description` | Linjan kuvaus. | |
+| `hdw` | Vuoroväli (määritetään malliajossa) | |
+| `speed` | Oletusnopeus (määritetään malliajossa) | |
+| `lay1` | Päätepysäkin seisonta-aika minuutteina (määritetään malliajossa) | |
 | `ut1` | Joukkoliikennelinjan hinta-id. | ✓ |
-| `ut2` | VAPAA | |
-| `ut3` | VAPAA | |
+| `ut2` | (ei käytössä) | |
+| `ut3` | (ei käytössä) | |
 | `#agency_name` | Operaattorin nimi. | |
 | `#departures_per_day` | Vuorojen määrä per vrk | |
 | `#hdw_aht` | Vuoroväli aamuhuipputunnissa (klo 6–9). | ✓ |
 | `#hdw_iht` | Vuoroväli iltahuipputunnissa (klo 15–18). | ✓ |
 | `#hdw_it` | Vuoroväli iltatunnissa (klo 18–21). | ✓ |
 | `#hdw_pt` | Vuoroväli päivätunnissa (klo 9–15). | ✓ |
-| `#hdw_vrk` | Vuorokauden keskimääräinen vuoroväli. | ✓ |
+| `#hdw_vrk` | Vuorokauden keskimääräinen vuoroväli (vuorojen määrä per vrk / 960) | ✓ |
 | `#keep_stops` | 1 = Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä, 0 = Pysähtyminen määräytyy noodien #transit_stop-attribuuttien perusteella | ✓ |
 | `#route_short_name` | Route short name (GTFS). | |
 | `#trip_short_name` | Trip short name (GTFS). | |
-
-*✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
 *Taulukko x. Joukkoliikennesegmenttien perusattribuutit*
 
@@ -352,12 +357,13 @@ Jokaiselle joukkoliikennelinjalle tulee määrittää hintatunnus eli hinta-id (
 | `i` | Segmentin I-solmu |
 | `j` | Segmentin J-solmu |
 | `dwt` | Pysähdyksen kesto |
-| `noali` | Ei poistumista I-solmusta |
-| `noboa` | Ei nousemista I-solmusta |
+| `noali` | Ei poistumista I-solmusta (huomioidaan vain jos linjalla #keep_stops = 1) |
+| `noboa` | Ei nousemista I-solmusta (huomioidaan vain jos linjalla #keep_stops = 1)|
+| `dwfac` | (ei käytössä) |
 | `ttf` | Joukkoliikenteen matka-aikafunktio (määrittyy malliajon aikana automaattisesti) |
-| `us1` | Matka-aika pysäkkien välillä (min) |
-| `us2` | VAPAA |
-| `us3` | VAPAA |
+| `us1` | Matka-aika pysäkkien välillä (min), ei käytössä kulkumuodoilla b, g ja e |
+| `us2` | (ei käytössä) |
+| `us3` | (ei käytössä) |
 
 
 ## Tavaraliikenne
