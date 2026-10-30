@@ -270,27 +270,79 @@ Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (
 
 Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinkertaisesti EMME-mallissa. Tämä on ongelma seudullisilla junilla, joita voi käyttää paikallisen toimivaltaisen viranomaisen lipuilla (HSL, NYSSE), mutta alueen ulkopuolella tarvitaan VR:n lippu. Tästä johtuen HSL:n ja NYSSE:n alueelle päättyvät R, T, Z, M ja D-junat on lisätty malliin tuplana: Toisella linjalla nousut/poistumiset on kielletty HSL/NYSSE-alueella siten, että linjaa voi käyttää vain seuturajat ylittävään matkaan. Toinen linja on katkaistu seudun sisälle, jolloin sitä käytetään vain seudun sisäisiin matkoihin. Näille linjoille on eri hintafunktiot. Tässä on hyödynnetty custom transit lines –ominaisuutta. 
 
+### Joukkoliikenteen hinnoittelu
+
+Jokaiselle joukkoliikennelinjalle tulee määrittää hintatunnus eli hinta-id (attribuutti ut1). Hinta-id kuvaa linjalla käytettävää hinnoitteluperustetta, ja sitä vastaavat varsinaiset hinnat on määritetty mallijärjestelmän puolella. Hinta-id ja niiden selitykset on esitetty taulukossa x.
+
+*Taulukko x. Joukkoliikennelinjojen hintatunnukset*
+
+| Hinta-id | Alue |
+|---|---|
+| 1 | HSL |
+| 2 | Hyvinkää |
+| 3 | Hämeenlinna |
+| 4 | Imatra |
+| 5 | Joensuu |
+| 6 | Jyväskylä |
+| 7 | Kajaani |
+| 8 | Kokkola |
+| 9 | Kotka |
+| 10 | Kouvola |
+| 11 | Kuopio |
+| 12 | Lahti |
+| 13 | Lappeenranta |
+| 14 | Meri-Lappi |
+| 15 | Mikkeli |
+| 16 | Oulu |
+| 17 | Pori |
+| 18 | Raasepori |
+| 19 | Rauma |
+| 20 | Riihimäki |
+| 21 | Rovaniemi |
+| 22 | Salo |
+| 23 | Savonlinna |
+| 24 | Seinäjoki |
+| 25 | Tampere |
+| 26 | Turku |
+| 27 | Vaasa |
+| 28 | lennot |
+| 29 | lautat |
+| 30 | taajamajunat |
+| 31 | lähijunat |
+| 32 | kaukojunat |
+| 33 | kaukobussit |
+| 34 | lautta Helsinki-Tukholma |
+| 35 | lautta Turku-Tukholma |
+| 36 | lautta Vaasa-Uumaja |
+| 37 | lautta Helsinki-Tallinna |
+
+**Kuva x. Joukkoliikenteen hinnoittelualueet**
+
+![Joukkoliikenteen hinnoittelualueet](images/joukkoliikenteen_hinnoittelualueet.png)
+
 *Taulukko x. Joukkoliikennelinjan perusattribuutit*
 
-| attribuutti | kuvaus |
-|---|---|
-| `line` | Linjan yksilöivä tunnus. |
-| `mode` | Linjan kulkumuoto, esim. `b`, `e`, `g`, `p` tai `t`. |
-| `vehicle` | Ajoneuvotyyppi |
-| `description` | Linjan kuvaus |
-| `ut1` | Joukkoliikennelinjan hinta-id |
-| `ut2` | VAPAA |
-| `ut3` | VAPAA |
-| `#agency_name` | Operaattorin nimi |
-| `#departures_per_day` | Vuorojen määrä per vrk |
-| `#hdw_aht` | Vuoroväli aamuhuipputunnissa (klo 6-9) |
-| `#hdw_iht` | Vuoroväli iltahuipputunnissa (klo 15-18) |
-| `#hdw_it` | Vuoroväli iltatunnissa (klo 18-21) |
-| `#hdw_pt` | Vuoroväli päivätunnissa (klo 9-15) |
-| `#hdw_vrk` | Vuorokauden keskimääräinen vuoroväli |
-| `#keep_stops` | 1 = Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä. |
-| `#route_short_name` | Route short name (GTFS) |
-| `#trip_short_name` | Trip short name (GTFS) |
+| Attribuutti | Kuvaus | Pakollinen |
+|---|---|:---:|
+| `line` | Linjan yksilöivä tunnus. | ✓ |
+| `mode` | Linjan kulkumuoto, esim. `b`, `e`, `g`, `p` tai `t`. | ✓ |
+| `vehicle` | Ajoneuvotyyppi. | ✓ |
+| `description` | Linjan kuvaus. | |
+| `ut1` | Joukkoliikennelinjan hinta-id. | ✓ |
+| `ut2` | VAPAA | |
+| `ut3` | VAPAA | |
+| `#agency_name` | Operaattorin nimi. | |
+| `#departures_per_day` | Vuorojen määrä per vrk | |
+| `#hdw_aht` | Vuoroväli aamuhuipputunnissa (klo 6–9). | ✓ |
+| `#hdw_iht` | Vuoroväli iltahuipputunnissa (klo 15–18). | ✓ |
+| `#hdw_it` | Vuoroväli iltatunnissa (klo 18–21). | ✓ |
+| `#hdw_pt` | Vuoroväli päivätunnissa (klo 9–15). | ✓ |
+| `#hdw_vrk` | Vuorokauden keskimääräinen vuoroväli. | ✓ |
+| `#keep_stops` | 1 = Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä, 0 = Pysähtyminen määräytyy noodien #transit_stop-attribuuttien perusteella | ✓ |
+| `#route_short_name` | Route short name (GTFS). | |
+| `#trip_short_name` | Trip short name (GTFS). | |
+
+*✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
 *Taulukko x. Joukkoliikennesegmenttien perusattribuutit*
 
