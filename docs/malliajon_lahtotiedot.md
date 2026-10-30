@@ -11,6 +11,7 @@ Pakollisia tietoja ovat mallin käyttämät alueiden hallinnolliset luokitukset 
 Vapaaehtoisia aluetietoja ovat "aggregate_results" etuliitteellä esitetyt alueluokitukset. Näitä käytetään vain valmiiden mallitulosten ryhmittelyyn ja ne ovat vapaasti käyttäjän määritettävissä. Lisäämällä aluetietoihin sarakkeen "aggregate_results" etuliitteellä voi käyttäjä saada valmiiksi lasketut matkamäärät tälle samalle jaolle.
 
 ## Alueluokitukset
+
 | Kenttä | Kuvaus |
 |---|---|
 | __input_zone_id__ | Alueen yksilöllinen tunniste. |
