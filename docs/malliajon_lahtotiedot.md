@@ -12,7 +12,7 @@ Vapaaehtoisia aluetietoja ovat "aggregate_results" etuliitteellä esitetyt aluel
 
 ## Alueluokitukset
 | Kenttä | Kuvaus |
-| --- | --- |
+|---|---|
 | __input_zone_id__ | Alueen yksilöllinen tunniste. |
 | __municipality__ | Alueen kunnan nimi. Käyttäjän ei tule muuttaa tätä saraketta. |
 | __county__ | Alueen maakunnan nimi. Käyttäjän ei tule muuttaa tätä saraketta. |
@@ -25,7 +25,7 @@ Vapaaehtoisia aluetietoja ovat "aggregate_results" etuliitteellä esitetyt aluel
 
 ## Väestötiedot
 | Kenttä | Kuvaus |
-| --- | --- |
+|---|---|
 | __population__ | Alueen asukasluku 31.12. lähtien, kokonaislukuna. |
 | __sh_age_7_17__ | Väestön ikäryhmien osuudet desimaalimuodossa 0–1. |
 | __sh_age_18_29__ | kts. sh_age_7_17 |
@@ -39,7 +39,7 @@ Väestön määrä ja ikäjakauma vaikuttaa ensisijaisesti alueelta lähtevien m
 
 ## Kotitaloustiedot
 | Kenttä | Kuvaus |
-| --- | --- |
+|---|---|
 | __sh_income_0_19__ | Kotitalouksien osuus tuloluokittain desimaalimuodossa 0–1. Tuloluokka on 0–19 999 euroa. |
 | __sh_income_20_39__ | Tuloluokka on 20 000–39 999 euroa.  |
 | __sh_income_40_59__ | Tuloluokka on 40 000–59 999 euroa.  |
@@ -55,7 +55,7 @@ Tulotaso vaikuttaa auton omistukseen ja siten kulkutapamalleihin. Tietoja kotita
 
 ## Työpaikkatiedot
 | Kenttä | Kuvaus |
-| --- | --- |
+|---|---|
 | __workplaces__ | Työpaikkojen määrä alueella kokonaislukuna.  |
 | __sh_wrk_healthcare__ | Terveys- ja sosiaalipalveluiden (TOL 2008, sektori Q) työpaikkojen osuus.  |
 | __sh_wrk_shop__ | Vähittäiskaupan (TOL G47) työpaikkojen osuus.  |
@@ -70,7 +70,7 @@ Toimistoammateissa työskentelevien osuus vaikuttaa alueelle saapuvien työmatko
 
 ## Muut tiedot
 | Kenttä | Kuvaus |
-| --- | --- |
+|---|---|
 | __students_comprehensive__ | Perusopetuksen oppilaiden määrä kokonaislukuna. Luku vaikuttaa perusopetuksen matkojen kohdevalintaan. |
 | __sport_facility_indoor__ | Sisäliikuntapaikkojen pinta-ala Lipas-tietojen mukaan (JYU 2023). |
 | __sport_facility_outdoor__ | Ulkoliikuntapaikkojen pinta-ala Lipas-tietojen mukaan (JYU 2023). |
@@ -87,7 +87,7 @@ Pysäköintitiedot vaikuttavat voimakkaasti alueelle saapuvien matkojen kulkutap
 Aluetietojen lisäksi mallin lähtötiedoksi annetaan kustannustiedot (cost.json), jotka kuvaavat liikkumisen aiheuttamia euromääräisiä kustannuksia eri kulkutavoilla.
 
 | Kenttä | Kuvaus |
-| --- | --- |
+|---|---|
 | __vehicle_km_cost__ | Auton kilometrikustannus vuoden 2025 hintatasossa [eur / km]. Kustannus koostuu polttoainekustannuksista, huoltokustannuksista ja arvon alenemasta. |
 | __transit_cost__ | Joukkoliikenteen lippukustannus, joka esitetään kahdessa osassa: nousukohtainen [eur / nousu] ja pituudesta riippuva [eur / km]. |
 
