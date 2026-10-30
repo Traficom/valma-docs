@@ -147,15 +147,15 @@ Joukkoliikenteen kulkumuodot (transit) määrittävät joukkoliikennelinjojen k�
 
 *Taulukko 9. Linkkityypit (link type)*
 
-| linkkityyppi (link type) | selitys                                                                      |
-|--------------------------|------------------------------------------------------------------------------|
-| 2       | ratikka                                                                                       |
-| 3       | metro                                                                                         |
-| 4       | juna                                                                                         |
-| 7       | lento                                                                    |
-| 99      | syöttölinkki                                                                                  | |
-| 101–141 | jalankulku, pyöräily, autot, bussit                               |
-| 144 | autolautta                         |
+| linkkityyppi (link type) | selitys | modes |
+|--------------------------|---------|---------|
+| 2       | ratikka           | tp |
+| 3       | metro       | m |
+| 4       | juna  | JrjD, rj, rjD |
+| 7       | lento      | l |
+| 99      | syöttölinkki   | af, ckyvabfgeTF |
+| 101–141 | jalankulku, pyöräily, autot, bussit  | ckyvabfge |
+| 144 | autolautta    | ckyvawbfgeW |
 
 
 #### Syöttölinkit
@@ -261,8 +261,8 @@ Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto 
 ### Joukkoliikennelinjojen pysähtymiskäyttäytyminen
 Joukkoliikennelinjoilla on linja-attribuutti `#keep_stops`, jolla määritetään, miten linjan pysähtymiskäyttäytyminen määräytyy.
 
-- **`#keep_stops = 1`:** Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä. Pysähtyminen määräytyy noodien kulkumuotokohtaisten attribuuttien `#transit_stop_b`, `#transit_stop_e`, `#transit_stop_g`, `#transit_stop_p` ja `#transit_stop_t` perusteella.
-- **`#keep_stops = 0`:** Linja pysähtyy niillä pysäkeillä, jotka on määritetty pysäkkisegmenteille (attribuutit noali ja noboa).
+- **`#keep_stops = 0`:** Pysähtyminen määräytyy noodien kulkumuotokohtaisten attribuuttien `#transit_stop_b`, `#transit_stop_e`, `#transit_stop_g`, `#transit_stop_p` ja `#transit_stop_t` perusteella.
+- **`#keep_stops = 1`:** Linja pysähtyy niillä pysäkeillä, jotka on määritetty pysäkkisegmenteille (attribuutit noali ja noboa).
 
 Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (kaukobussi), `g` (runkobussi), `p` (pikaratikka) ja `t` (ratikka).
 
