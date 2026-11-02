@@ -33,7 +33,7 @@ Vapaaehtoisia aluetietoja ovat "aggregate_results" etuliitteellä esitetyt aluel
 | __sh_age_30_49__ | kts. sh_age_7_17 |
 | __sh_age_50_64__ | kts. sh_age_7_17 |
 | __sh_age_65_99__ | kts. sh_age_7_17 |
- __sh_adult_license__ | Ajokortillisten osuus 18 vuotta täyttäneistä. |
+|__sh_adult_license__ | Ajokortillisten osuus 18 vuotta täyttäneistä. |
 
 Ikäryhmien laskennassa ikäryhmien osuudet on imputoitu kunnan keskiarvon perusteella, jos alueella on alle 50 asukasta.
 Väestön määrä ja ikäjakauma vaikuttaa ensisijaisesti alueelta lähtevien matkojen lukumäärään. Lisäksi väestön määrä vaikuttaa alueelle saapuvien vierailumatkojen määriin. Ajokortillisten osuutta käytetään muuttujana autonomistusta kuvaavassa mallissa.
