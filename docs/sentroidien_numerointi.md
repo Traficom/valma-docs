@@ -1,4 +1,6 @@
-# Sentroidien numerointi kunnittain
+# Sentroidien numerointi
+
+*Taulukko x. Sentroidien numerointi kunnittain.*
 
 | Kunta               | Kunnan ensimmäinen sentroidinumero | Kuntakohtainen sentroiditunnus |
 | ------------------- | ---------------------------------- | ------------------------------ |
@@ -311,3 +313,70 @@
 | Sievi               | 34800                              | 34806                          |
 | Alavieska           | 34900                              | 34901                          |
 | Merijärvi           | 35000                              | 35000                          |
+
+*Taulukko x. Ulkomaan rajapaikat tavaraliikenteen mallissa.*
+
+| Ulkomaan   satama tai rajapaikka | centroid_id |
+| -------------------------------- | ----------- |
+| Jebel Ali satama                 | 50100       |
+| Itaqui satama                    | 50101       |
+| Abidjan satama                   | 50102       |
+| Tianjin satama                   | 50103       |
+| Travemunde satama                | 50104       |
+| Bremerhaven satama               | 50105       |
+| Aarhus satama                    | 50106       |
+| Tallinna satama                  | 50107       |
+| Corunan satama                   | 50108       |
+| Le Havre satama                  | 50109       |
+| Felixstowe satama                | 50110       |
+| Pireus satama                    | 50111       |
+| Dublin satama                    | 50112       |
+| Reykjavik satama                 | 50113       |
+| Savona satama                    | 50114       |
+| Nagoya satama                    | 50115       |
+| Rotterdam satama                 | 50116       |
+| Kilpisjärvi raja-asema           | 50117       |
+| Oslo satama                      | 50118       |
+| Gdansk satama                    | 50119       |
+| Vainikkala raja-asema            | 50120       |
+| Vartius raja-asema               | 50121       |
+| Vaalimaa raja-asema              | 50122       |
+| Pietari satama                   | 50123       |
+| Haaparanta raja-asema            | 50124       |
+| Göteborg satama                  | 50125       |
+| Uumaja satama                    | 50126       |
+| Tukholma satama                  | 50127       |
+| Singapore satama                 | 50128       |
+| Istanbul satama                  | 50129       |
+| Houston satama                   | 50130       |
+
+*Taulukko x. Kotimaan rajapaikat tavaraliikenteen mallissa.*
+
+| centroid_id | Lyhenne     | Selite (klusteri, jota rajapaikka   edustaa)         |
+| ----------- | ----------- | ---------------------------------------------------- |
+| 601         | FIHEL       | Helsinki: Vuosaari edustaa kaikkia Helsingin satamia |
+| 3607        | FISKV       | Porvoo Kilpilahti                                    |
+| 4102        | FIHKO       | Hanko                                                |
+| 4201        | FIINK       | Inkoo                                                |
+| 10411       | FIPOR       | Pori                                                 |
+| 11233       | FIRAU       | Rauma                                                |
+| 12548       | FITKU       | Turku                                                |
+| 13924       | FIPAR       | Parainen                                             |
+| 14111       | FIUKI       | Uusikaupunki                                         |
+| 15172       | FILPP       | Lappeenranta                                         |
+| 19401       | FIHMN       | Hamina/Kotka                                         |
+| 20129       | FIJOE       | Joensuu                                              |
+| 22126       | FISII       | Siilinjärvi                                          |
+| 22623       | FIVAR       | Vartsala                                             |
+| 27964       | FIKOK       | Kokkola                                              |
+| 28700       | FIKEM       | Kemi/Tornio                                          |
+| 31000       | FIKAS       | Kaskinen                                             |
+| 31143       | FIVAA       | Vaasa                                                |
+| 32855       | FIOUL       | Oulu                                                 |
+| 34216       | FIRAA       | Raahe                                                |
+| 34611       | FIKJO       | Kalajoki                                             |
+| 15106       | Vainikkala  | Vainikkala                                           |
+| 19705       | Vaalimaa    | Vaalimaa                                             |
+| 26944       | Vartius     | Vartius                                              |
+| 28615       | Haaparanta  | Haaparanta                                           |
+| 30218       | Kilpisjärvi | Kilpisjärvi                                          |

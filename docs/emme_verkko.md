@@ -126,7 +126,7 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 | ul3             | (ei käytössä)  |
 | @ferry_wait_time |  Lauttojen odotusaika                        |
 | @toll_cost_vrk      | Tienkäyttömaksu VRK-ajanjaksolla |
-| @freight_gate      |  Positiivinen (lähde) tai negatiivinen (kohde) sentroidin tunniste tavaraliikenteen kulun analysointia varten  |
+| @freight_gate      |  Tavaraliikenteen satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id (positiivinen lähdesolmuille, negatiivinen kohdesolmuille)  |
 | #buslane            | Tosi, jos linkillä on joukkoliikennekaista |
 | #car_time_aht      | Ennalta määritetty auton matka-aika (AHT)    |
 | #car_time_iht      |  Ennalta määritetty auton matka-aika (IHT)   |
@@ -156,9 +156,9 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 | 3       | metro       | m |
 | 4       | juna  | JrjD, rj, rjD |
 | 7       | lento      | l |
-| 99      | syöttölinkki   | af, ckyvabfgeTF |
-| 101–141 | jalankulku, pyöräily, autot, bussit  | ckyvabfge |
-| 144 | autolautta    | ckyvawbfgeW |
+| 99      | syöttölinkki   | af, ckyvabfgeTF, TF, F, T, afF, afT |
+| 101–141 | jalankulku, pyöräily, autot, bussit  | ckyvabfge, ckvabfge, abfge |
+| 144 | laivat ja lautat    | ckyvawdbfge, ckyvwdbge, wdWCGLOPR, WCGLOPR, wdW, CGLOPR |
 
 
 #### Syöttölinkit
