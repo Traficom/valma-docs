@@ -1,4 +1,4 @@
-##### Sentroidien numerointi kunnittain
+# Sentroidien numerointi kunnittain
 
 | Kunta               | Kunnan ensimmäinen sentroidinumero | Kuntakohtainen sentroiditunnus |
 | ------------------- | ---------------------------------- | ------------------------------ |
