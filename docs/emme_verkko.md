@@ -145,6 +145,7 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 | #street_name      | Kadun nimi suomeksi    |
 | #traffic_light      | Tosi, jos linkki on lähellä liikennevaloa    |
 
+*✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
 
 *Taulukko 9. Linkkityypit (link type)*
@@ -326,18 +327,18 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 
 *Taulukko x. Joukkoliikennelinjan perusattribuutit*
 
-| Attribuutti | Kuvaus | Pakollinen |
-|---|---|---|
-| `name` | Linjan yksilöivä tunnus. | ✓ |
+| Attribuutti | Kuvaus | Pakollinen henkilöliikenteessä | Pakollinen tavaraliikenteessä |
+|---|---|---|---|
+| `name` | Linjan yksilöivä tunnus. | ✓ | ✓ |
 | `description` | Linjan kuvaus. | |
-| `mode` | Linjan kulkumuoto, esim. `b`, `e`, `g`, `p` tai `t`. | ✓ |
-| `vehicle` | Ajoneuvotyyppi. | ✓ |
+| `mode` | Linjan kulkumuoto, esim. `b`, `e`, `g`, `p` tai `t`. | ✓ | ✓ |
+| `vehicle` | Ajoneuvotyyppi. | ✓ | ✓ |
 | `hdw` | Vuoroväli (määritetään malliajossa) | |
 | `speed` | Oletusnopeus (määritetään malliajossa) | |
 | `lay1` | Päätepysäkin seisonta-aika minuutteina (määritetään malliajossa) | |
-| `ut1` | Joukkoliikennelinjan hinta-id. | ✓ |
-| `ut2` | (ei käytössä) | |
-| `ut3` | (ei käytössä) | |
+| `ut1` | Henkilöliikenteessä joukkoliikennelinjan hinta-id. Tavaraliikenteessä laivalinjan pituus (km) | ✓ | Laiva ✓ |
+| `ut2` | Henkilöliikenteessä ei käytössä. Tavaraliikenteessä laivalinjan frekvenssi (lähtöjen määrä vuodessa). | |Laiva ✓ |
+| `ut3` | Ei käytössä. | |
 | `#agency_name` | Operaattorin nimi. | |
 | `#departures_per_day` | Vuorojen määrä per vrk | |
 | `#hdw_aht` | Vuoroväli aamuhuipputunnissa (klo 6–9). | ✓ |
@@ -348,6 +349,8 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 | `#keep_stops` | 1 = Linja säilyttää alkuperäisen pysähtymiskäyttäytymisensä, 0 = Pysähtyminen määräytyy noodien #transit_stop-attribuuttien perusteella | ✓ |
 | `#route_short_name` | Route short name (GTFS). | |
 | `#trip_short_name` | Trip short name (GTFS). | |
+
+*✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
 *Taulukko x. Joukkoliikennesegmenttien perusattribuutit*
 
