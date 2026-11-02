@@ -25,6 +25,7 @@ Vapaaehtoisia aluetietoja ovat "aggregate_results" etuliitteellä esitetyt aluel
 | __uusimaa__ | kts. koko_suomi |
 
 ## Väestötiedot
+
 | Kenttä | Kuvaus |
 |---|---|
 | __population__ | Alueen asukasluku 31.12. lähtien, kokonaislukuna. |
@@ -39,6 +40,7 @@ Ikäryhmien laskennassa ikäryhmien osuudet on imputoitu kunnan keskiarvon perus
 Väestön määrä ja ikäjakauma vaikuttaa ensisijaisesti alueelta lähtevien matkojen lukumäärään. Lisäksi väestön määrä vaikuttaa alueelle saapuvien vierailumatkojen määriin. Ajokortillisten osuutta käytetään muuttujana autonomistusta kuvaavassa mallissa.
 
 ## Kotitaloustiedot
+
 | Kenttä | Kuvaus |
 |---|---|
 | __sh_income_0_19__ | Kotitalouksien osuus tuloluokittain desimaalimuodossa 0–1. Tuloluokka on 0–19 999 euroa. |
@@ -55,6 +57,7 @@ Väestön määrä ja ikäjakauma vaikuttaa ensisijaisesti alueelta lähtevien m
 Tulotaso vaikuttaa auton omistukseen ja siten kulkutapamalleihin. Tietoja kotitalouden koostumuksesta käytetään autonomistusta kuvaavassa mallissa.
 
 ## Työpaikkatiedot
+
 | Kenttä | Kuvaus |
 |---|---|
 | __workplaces__ | Työpaikkojen määrä alueella kokonaislukuna.  |
@@ -70,6 +73,7 @@ Työpaikkojen lukumäärä vaikuttaa eri tyypisten matkojen määränpään vali
 Toimistoammateissa työskentelevien osuus vaikuttaa alueelle saapuvien työmatkojen joukkoliikenteen käyttöön. Toimistoammatit perustuvat Ammattiluokitus 2010 -luokitukseen ja sisältävät johtajat, erityisasiantuntijat, asiantuntijat, toimisto- ja asiakaspalvelutyöntekijät sekä palvelu- ja myyntityöntekijät.
 
 ## Muut tiedot
+
 | Kenttä | Kuvaus |
 |---|---|
 | __students_comprehensive__ | Perusopetuksen oppilaiden määrä kokonaislukuna. Luku vaikuttaa perusopetuksen matkojen kohdevalintaan. |
