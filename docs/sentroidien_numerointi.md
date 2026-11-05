@@ -87,13 +87,13 @@
 | Jämijärvi           | 10100                              | 10100                          |
 | Siikainen           | 10200                              | 10203                          |
 | Pori                | 10300                              | 10356                          |
-| Ulvila              | 10500                              | 10411                          |
-| Huittinen           | 10600                              | 10510                          |
-| Kokemäki            | 10700                              | 10608                          |
-| Harjavalta          | 10800                              | 10704                          |
-| Nakkila             | 10900                              | 10806                          |
-| Merikarvia          | 11000                              | 10906                          |
-| Pomarkku            | 11100                              | 11002                          |
+| Ulvila              | 10500                              | 10510                          |
+| Huittinen           | 10600                              | 10608                          |
+| Kokemäki            | 10700                              | 10704                          |
+| Harjavalta          | 10800                              | 10806                          |
+| Nakkila             | 10900                              | 10906                          |
+| Merikarvia          | 11000                              | 11002                          |
+| Pomarkku            | 11100                              | TODO                           |
 | Rauma               | 11200                              | 11229                          |
 | Eura                | 11300                              | 11311                          |
 | Eurajoki            | 11400                              | 11403                          |
@@ -269,14 +269,14 @@
 | Kolari              | 30000                              | 30011                          |
 | Muonio              | 30100                              | 30110                          |
 | Enontekiö           | 30200                              | 30208                          |
-| Pietarsaari         | 30300                              | 30219                          |
-| Pedersören kunta    | 30400                              | 30316                          |
-| Uusikaarlepyy       | 30500                              | 30413                          |
-| Kruunupyy           | 30600                              | 30509                          |
-| Luoto               | 30700                              | 30609                          |
-| Närpiö              | 30800                              | 30702                          |
-| Kristiinankau-punki | 30900                              | 30804                          |
-| Kaskinen            | 31000                              | 30911                          |
+| Pietarsaari         | 30300                              | 30316                          |
+| Pedersören kunta    | 30400                              | 30413                          |
+| Uusikaarlepyy       | 30500                              | 30509                          |
+| Kruunupyy           | 30600                              | 30609                          |
+| Luoto               | 30700                              | 30702                          |
+| Närpiö              | 30800                              | 30804                          |
+| Kristiinankau-punki | 30900                              | 30911                          |
+| Kaskinen            | 31000                              | TODO                           |
 | Vaasa               | 31100                              | 31158                          |
 | Mustasaari          | 31300                              | 31309                          |
 | Laihia              | 31400                              | 31408                          |
@@ -322,8 +322,8 @@
 | Itaqui satama                    | 50101       |
 | Abidjan satama                   | 50102       |
 | Tianjin satama                   | 50103       |
-| Travemunde satama                | 50104       |
-| Bremerhaven satama               | 50105       |
+| Bremerhaven satama               | 50104       |
+| Travemunde satama                | 50105       |
 | Aarhus satama                    | 50106       |
 | Tallinna satama                  | 50107       |
 | Corunan satama                   | 50108       |
@@ -367,16 +367,16 @@
 | 19401       | FIHMN       | Hamina/Kotka                                         |
 | 20129       | FIJOE       | Joensuu                                              |
 | 22126       | FISII       | Siilinjärvi                                          |
-| 22623       | FIVAR       | Vartsala                                             |
+| 22623       | FIVRK       | Varkaus                                              |
 | 27964       | FIKOK       | Kokkola                                              |
-| 28700       | FIKEM       | Kemi/Tornio                                          |
+| 28700       | FIKEM       | Kemi                                                 |
 | 31000       | FIKAS       | Kaskinen                                             |
 | 31143       | FIVAA       | Vaasa                                                |
 | 32855       | FIOUL       | Oulu                                                 |
 | 34216       | FIRAA       | Raahe                                                |
 | 34611       | FIKJO       | Kalajoki                                             |
-| 15106       | Vainikkala  | Vainikkala                                           |
-| 19705       | Vaalimaa    | Vaalimaa                                             |
-| 26944       | Vartius     | Vartius                                              |
-| 28615       | Haaparanta  | Haaparanta                                           |
-| 30218       | Kilpisjärvi | Kilpisjärvi                                          |
+| 15106       | FIVAI       | Vainikkala                                           |
+| 19705       | FIVAL       | Vaalimaa                                             |
+| 26944       | FIVAR       | Vartius                                              |
+| 28615       | FITOR       | Tornio                                               |
+| 30218       | FIKIL       | Kilpisjärvi                                          |
