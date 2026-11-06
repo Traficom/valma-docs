@@ -6,6 +6,11 @@ sort: 3
 # EMME-verkon kuvaus
 EMME-verkko kuvaa valtakunnallisen liikennemallijärjestelmän liikenneverkkoa. Verkko sisältää tie- ja katuverkon, joukkoliikennelinjastot, kävely- ja pyöräliikenteen yhteydet sekä tavaraliikenteen yhteydet. Verkkoa käytetään henkilö- ja tavaraliikenteen sijoitteluissa. Verkko muodostuu solmuista, linkeistä ja joukkoliikennelinjoista.
 
+Noudata verkkoa muokatessasi tämän sivun periaatteita, jotta tulokset ovat oikeita ja aineistoja voidaan jakaa käyttäjien ja hankkeiden kesken. Useimmat vaatimukset tarkistetaan automaattisesti ennen jokaista malliajoa (ks. kohta _Verkon tarkistukset_ sivun lopussa).
+
+- Koordinaatit ovat ETRS-TM35FIN-tasokoordinaatistossa (EPSG:3067) metreinä. Linkkien pituudet ovat kilometreinä.
+- Malli täyttää monet linkkien ja linjojen attribuutit itse jokaisen ajon alussa (esimerkiksi tavallisten tielinkkien kapasiteetit, vapaat nopeudet ja viivytysfunktiot). Näihin attribuutteihin käsin syötetyt arvot ylikirjoitetaan.
+
 ## Liikenneverkko
 
 ### Solmut
@@ -46,17 +51,19 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 | ui3   | VAPAA |
 | #municipality | Kunnan nimi |
 | #park_cost_n | Liityntäpysäköinnin hinta (e/h) |
-| #subarea | 1 = osamallialue, 2 = osamallin puskurivyöhyke, 3 = muu Suomi |  ✓ |
-| #transit_stop_b | Bussipysäkki |
-| #transit_stop_e | Kaukobussipysäkki |
-| #transit_stop_g | Runkobussipysäkki |
-| #transit_stop_p | Pikaratikkapysäkki |
-| #transit_stop_t | Ratikkapysäkki |
+| #subarea | 2 = osamallin oma alue. Vain linkit, joiden alkusolmun arvo on 2, lasketaan mukaan osamallin ajoneuvo- ja henkilökilometreihin, linkkipituuksiin ja joukkoliikenteen suoritteisiin, ja vain niiden auton matka-ajat tallennetaan tiedostoon netfield_links_<osamalli>.txt (tallennetun nopeuden sijoittelu). Muita arvoja malli ei käytä. |  ✓ |
+| #transit_stop_b | Bussipysäkki | ✓ |
+| #transit_stop_e | Kaukobussipysäkki | ✓ |
+| #transit_stop_g | Runkobussipysäkki | ✓ |
+| #transit_stop_p | Pikaratikkapysäkki | ✓ |
+| #transit_stop_t | Ratikkapysäkki | ✓ |
 
 *✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
 #### Sentroidit
 Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liikenne kytkeytyy varsinaiseen liikenneverkkoon sentroidien ja niitä ympäröivien konnektoreiden avulla.
+
+Sentroidien numeroiden tulee olla samat kuin osamallin kohdistussarakkeen aluenumerot aluetiedoissa (ks. [Aluetiedot](malliajon_lahtotiedot.md)). Osalla sentroideista on mallissa kiinteä rooli, esimerkiksi tavaraliikenteen mallin käyttämillä kotimaan satamilla ja raja-asemilla sekä ulkomaan sentroideilla (ks. [Sentroidien numerointi](sentroidien_numerointi.md)). Näitä sentroideja ei saa numeroida uudelleen.
 
 
 
@@ -66,6 +73,8 @@ Sentroidit edustavat liikennemallin sijoittelualueita. Sijoittelualueiden liiken
 EMMEssä kulkumuodot määrittävät, millä verkon linkeillä eri liikennemuodot voivat kulkea. Kulkumuotojen kuvauksessa on eroteltu tavaraliikenteen käyttämät kulkumuodot (isot kirjaimet) ja henkilöliikenteen käyttämät kulkumuodot (pienet kirjaimet).
 
 Valtakunnallisessa liikennemallissa autoliikenteen pääkulkumuoto on h (auto). Kaikilla aux. auto -kulkumuotoa käyttävillä linkeillä on sallittava myös pääkulkumuoto h.
+
+Jokaisella linkillä tulee olla vähintään yksi kulkumuoto. Linkillä ei saa olla pelkästään kulkumuotoa h: jos h on määritetty, linkillä tulee olla myös jokin muu kulkumuoto. Malli tarkistaa kulkumuotojen tyypit ennen jokaista ajoa.
 
 Joukkoliikenteen kulkumuodot (transit) määrittävät joukkoliikennelinjojen käyttämät linkit. Joukkoliikenteen apukulkumuodoilla (aux. transit) kuvataan esimerkiksi kävelyä pysäkeille ja vaihtoyhteyksiä linjojen välillä.
 
@@ -123,29 +132,36 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 | vdf             | sijoittelufunktion nro (määritetään malliajossa automaattisesti)   |
 | ul1 | linkin yhden kaistan kapasiteetti (ajon./h/kaista) (määritetään malliajossa automaattisesti) |
 | ul2             | linkin vapaa nopeus (km/h) (määritetään malliajossa automaattisesti)      |
-| ul3             | (ei käytössä)  |
-| @ferry_wait_time |  Lauttojen odotusaika (min)                        |
+| ul3             | Taustaliikenne (määritetään malliajossa automaattisesti: bussien ajoneuvomäärä, henkilöliikenteen sijoittelussa kuorma-autot tai tavaraliikenteen lisäkustannus). Älä tallenna attribuuttiin omia tietojasi, sillä malli ylikirjoittaa sen. |
+| @ferry_wait_time |  Lauttojen odotusaika (min). Lisätään autolauttalinkkien matka-aikaan. | ✓ |
 | @toll_cost_vrk      | Tienkäyttömaksu VRK-ajanjaksolla |
-| @freight_gate      |  Tavaraliikenteen satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id (positiivinen lähdesolmuille, negatiivinen kohdesolmuille)  |
-| #buslane            | Tosi, jos linkillä on joukkoliikennekaista |
-| #car_time_aht      | Ennalta määritetty auton matka-aika (AHT)    |
-| #car_time_iht      |  Ennalta määritetty auton matka-aika (IHT)   |
-| #car_time_it      |  Ennalta määritetty auton matka-aika (IT)   |
-| #car_time_pt      | Ennalta määritetty auton matka-aika (PT)    |
-| #car_time_vrk      |  Ennalta määritetty auton matka-aika (VRK)   |
+| @freight_gate      |  Tavaraliikenteen satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id (positiivinen lähdesolmuille, negatiivinen kohdesolmuille). 0, jos linkki ei johda satamaan tai raiteille.  | ✓ |
+| #buslane            | Tosi, jos linkillä on joukkoliikennekaista. Viivytysfunktioksi vaihdetaan tällöin bussikaistaversio (funktiot 6–10), jossa yksi kaista on varattu busseille, eikä busseja lasketa autoliikenteen taustaliikenteeksi. | ✓ |
+| #car_time_aht      | Ennalta määritetty auton matka-aika (AHT)    | ✓ |
+| #car_time_iht      |  Ennalta määritetty auton matka-aika (IHT)   | ✓ |
+| #car_time_it      |  Ennalta määritetty auton matka-aika (IT)   | ✓ |
+| #car_time_pt      | Ennalta määritetty auton matka-aika (PT)    | ✓ |
+| #car_time_vrk      |  Ennalta määritetty auton matka-aika (VRK)   | ✓ (pitkien matkojen malli) |
 | #dr_leveys      | Linkin leveys (Digiroad) |
 | #dr_linkkityyp      | Linkin tyyppi (Digiroad) |
 | #dr_nopeusrajoitus      | Linkin nopeusrajoitus (Digiroad) |
 | #dr_toiminn_lk      | Linkin toiminnallinen luokka (Digiroad) |
-| #extra_cost      | Ennalta määritetty lisäkustannus |
-| #hinta_vrk      | Hinta VRK-ajanjaksolla (e/km) |
+| #extra_cost      | Ennalta määritetty lisäkustannus tavaraliikenteelle (kokonaisluku)    |
+| #hinta_aht      | Tienkäyttö- tai ruuhkamaksu AHT-ajanjaksolla (€) |
+| #hinta_pt      | Tienkäyttö- tai ruuhkamaksu PT-ajanjaksolla (€) |
+| #hinta_iht      | Tienkäyttö- tai ruuhkamaksu IHT-ajanjaksolla (€) |
+| #hinta_vrk      | Hinta VRK-ajanjaksolla |
 | #road_number      |  Tien numero valtion omistamilla teillä   |
 | #road_part_nr_max      |  Suurin tienosan numero linkillä   |
 | #road_part_nr_min      | Pienin tienosan numero linkillä    |
 | #street_name      | Kadun nimi suomeksi    |
-| #traffic_light      | Tosi, jos linkki on lähellä liikennevaloa    |
+| #traffic_light      | Tosi, jos linkki on lähellä liikennevaloa. Jos linkin vapaa nopeus on alle 65 km/h, kaistakapasiteetti kerrotaan luvulla 0,9 ja vapaa nopeus luvulla 0,85.    |
 
 *✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
+
+Ennalta määritetyt auton matka-ajat (`#car_time_*`) ovat minuutteja. Niitä käytetään tallennetun nopeuden sijoittelussa, ja ne voivat olla 0, mutta eivät negatiivisia. Malli kirjoittaa arvot jokaisen ajon lopussa tulostiedostoon `netfield_links_<osamalli>.txt`, jonka voi tuoda toiseen skenaarioon, jotta sijoittelut voidaan ajaa samoilla nopeuksilla (ks. [Mallijärjestelmän käyttö](mallijarjestelman_kaytto.md)).
+
+Jos tienkäyttömaksukentät (`#hinta_*`) ovat verkossa, maksut huomioidaan autoliikenteen reitinvalinnassa ja tuloksiin tuotetaan tienkäyttömaksumatriisit.
 
 
 *Taulukko 9. Linkkityypit (link type)*
@@ -169,7 +185,7 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 
 | Linkkityyppi | Kuvaus | Toiminnallinen luokka | Nopeusrajoitus (km/h) | Tien leveys | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) |
 |---|---|---|---|---|---|---|---|
-| 101 | moottoritie | 1 | 120 | | 1 | 2100 | 113 |
+| 101 | moottoritie | 1 | 120 | pääväylä | 1 | 2100 | 113 |
 | 103 | moottoritie, kaistoja ≥3 | 1| 120 | | 1 | 1900 | 113 |
 | 104 | moottoritie |1 | 100 | | 1 | 2000 | 97 |
 | 105 | moottoritie, kaistoja ≥3 | 1| 100 | | 1 | 1800 | 97 |
@@ -216,6 +232,46 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 | 138 | yksityistie |5 | 30 | | 5 | 500 | 18 |
 | 141 | yksityistie |5 | 20 | | 5 | 500 | 12 |
 
+Edellisen taulukon lisäksi malli tuntee seuraavat linkkityypit, joille se asettaa viivytysfunktion, kaistakapasiteetin ja vapaan nopeuden:
+
+*Taulukko x. Muut linkkityypit*
+
+| Linkkityyppi | Kuvaus | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) |
+|---|---|---|---|---|
+| 102 | moottoritie | 1 | 2100 | 113 |
+| 118 | pääväylä | 3 | 1400 | 97 |
+| 119 | pääväylä | 3 | 1400 | 90 |
+| 120 | | 3 | 1350 | 81 |
+| 123 | pääväylä | 3 | 1250 | 54 |
+| 130 | kokoojaväylä | 5 | 900 | 48 |
+| 131 | kokoojaväylä | 5 | 900 | 41 |
+| 132 | kokoojaväylä | 5 | 900 | 36 |
+| 144 | autolautta | 11 | 500 | 20 |
+| 99 (sekä linkkityypit, joiden kaksi viimeistä numeroa ovat 84–88 tai 98) | syöttölinkki | 99 | – | 50 |
+
+Muut linkkityyppejä koskevat säännöt:
+- __Erikoislinkit:__ linkeille, jotka eivät sovi vakioluokkiin, käytetään linkkityyppejä, joiden kaksi viimeistä numeroa ovat 91 (moottoritie), 92 (valtatie), 93 tai 94 (pääväylä) tai 95 (katu). Käyttäjän tulee tällöin syöttää vapaa nopeus attribuuttiin ul2. Viivytysfunktio valitaan tietyypin mukaan.
+- __Kiinteän nopeuden linkit:__ jos linkin viivytysfunktio on 90, malli ei muuta sitä. Matka-aika lasketaan tällöin linkin pituudesta ja ul2-attribuutin nopeudesta.
+- __Vaihtokävelylinkit:__ linkit, joiden linkkityypin kaksi viimeistä numeroa ovat 70, voivat olla nollan pituisia. Kaikkien muiden linkkien pituuden tulee olla suurempi kuin nolla.
+- __Kielletyt linkkityypit:__ linkkityyppejä 100 ja 999 ei saa käyttää.
+- __Linkit ilman autoliikennettä__ (ei autokulkumuotoja) saavat viivytysfunktion 0.
+
+*Taulukko x. Malliajon alussa luotavat viivytysfunktiot*
+
+| Funktio | Käyttö |
+|---|---|
+| fd1–fd5 | Autolinkit tietyypeittäin: 1 moottoritie, 2 valtatie, 3 monikaistainen pääväylä, 4 pääväylä, 5 kokooja- ja tonttikatu |
+| fd6–fd10 | Kuten fd1–fd5, linkillä on bussikaista |
+| fd11 | Autolautta: matka-aika nopeudesta sekä lautan odotusaika |
+| fd90, fd91, fd99 | Kiinteä nopeus ul2-attribuutista (kiinteän nopeuden linkit, tallennetun nopeuden sijoittelu, syöttölinkit) |
+| fd97 | Liityntäpysäköinnin syöttölinkit (kävelynopeus 5 km/h) |
+| fd70–fd78, fd98 | Pyöräily |
+
+Pankissa jo olevat samannumeroiset funktiot ylikirjoitetaan. Autoliikenteen funktiot ovat BPR-tyyppisiä funktioita, jotka kuvaavat matka-ajan kasvua liikennemäärän lähestyessä kapasiteettia. Kapasiteetin ylittävällä osalla funktiota on jatkettu lineaarisesti.
+
+#### Pyöräilyverkko
+Pyöräily käyttää linkkejä, joilla on kulkumuoto `f`. Pyöräilysijoittelun ajaksi kaikille pyöräilylinkeille asetetaan väliaikaisesti pääkulkumuoto `h`.
+
 ### Tie- ja katuverkon koodausperiaatteet
 
 Aluesyötöt yhdistetään lähimpään solmuun, joka on saavutettavissa ajoneuvoilla. Solmusta täytyy lähteä linkki, joka on tyyppiä "Yksiajorataisen tien osa". Toisin sanoen autoliikenteen syöttölinkkiä ei yhdistetä moottoritiehen, ramppeihin, liikenneympyriin tai kaksiajorataisiin katuihin/teihin.
@@ -235,31 +291,49 @@ Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto 
 
 *Taulukko x. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.
 
-| Ajoneuvotyyppi (vehicle) | Kuvaus | Kulkumuoto (mode) |
+| Ajoneuvotyyppi (vehicle) | Kuvaus | Kulkumuoto (mode) | Ajoneuvossa vietetyn ajan painokerroin |
+|---|---|---|---|
+| 1 | Linja-auto | `b` | 1,0 |
+| 2 | Raitiovaunu | `t` | 0,8 |
+| 3 | Juna | `j` | 0,8 |
+| 4 | Metro | `m` | 0,8 |
+| 5 | Lautta | `w` | 1,0 |
+| 6 | Lentokone | `l` | 1,0 |
+| 7 | Pikaraitiovaunu | `p` | 0,8 |
+| 8 | Pitkän matkan linja-auto | `e` | 1,0 |
+| 9 | Lähijuna | `r` | 1,0 |
+| 10 | Runkobussi | `g` | 1,0 |
+| 11 | VR:n lähijuna | `j` | 1,0 |
+| 12 | Kiskobussi | `j` | 1,0 |
+| 13 | Pitkän matkan päivälautta | `d` | 1,0 |
+| 14 | Pitkän matkan yölautta | `d` | 1,0 |
+| 20 | Kotimaan vesialus | `W` | |
+| 23 | Konttialus | `C` | |
+| 24 | Yleinen rahtialus | `G` | |
+| 25 | LNG-tankkeri | `L` | |
+| 26 | Öljytankkeri | `O` | |
+| 27 | Tuotetankkeri | `P` | |
+| 28 | Ro-ro-alus | `R` | |
+| 30 | Tavarajuna, diesel | `D` | |
+| 31 | Tavarajuna, sähkö | `J` | |
+
+Ajoneuvotyyppien numeroilla on mallissa kiinteä merkitys. Ajoneuvossa vietetty aika painotetaan (koettu matka-aika) taulukon kertoimella. Ajoneuvojen istuma- ja kokonaiskapasiteetit annetaan ajoneuvotiedostossa.
+
+### Nousu- ja vaihtosakot
+
+Noususakot (min) riippuvat kulkumuodosta. Pitkien matkojen sijoittelussa pitkän matkan kulkumuodoille käytetään suurempia sakkoja.
+
+| Kulkumuoto | Paikallinen sijoittelu | Pitkien matkojen sijoittelu |
 |---|---|---|
-| 1 | Linja-auto | `b` |
-| 2 | Raitiovaunu | `t` |
-| 3 | Juna | `j` |
-| 4 | Metro | `m` |
-| 5 | Lautta | `w` |
-| 6 | Lentokone | `l` |
-| 7 | Pikaraitiovaunu | `p` |
-| 8 | Pitkän matkan linja-auto | `e` |
-| 9 | Lähijuna | `r` |
-| 10 | Runkobussi | `g` |
-| 11 | VR:n lähijuna | `j` |
-| 12 | Kiskobussi | `j` |
-| 13 | Pitkän matkan yölautta | `d` |
-| 14 | Pitkän matkan päivälautta | `d` |
-| 20 | Kotimaan vesialus | `W` |
-| 23 | Konttialus | `C` |
-| 24 | Yleinen rahtialus | `G` |
-| 25 | LNG-tankkeri | `L` |
-| 26 | Öljytankkeri | `O` |
-| 27 | Tuotetankkeri | `P` |
-| 28 | Ro-ro-alus | `R` |
-| 30 | Tavarajuna, diesel | `D` |
-| 31 | Tavarajuna, sähkö | `J` |
+| Linja-auto `b` | 5 | 5 |
+| Pitkän matkan linja-auto `e` | 5 | 25 |
+| Runkobussi `g` | 3 | 3 |
+| Raitiovaunu `t`, pikaraitiovaunu `p`, metro `m`, lautta `w`, lähijuna `r` | 0 | 0 |
+| Pitkän matkan lautta `d` | 5 | 25 |
+| Kaukojuna `j` | 0 | 25 |
+| Lentoliikenne `l` | 0 | 25 |
+
+Lisäksi jokaisesta vaihdosta lisätään 10 minuutin vaihtosakko. Odotusaika lasketaan efektiivisistä vuoroväleistä (ks. kohta _Joukkoliikennelinjastot_), ja siihen lisätään vuorovälin vaihtelusta laskettu odotusaikasakko (`@wait_time_dev`) kertoimella 3,5. Kävelyaika (aux. transit) painotetaan sijoitteluluokassa `transit` kertoimella 1,75 ja muissa joukkoliikenteen sijoitteluluokissa (lentoliikenne sekä auto- ja taksiliityntäluokat) kertoimella 2,5.
 
 ### Joukkoliikennelinjojen pysähtymiskäyttäytyminen
 Joukkoliikennelinjoilla on linja-attribuutti `#keep_stops`, jolla määritetään, miten linjan pysähtymiskäyttäytyminen määräytyy.
@@ -271,11 +345,20 @@ Attribuutti `#keep_stops` koskee vain seuraavia kulkumuotoja: `b` (bussi), `e` (
 
 ### Joukkoliikennelinjastot
 
-Joukkoliikenteen matka-ajat tulevat suoraan segmenttikohtaisesta attribuutista us1, paitsi busseille. Bussien (kulkumuodot b, g ja e) ajoajat määritetään automaattisesti malliajon autosijoittelussa, paitsi jos tiellä on erillinen bussikaista, jolloin ajoaika määräytyy linkin vapaan nopeuden mukaan. Sijoittelussa otetaan huomioon dwell time (dwt) -attribuutissa busseille merkatut yli kahden minuutin pysähtymisajat, muuten ajoaikaan lisätään kiinteä viive 24 sekuntia per pysäkki.
+Joukkoliikenteen matka-ajat tulevat suoraan segmenttikohtaisesta attribuutista us1, paitsi busseille. Bussien (kulkumuodot b, g ja e) ajoajat määritetään automaattisesti malliajon autosijoittelussa, paitsi jos tiellä on erillinen bussikaista, jolloin ajoaika määräytyy linkin vapaan nopeuden mukaan. Sekaliikenteessä bussin ajoaika on autoliikenteen ruuhkautunut matka-aika, kuitenkin enintään 100 km/h nopeutta vastaava. Sijoittelussa otetaan huomioon dwell time (dwt) -attribuutissa busseille merkatut yli kahden minuutin pysähtymisajat, muuten ajoaikaan lisätään kiinteä viive 24 sekuntia per pysäkki.
+
+Vuorovälejä koskevat säännöt:
+- Jokaisella joukkoliikennelinjalla tulee olla jokaisella ajanjaksolla vähintään 0,02 minuutin vuoroväli. Muuten ajo pysähtyy virheeseen _"Headway missing for line …"_.
+- Jos linja ei liikennöi jollakin ajanjaksolla, käytä vuoroväliä 999. Tällaiset linjat jätetään pois autolinkkien bussitaustaliikenteestä ja joukkoliikenteen ajoneuvokilometreistä.
+- Malli muuntaa vuorovälit _efektiivisiksi vuoroväleiksi_, jotka kuvaavat koettua odotusaikaa. Paikallisliikenteessä odotusaika on tiheillä vuoroväleillä likimain verrannollinen vuoroväliin ja kasvaa harvemmilla vuoroilla hitaammin.
+
+### Pitkän matkan joukkoliikenne ja liityntäpysäköinti
+
+Pitkän matkan joukkoliikenteeseen voi pitkien matkojen mallissa liittyä autolla tai taksilla. Kaukojunaan (`j`), pitkän matkan lauttaan (`d`) ja lentoliikenteeseen (`l`) voi liittyä sekä autolla että taksilla, pitkän matkan linja-autoon (`e`) vain taksilla. Linkit, jotka yhdistävät kulkumuotojen `j`, `d` ja `l` pysäkit verkkoon mutta joita linjat eivät itse käytä, käsitellään automaattisesti liityntäpysäköinnin syöttölinkkeinä.
 
 ### Joukkoliikenteen hinnoittelu
 
-Jokaiselle joukkoliikennelinjalle tulee määrittää hintatunnus eli hinta-id (attribuutti ut1). Hinta-id kuvaa linjalla käytettävää hinnoitteluperustetta, ja sitä vastaavat varsinaiset hinnat on määritetty mallijärjestelmän puolella. Hinta-id ja niiden selitykset on esitetty taulukossa x.
+Jokaiselle joukkoliikennelinjalle tulee määrittää hintatunnus eli hinta-id (attribuutti ut1). Hinta-id kuvaa linjalla käytettävää hinnoitteluperustetta. Sitä vastaavat varsinaiset hinnat määritetään hintadatan (cost.json) kohdassa `transit_cost`: malli hakee linjan hinnan siitä `transit_cost`-kohdan merkinnästä, jonka `id` on sama kuin linjan ut1-arvo, ja käyttää sen nousukohtaista hintaa (`firstb_single`, €) ja kilometrihintaa (`dist_single`, €/km). Jos hintadatasta ei löydy linjan hinta-id:tä, ajo pysähtyy virheeseen _No transit fares for operator id N_. Hinta-id ja niiden selitykset on esitetty taulukossa x.
 
 Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinkertaisesti EMME-mallissa. Tämä on ongelma seudullisilla junilla, joita voi käyttää paikallisen toimivaltaisen viranomaisen lipuilla (HSL, NYSSE), mutta alueen ulkopuolella tarvitaan VR:n lippu. Tästä johtuen HSL:n ja NYSSE:n alueelle päättyvät R, T, Z, M ja D-junat on lisätty malliin tuplana: Toisella linjalla nousut/poistumiset on kielletty HSL/NYSSE-alueella siten, että linjaa voi käyttää vain seuturajat ylittävään matkaan. Toinen linja on katkaistu seudun sisälle, jolloin sitä käytetään vain seudun sisäisiin matkoihin. Näille linjoille on eri hintafunktiot. Tässä on hyödynnetty custom transit lines –ominaisuutta. 
 
@@ -336,9 +419,9 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 | `hdw` | Vuoroväli (määritetään malliajossa) | |
 | `speed` | Oletusnopeus (määritetään malliajossa) | |
 | `lay1` | Päätepysäkin seisonta-aika minuutteina (määritetään malliajossa) | |
-| `ut1` | Henkilöliikenteessä joukkoliikennelinjan hinta-id. Tavaraliikenteessä laivalinjan pituus (km) | ✓ | Laiva ✓ |
-| `ut2` | Henkilöliikenteessä ei käytössä. Tavaraliikenteessä laivalinjan frekvenssi (lähtöjen määrä vuodessa). | |Laiva ✓ |
-| `ut3` | Ei käytössä. | |
+| `ut1` | Henkilöliikenteessä joukkoliikennelinjan hinta-id (vastaa hintadatan `transit_cost`-kohdan `id`-arvoa). Tavaraliikenteessä laivalinjan pituus (km) | ✓ | Laiva ✓ |
+| `ut2` | Henkilöliikenteessä efektiivinen vuoroväli (määritetään malliajossa, ylikirjoitetaan). Tavaraliikenteessä laivalinjan frekvenssi (lähtöjen määrä vuodessa). | |Laiva ✓ |
+| `ut3` | Ajoneuvossa vietetyn ajan painokerroin (määritetään malliajossa, ylikirjoitetaan). | |
 | `#agency_name` | Operaattorin nimi. | |
 | `#departures_per_day` | Vuorojen määrä per vrk | |
 | `#hdw_aht` | Vuoroväli aamuhuipussa (klo 6–9). | ✓ |
@@ -365,7 +448,7 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 | `dwfac` | (ei käytössä) |
 | `ttf` | Joukkoliikenteen matka-aikafunktio (määrittyy malliajon aikana automaattisesti) |
 | `us1` | Matka-aika pysäkkien välillä (min), ei käytössä kulkumuodoilla b, g ja e |
-| `us2` | (ei käytössä) |
+| `us2` | Matkan pituuteen perustuva lipunhinta (määritetään malliajossa, ylikirjoitetaan) |
 | `us3` | (ei käytössä) |
 
 
@@ -383,4 +466,19 @@ Verkolle on muodostettu myös @freight_gate attribuutti, joka kertoo satamiin ja
 Digiroadin ajoneuvon suurin sallittu pituus ja suurin sallittu massa -kenttiä on hyödynnetty raskaan liikenteen rajoitusten kuvaamisessa. Jos linkillä ajoneuvon suurin sallittu pituus on enintään 22 metriä tai massarajoitus enintään 42 000 kg, on sen käyttö kielletty yhdistelmäajoneuvoilta. Jos ajoneuvon suurin sallittu pituus on 6 metriä tai massarajoitus 8000 kg, on linkeillä lisäksi kielletty kuorma-autot.
 
 Tiekuljetukset voivat käyttää pääosin kaikkea tieverkkoa. Suurten kaupunkien keskusta-alueille on kuitenkin kuvattu raskaiden ajoneuvojen rajoituksia. Kattavaa tietoa rajoituksista ei ole. Rajoituksia voidaan jatkossa kuvata myös muille, nyt rajoittamattomille alueille tai yksittäisille tienkohdille. Rajoitukset on kuvattu siten, että rajoitusalueen läpi ei pääse ajamaan, mutta jokaiselle osa-alueelle pääsee yhtä reittiä myös eri ajoneuvoluokkien raskailla ajoneuvoilla.
+
+## Verkon tarkistukset
+
+Ennen jokaista käyttöliittymästä käynnistettyä ajoa lähtötiedostot ja verkko tarkistetaan. Ajo pysähtyy virheilmoitukseen, jos
+- verkosta puuttuu pakollinen network field -attribuutti (`#transit_stop_b`, `#transit_stop_e`, `#transit_stop_g`, `#transit_stop_p`, `#transit_stop_t`, `#subarea`, `#buslane`, `#keep_stops` sekä ajon ajanjaksojen `#car_time_<ajanjakso>` ja `#hdw_<ajanjakso>`; alueellisissa osamalleissa aht, pt, iht ja it, pitkien matkojen mallissa vrk) tai ekstra-attribuutti (`@ferry_wait_time`, `@freight_gate`)
+- kulkumuoto puuttuu tai sen tyyppi on väärä
+- linkillä ei ole kulkumuotoja tai sillä on pelkästään kulkumuoto `h`
+- linkin linkkityyppi on 100 tai 999
+- muun kuin vaihtokävelylinkin pituus on nolla
+- autolinkin linkkityyppi ei ole mallin tuntema
+- autolinkin ennalta määritetty matka-aika on negatiivinen
+- joukkoliikennelinjalta puuttuu vuoroväli jollakin ajanjaksolla
+- joukkoliikennelinjan hintatunnukselle ei löydy hintatietoja
+- Emme-pankissa ei ole riittävästi tilaa ekstra-attribuuteille
+- Emme-skenaarion otsikko on yli 56 merkkiä pitkä.
 

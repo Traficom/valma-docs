@@ -5,6 +5,7 @@ readme_index:
     
 plugins:
   - jemoji
+  - jekyll-remote-theme
 
 
 markdown: kramdown
