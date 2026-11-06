@@ -413,7 +413,7 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 | Attribuutti | Kuvaus | Pakollinen henkilöliikenteessä | Pakollinen tavaraliikenteessä |
 |---|---|---|---|
 | `name` | Linjan yksilöivä tunnus. | ✓ | ✓ |
-| `description` | Linjan kuvaus. | |
+| `description` | Linjan kuvaus. | ✓ | ✓ |
 | `mode` | Linjan kulkumuoto, esim. `b`, `e`, `g`, `p` tai `t`. | ✓ | ✓ |
 | `vehicle` | Ajoneuvotyyppi. | ✓ | ✓ |
 | `hdw` | Vuoroväli (määritetään malliajossa) | |
@@ -424,8 +424,8 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 | `ut3` | Ajoneuvossa vietetyn ajan painokerroin (määritetään malliajossa, ylikirjoitetaan). | |
 | `#agency_name` | Operaattorin nimi. | |
 | `#departures_per_day` | Vuorojen määrä per vrk | |
-| `#hdw_aht` | Vuoroväli aamuhuipputunnissa (klo 6–9). | ✓ |
-| `#hdw_iht` | Vuoroväli iltahuipputunnissa (klo 15–18). | ✓ |
+| `#hdw_aht` | Vuoroväli aamuhuipussa (klo 6–9). | ✓ |
+| `#hdw_iht` | Vuoroväli iltahuipussa (klo 15–18). | ✓ |
 | `#hdw_it` | Vuoroväli iltatunnissa (klo 18–21). | ✓ |
 | `#hdw_pt` | Vuoroväli päivätunnissa (klo 9–15). | ✓ |
 | `#hdw_vrk` | Vuorokauden keskimääräinen vuoroväli (vuorojen määrä per vrk / 960) | ✓ |
@@ -463,7 +463,7 @@ Satamat yhdistyvät aina vesiväyliin ja niiden osalta, joihin on merkitty tieto
 
 Verkolle on muodostettu myös @freight_gate attribuutti, joka kertoo satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id:n. Tämä attribuutti palvelee kuorma-autolla tehtävien osamatkojen tallennusta matriisimuotoiseksi sijoittelun yhteydessä. Attribuuttia käytetään EMME:n traversal matrix työkalussa.
 
-Digiroadin ajoneuvon suurin sallittu pituus ja suurin sallittu massa -kenttiä on hyödynnetty raskaan liikenteen rajoitusten kuvaamisessa. Jos linkillä ajoneuvon suurin sallittu pituus on vähintään 22 metriä tai massarajoitus 42 000 kg, on sen käyttö kielletty yhdistelmäajoneuvoilta. Jos ajoneuvon suurin sallittu pituus on 6 metriä tai massarajoitus 8000 kg, on linkeillä lisäksi kielletty kuorma-autot.
+Digiroadin ajoneuvon suurin sallittu pituus ja suurin sallittu massa -kenttiä on hyödynnetty raskaan liikenteen rajoitusten kuvaamisessa. Jos linkillä ajoneuvon suurin sallittu pituus on enintään 22 metriä tai massarajoitus enintään 42 000 kg, on sen käyttö kielletty yhdistelmäajoneuvoilta. Jos ajoneuvon suurin sallittu pituus on 6 metriä tai massarajoitus 8000 kg, on linkeillä lisäksi kielletty kuorma-autot.
 
 Tiekuljetukset voivat käyttää pääosin kaikkea tieverkkoa. Suurten kaupunkien keskusta-alueille on kuitenkin kuvattu raskaiden ajoneuvojen rajoituksia. Kattavaa tietoa rajoituksista ei ole. Rajoituksia voidaan jatkossa kuvata myös muille, nyt rajoittamattomille alueille tai yksittäisille tienkohdille. Rajoitukset on kuvattu siten, että rajoitusalueen läpi ei pääse ajamaan, mutta jokaiselle osa-alueelle pääsee yhtä reittiä myös eri ajoneuvoluokkien raskailla ajoneuvoilla.
 
