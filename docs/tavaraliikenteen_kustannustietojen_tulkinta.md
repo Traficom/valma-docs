@@ -5,6 +5,7 @@ Huomionarvoista on, että tiedoston kustannuskomponentit vastaavat muuten kappal
 
 Kustannustiedostoon sisältyvien tavararyhmien (12 tavararyhmää = estimointiryhmittely) selitteet löytyvät taulukosta 1. 
 
+
 *Taulukko 1. Kustannustiedostosta löytyvät tavararyhmien (estimointiryhmittely) selitteet*
 | Tavararyhmän lyhenne | Tavararyhmän selite |
 |---------------|---------|
@@ -22,6 +23,7 @@ Kustannustiedostoon sisältyvien tavararyhmien (12 tavararyhmää = estimointiry
 
 Tiedostoon sisältyvien kuljetusmuotojen ja -tyyppien mallissa käytetyt nimet ja selitteet löytyvät taulukoista 2-4.
 
+
 *Taulukko 2. Kustannustiedostosta löytyvät ajoneuvoluokat tieliikenteelle*
 | Ajoneuvoluokka | Nimi kustannustiedostossa |
 |---------------|---------|
@@ -31,11 +33,13 @@ Tiedostoon sisältyvien kuljetusmuotojen ja -tyyppien mallissa käytetyt nimet j
 | Täysperävaunuyhdist, KATP (<64t) | trailer-truck |
 | HCT-rekka, HCT (<76t)  | trailer_truck_76t |
 
+
 *Taulukko 3. Kustannustiedostosta löytyvät ajoneuvoluokat rautatieliikenteelle*
 | Ajoneuvoluokka | Nimi kustannustiedostossa |
 |---------------|---------|
 | Sähköjuna | freight_train_J |
 | Dieseljuna | freight_train_D |
+
 
 *Taulukko 4. Kustannustiedostosta löytyvät ajoneuvoluokat alusliikenteelle*
 | Ajoneuvoluokka | Nimi kustannustiedostossa |
@@ -131,6 +135,7 @@ Kilometrikustannus eroaa junatyyppien välillä. "time_J" tarkoittaa sähköjuna
 
 Kotimaan alusliikenteessä on valittavana vain yksi alustyyppi (W) tavararyhmäkohtaisesti taulukon 4 mukaisesti. Jokaiselle tavararyhmälle on määritetty edustava laivatyyppi - syväys kombinaatio, jolla tavararyhmää kotimaan liikenteessä kuljetetaan. Taulukko kotimaan laivaliikenteessä edustavasta laivatyyppisyväys kombinaatiosta tavararyhmittäin löytyy alta.
 
+
 *Taulukko 5. Kotimaan laivaliikenteessä edustava laivatyyppi-syväys kombinaatio tavararyhmittäin.*
 | Tavararyhmä | Alustyyppi | Syväys |
 |---------------|---------|---------|
@@ -163,7 +168,7 @@ Löytyy json-tiedoston polusta:
 
 Kustannukset eriteltynä muodossa €/t/km. Myöhemmin se kerrotaan matkan pituudella (laivamatkan pituus liikenneverkolta laskettuna) ja saadaan kustannus muodossa €/t.
 
-#### **Aluskuljetusten aikatriperusteinen liikennöintikustannus**
+#### **Aluskuljetusten aikaperusteinen liikennöintikustannus**
 
 Löytyy json-tiedoston polusta:
 
@@ -171,15 +176,15 @@ Löytyy json-tiedoston polusta:
 
 Kustannukset eriteltynä muodossa €/t/min. Myöhemmin se kerrotaan matka-ajalla (laivamatkan aika liikenneverkolta laskettuna) ja saadaan kustannus muodossa €/t.
 
-##**Ulkomaan mallin kuljetuskustannusfunktioiden yksikköarvot tiedostossa**
+## **Ulkomaan mallin kuljetuskustannusfunktioiden yksikköarvot tiedostossa**
 
 Ulkomaan mallin kustannuksia lasketaan vain ulkomailla ajettavan osuuden osalta. Kotimaan osuudessa kuljetustapavalinnat jakaantuvat kunkin alueparin välillä kotimaan mallin kyseisen hyödykeryhmän kuljetustapajaon mukaisesti. 
 
-###**Tiekuljetusten kustannukset (ulkomaa)**
+### **Tiekuljetusten kustannukset (ulkomaa)**
 
 #### **Tiekuljetusten terminaalikustannus**
 
-käyttää samaa terminaalikustannusta kuin kotimaan liikennöinnissä (ks. yllä)
+Käyttää samaa terminaalikustannusta kuin kotimaan liikennöinnissä (ks. yllä)
 
 #### **Tiekuljetusten kilometriperusteinen liikennöintikustannus**
 
@@ -188,6 +193,40 @@ Muodostuu täysin samalla tavalla kuin kotimainen kilometriperusteinen liiken-n�
 #### **Tiekuljetusten aikaperusteinen liikennöintikustannus**
 
 Muodostuu täysin samalla tavalla kuin kotimainen aikaperusteinen liikennöintikustannus, mutta jakaantuminen eri käyttövoimiin menee "foreign_distribution"-parametrin mu-kaan. "foreign_distribution"-parametri löytyy samasta json-polusta kuin "do-mestic_distribution" (ks. kotimaan liikenteen vastaava kappale yllä).
+
+### **Rautatiekuljetusten kustannukset (ulkomaa)**
+
+Kaikki rautatiekuljetusten kustannukset muodostuvat samalla tavalla ulkomaan mallissa kuin kotimaassa. Katso kotimaan vastaava kappale.
+
+### **Aluskuljetusten kustannukset (ulkomaa)**
+
+Ulkomaanliikenteessä kaikki tavararyhmälle määritetyt laivatyypit ja syväykset ovat mahdollisia. Kustannus-json sisältää ainoastaan ne tavararyhmä-laivatyyppi-syväys kombinaatiot, jotka mielletään mahdollisiksi kuljetusvaihtoehdoiksi. 
+
+#### **Aluskuljetusten terminaalikustannus**
+
+Löytyy json-tiedoston polusta:
+
+"freight" -> *tavararyhmä* -> "foreign_ship" -> *alustyyppi* -> *syväys* -> "terminal_cost"
+
+Kustannukset eriteltynä muodossa €/t.
+
+#### **Aluskuljetusten kilometriperusteinen liikennöintikustannus**
+
+Löytyy json-tiedoston polusta:
+
+"freight" -> *tavararyhmä* -> "foreign_ship" -> *alustyyppi* -> *syväys* -> "dist"
+
+Kustannukset eriteltynä muodossa €/t/km. Myöhemmin se kerrotaan matkan pituudella (laivamatkan pituus liikenneverkolta laskettuna) ja saadaan kustan-nus muodossa €/t.
+
+#### **Aluskuljetusten aikaperusteinen liikennöintikustannus**
+
+Löytyy json-tiedoston polusta:
+
+"freight" -> *tavararyhmä* -> "foreign_ship" -> *alustyyppi* -> *syväys*  "time"
+
+Kustannukset eriteltynä muodossa €/t/min. Myöhemmin se kerrotaan matka-ajalla (laivamatkan aika liikenneverkolta laskettuna) ja saadaan kustannus muodossa €/t.
+
+
 
 
 
