@@ -205,7 +205,7 @@ Kukin skenaario vastaa yhtä verkkojen, aluetietojen ja hintadatan yhdistelmää
 - Koko Suomen koontiajo ajetaan käyttöliittymästä aina tallennetun nopeuden sijoittelulla (koko Suomen ruuhkasijoittelu voisi viedä aikaa jopa viikon).
   Koko Suomen koontiajo on tarpeellinen vain, jos tarkastelukohde ulottuu useampaan osamalliin.
   Jos skenaariossa on ajettavia osamalleja, niiden linkkimatka-ajat siirtyvät automaattisesti koko Suomen ajoon.
-  Lisää tietoja tästä kohdassa [Tallennetun nopeuden sijoittelu (koko Suomen koontiajo)](#tallennetun-nopeuden-sijoittelu-(koko-suomen-koontiajo).
+  Lisää tietoja tästä kohdassa [Tallennetun nopeuden sijoittelu (koko Suomen koontiajo)](#tallennetun-nopeuden-sijoittelu-koko-suomen-koontiajo).
 
 Kun skenaario ajetaan, käyttöliittymä ajaa sen osat peräkkäin erillisinä malliajoina tässä järjestyksessä:
 1. Työasionti - ja yön yli -matkojen malli, jos _Aja_ on valittu
