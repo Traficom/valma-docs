@@ -94,7 +94,7 @@ Tämän jälkeen kustannus jaetaan vielä tavararyhmäkohtaisella keskikuormituk
 
 Näin saadaan kustannus, joka on muodossa €/t/km. Myöhemmin se kerrotaan matkan pituudella (automatkan pituus liikenneverkolta laskettuna) ja saadaan kustannus muodossa €/t.
 
-#### **-	Tiekuljetusten aikaperusteinen liikennöintikustannus**
+#### **Tiekuljetusten aikaperusteinen liikennöintikustannus**
 
 Löytyy json tiedoston avaimesta:
 
