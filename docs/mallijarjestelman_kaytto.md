@@ -7,12 +7,14 @@ sort: 2
 
 Tässä ohjeessa kerrotaan, mistä löydät materiaalit malliajoihin ja miten suoritat ajoja VALMA-käyttöliittymällä.
 
-### Valmistelu
+## Valmistelu
 
-1. Lataa malliajon tiedot [Sharefilestä](https://traficom.sharefile.eu/home/shared) VALMA-lahtotiedot kansiosta. Pyydä pääsyoikeutta Traficomilta.
+1. Lataa malliajon tiedot [Sharefilestä](https://traficom.sharefile.eu/home/shared) VALMA-lahtotiedot kansiosta.
+   Pyydä pääsyoikeutta [Traficomilta](https://traficom.fi/fi/liikennejarjestelma/liikenteen-analyysit-ja-ennusteet/valtakunnallinen-liikennemallijarjestelma-valma).
+   Tarkempia tietoja näistä löytyy [Lähtötietojen kuvauksesta](malliajon_lahtotiedot.md)
    - Baseline_data: lähtökysyntämatriisit (zip.) alueellisiin osamalliajoihin.
    - Cost_data: liikenteen hintadata, jossa on ennustevuoden hintataso.
-     (Tähän tiedostoon käyttäjä voi lisätä yleisiä korotuskertoimia sekä alueellisia kulkutapavalinnan kalibrointikertoimia. Lisätietoja saa Traficomilta.).
+     (Tähän tiedostoon käyttäjä voi myös lisätä yleisiä korotuskertoimia.)
    - Emme_network: tarkasteluvuotesi EMME-verkot.
    - Zone_data: aluetiedot, jossa on ennustevuoden henkilöliikenteen aluedata-aineisto.
    
@@ -23,7 +25,7 @@ Tässä ohjeessa kerrotaan, mistä löydät materiaalit malliajoihin ja miten su
      ```
      <lähtödatan kansio>
      └── demand_matrices
-         ├── koko_suomi
+         ├── business_and_overnight
          │   └── ext_foreign_passenger_vrk.omx
          ├── uusimaa
          │   ├── demand_aht.omx
@@ -36,53 +38,61 @@ Tässä ohjeessa kerrotaan, mistä löydät materiaalit malliajoihin ja miten su
          └── …
      ```
      Osamallien kansioissa on vastaavan alueen matriisitiedostot, jotka ovat formaatissa .omx:
-     - `demand_<ajanjakso>.omx`: osamallin lähtökysyntä ajanjaksoittain (aht, pt, iht ja it) sijoitteluluokittain (`icev`, `bev`, `phev`, `van`, `bike`, `transit`, `airplane`, `truck`, `semi_trailer`, `trailer_truck`). Iltatunnin (it) tiedosto sisältää vain joukkoliikenteen luokat. Matriiseja käytetään ensimmäisessä sijoittelussa sekä pelkän loppusijoittelun ajoissa.
-     - `long_dist_demand_vrk.omx`: osamallin pitkien matkojen henkilöauto- ja joukkoliikennekysyntä vuorokaudessa. Käytetään, kun pitkien matkojen kysyntä otetaan projektin lähtödatasta.
+     - `demand_<ajanjakso>.omx`: osamallin lähtökysyntä ajanjaksoittain (aht, pt, iht ja it)
+       sijoitteluluokittain (`icev`, `bev`, `phev`, `van`, `bike`, `transit`, `airplane`, `truck`, `semi_trailer`, `trailer_truck`).
+       Iltatunnin (it) tiedosto sisältää vain joukkoliikenteen luokat.
+       Matriiseja käytetään ensimmäisessä sijoitteluiteraatiossa sekä pelkän loppusijoittelun ajoissa.
+     - `long_dist_demand_vrk.omx`: osamallin pitkien matkojen henkilöauto- ja joukkoliikennekysyntä vuorokaudessa.
+       Käytetään, kun pitkien matkojen kysyntä otetaan projektin lähtödatasta.
    - Lähtökysyntä ei käytännössä vaikuta lopputuloksiin, mutta mitä lähempänä se on lopullista kysyntää, sitä nopeammin malli konvergoituu.
-   - Matriisitiedostoista saa puuttua verkon sijoittelualueita (ne täytetään nollilla), mutta niissä ei saa olla alueita, joita verkossa ei ole. Aluenumeroiden tulee olla tiedostoissa nousevassa järjestyksessä.
-   - Koko Suomen ajoihin (pitkien matkojen malli ja tallennetun nopeuden sijoittelu) ei tarvita alueellisten osamallien lähtökysyntämatriiseja, koska osamallit tuovat linkit ja niiden matka-ajat koko Suomen ajoon.
+   - Matriisitiedostoista saa puuttua verkon sijoittelualueita (ne täytetään nollilla), mutta niissä ei saa olla alueita, joita verkossa ei ole.
+     Aluenumeroiden tulee olla tiedostoissa nousevassa järjestyksessä.
+   - Koko Suomen ajoihin (työasiointi- ja yön yli -matkojen malli sekä tallennetun nopeuden sijoittelu) ei tarvita alueellisten osamallien lähtökysyntämatriiseja.
      Lähtödatan kansiossa tulee kuitenkin aina olla demand_matrices-kansio, muuten ajo pysähtyy virheeseen _Baseline matrix directory … does not exist_.
-     Pitkien matkojen malli käyttää lisäksi tiedostoa `koko_suomi\ext_foreign_passenger_vrk.omx`, jossa on ulkomaille suuntautuva ja ulkomailta saapuva henkilöliikenteen vuorokausikysyntä.
+     Työasiointi- ja yön yli matkojen malli käyttää lisäksi tiedostoa `business_and_overnight\ext_foreign_passenger_vrk.omx`,
+     jossa on ulkomaille suuntautuva ja ulkomailta saapuva henkilöliikenteen vuorokausikysyntä.
      Jos tiedosto puuttuu, ulkomaanmatkat jäävät pois pitkien matkojen mallista ilman virheilmoitusta.
-   
-3. Lataa tuorein mallijärjestelmä [täältä](https://github.com/Traficom/valma-model-system).
 
-4. Luo resurssinhallintaasi projektikansio, jonne VALMA-ajo tallentaa käyttöliittymän projektin asetukset, EMME-projektin ja mallitulokset.
+3. Luo resurssinhallintaasi projektikansio, jonne VALMA-ajo tallentaa käyttöliittymän projektin asetukset, EMME-projektin ja mallitulokset.
    Projektikansiossa ei tarvitse olla sisältöä.
    
-### VALMA-projekti
+## VALMA-projekti
 
 1. Avaa käyttöliittymä, luo uusi VALMA-projekti ja määrittele sen asetukset:
    - Nimeä projektisi.
-   - Valitse projektikansioksi resurssinhallintaasi tallentamasi kansio.
-   - Tarkista kohta Emme Python v311. Siinä tulee olla EMMEn Python-tulkin polku, yleensä `%EMMEPATH%\Python311\python.exe`. Painike _Hae Python automaattisesti_ etsii tulkin oletussijainnista.
-   - Viittaa lataamasi mallijärjestelmän Scripts -kansioon kohdassa valma model system, tai lataa mallijärjestelmä painikkeella _Lataa eri versio internetistä_ (ks. [Asennus](asennus.md)).
+   - Valitse projektikansioksi resurssinhallintaasi tallentamasi kansio. Tämän ei tarvitse olla samanniminen kuin projekti.
+   - Tarkista kohta Emme Python v311. Siinä tulee olla EMMEn Python-tulkin polku, yleensä `%EMMEPATH%\Python311\python.exe`.
+     Painike _Hae Python automaattisesti_ etsii tulkin oletussijainnista.
+   - Viittaa lataamasi mallijärjestelmän Scripts -kansioon kohdassa valma model system,
+     tai lataa mallijärjestelmä painikkeella _Lataa eri versio internetistä_ (ks. [Asennus](asennus.md)).
    - Viittaa kansioon, joka sisältää demand_matrices-kansion kohdassa lähtödatan sisältävä kansio.
    - Aseta tarvittaessa kulkutapa- ja suuntautumismallien kalibrointiparametrit (.json) tai kunta-kunta-kalibroinnin tiedosto (.txt).
      Tiedostojen käytöstä voit lukea lisää [täältä](henkiloliikennemallin_kalibrointi.md).
    - Tallenna asetukset.
 
    Olemassa olevan projektin asetuksia voi käyttää uuden projektin pohjana valinnalla _Valitse toinen projekti pohjaksi_.
-   Osa projektiasetuksista (projektikansio, Python-polku, mallijärjestelmän polku ja lähtödatan sisältävä kansio) voidaan yliajaa yksittäiselle skenaariolle skenaarion kohdassa _Skenaariokohtaiset yliajot_.
+   Osa projektiasetuksista (projektikansio, Python-polku, mallijärjestelmän polku ja lähtödatan sisältävä kansio) voidaan yliajaa
+   yksittäiselle skenaariolle skenaarion kohdassa _Skenaariokohtaiset yliajot_.
    Kalibrointitiedostot ovat projektiasetuksia, joten ne koskevat kaikkia projektin skenaarioita.
 
-2. Luo seuraavaksi Emme-pankki valitsemalla _Luo Emmepankki_. Valitse osamalli ja skenaarioiden lukumäärä. Osamallin valinta vaikuttaa tässä vaiheessa vain Emme-pankin kokoon.
+   Kun olet luonut uuden VALMA-projektin, projektikansioon syntyy myös uusi Emme-projekti `<projektikansio>\<projektin nimi>\<projektin nimi>.emp`.
+
+3. Luo seuraavaksi vähintään yksi Emme-pankki valitsemalla _Luo Emmepankki_. Valitse osamalli ja skenaarioiden lukumäärä.
+   Osamallin valinta vaikuttaa tässä vaiheessa vain Emme-pankin otsikkoon ja kokoon.
    > HUOM:
-   > - Voit tarvittaessa luoda Emme-projektiin useita pankkeja.
-   >   Käyttöliittymä antaa pankin otsikoksi osamallin tunnuksen: _koko_suomi_, _alueelliset_osamallit_ (Alueelliset osamallit yhdessä), _koko_suomi_kunta_ (Koko Suomi kuntajaossa) sekä alueellisten osamallien mukaisesti _ita_suomi_, _uusimaa_, _pohjois_suomi_ tai _lounais_suomi_.
-   >   - Jos haluat että kaikentyyppiset verkot mahtuvat samaan pankkiin, valitse _koko Suomi_.
-   >     Jos tarkoitus on luoda monta skenaariota jollekin alueelliselle osamallille, kannattaa luoda pienempi pankki.
-   >     Koko Suomen verkko voi tarvittaessa olla omassa pankissa.
-   >   - Käyttöliittymän ulkopuolella voit tarvittaessa kytkeä useampiakin pankkeja projektiin.
-   >     Huolehdi siinä tapauksessa siitä, että Emme-pankin otsikko käyttöliittymässä on jonkin alueellisen osamallin mukainen tai _koko_suomi_ tai _alueelliset_osamallit_.
+   > - Voit tarvittaessa luoda Emme-projektiin useita erilaisia pankkeja valitsemalla _Luo Emmepankki_ uudestaan.
+   >   Käyttöliittymä antaa pankin otsikoksi osamallin tunnuksen: _koko_suomi_, _alueelliset_osamallit_ (Alueelliset osamallit yhdessä),
+   >   _koko_suomi_kunta_ (Koko Suomi kuntajaossa) sekä alueellisten osamallien mukaisesti _ita_suomi_, _uusimaa_, _pohjois_suomi_ tai _lounais_suomi_.
+   > - Emmen käyttöliittymässä voit tarvittaessa kytkeä muitakin pankkeja projektiin.
+   >   Huolehdi siinä tapauksessa siitä, että Emme-pankin otsikko on jonkin alueellisen osamallin mukainen tai _koko_suomi_ tai _alueelliset_osamallit_.
    > - "Tallenna ajanjaksot erillisiin Emme-skenaarioihin" -valinta vaikuttaa ekstra-attribuuttien tilatarpeeseen.
    >   Emme-skenaariot tarvitsevat vähemmän ekstra-attribuuttitilaa jos on tarkoitus tallentaa ajanjaksot erillisiin skenaarioihin.
    >   Silloin pitää kuitenkin muistaa luoda tarpeeksi skenaarioita (alueellisissa osamalleissa verkkoskenaarion lisäksi viisi Emme-skenaariota, ks. kohta 4).
    >   Jos on tarkoitus tehdä vain pitkien matkojen ennuste, täppä on mahdollinen laittaa päälle säästäkseen levytilaa vaikka malliajossa
    >   olisi tarkoitus käyttää vain yhtä Emme-skenaariota (vrk-sijoitteluihin).
    - Emme-pankin luominen avaa sen EMME-käyttöliittymään.
-    
-4. Tuo Emme-skenaarioksi lataamasi verkko tai verkot Emme-pankkiin Emmen Modeller Import Scenario työkalun avulla.
+
+5. Tuo Emme-skenaarioksi lataamasi verkko tai verkot Emme-pankkiin Emmen Modeller Import Scenario työkalun avulla.
    Kopioi tarvittaessa skenaario Modellerin Copy Scenario työkalun avulla ja tee tarvittavat verkkomuutokset.
    Jos aiot tallentaa ajanjaksot erillisiin Emme-skenaarioihin, alueellisten osamallien verkkoskenaarion perään pitää jättää viisi vapaata skenaarionumeroa.
    Malli kopioi verkkoskenaarion uusiin skenaarioihin ja tallentaa tulokset niihin seuraavasti:
@@ -93,21 +103,26 @@ Tässä ohjeessa kerrotaan, mistä löydät materiaalit malliajoihin ja miten su
    | _n_ + 1 | Koko vuorokauden (vrk) tulokset |
    | _n_ + 2 … _n_ + 5 | Ajanjaksojen aht, pt, iht ja it tulokset |
 
-   Pitkien matkojen mallin ajossa (vain vrk-ajanjakso) käytetään numeroita _n_ + 1 ja _n_ + 2. Samannumeroiset olemassa olevat skenaariot ylikirjoitetaan, joten varmista myös, että pankkiin mahtuu tarvittava määrä skenaarioita.
+   Pitkien matkojen mallin ajossa (vain vrk-ajanjakso) käytetään numeroita _n_ + 1 ja _n_ + 2.
+   Samannumeroiset olemassa olevat skenaariot ylikirjoitetaan, joten varmista myös, että pankkiin mahtuu tarvittava määrä skenaarioita.
    Verkon sisällön vaatimukset on kuvattu sivulla [EMME-verkon kuvaus](emme_verkko.md).
-   > HUOM: Pidä Emme-skenaarion otsikko lyhyenä. Malli lisää otsikkoon ajanjakson tunnuksen luodessaan skenaarioita, ja EMME sallii enintään 60 merkkiä. Yli 56 merkin otsikot hylätään lähtötietojen tarkistuksessa.
+   > HUOM: Pidä Emme-skenaarion otsikko lyhyenä. Malli lisää otsikkoon ajanjakson tunnuksen luodessaan skenaarioita, ja EMME sallii enintään 60 merkkiä.
+   > Yli 56 merkin otsikot hylätään lähtötietojen tarkistuksessa.
 
-### Emme-projektin ja -pankin tiedot
+## Emme-projektin ja -pankin tiedot
 
-VALMA ajaa sijoittelunsa Emme-projektissa. Emme-projekti (`.emp`-tiedosto) sisältää yhden tai useamman Emme-pankin (emmebank), ja jokainen pankki sisältää yhden tai useamman Emme-skenaarion. Kukin verkkovaihtoehto (esimerkiksi ennustevuosi tai hankevaihtoehto) tallennetaan omaksi Emme-skenaariokseen osamallin pankkiin. Usein on käytännöllistä luoda yksi Emme-projekti tarkastelua kohden ja koota siihen kaikki tarkastelun skenaariot (esimerkiksi nykytila ja vaihtoehdot).
+VALMA ajaa sijoittelunsa Emme-projektissa. Emme-projekti (`.emp`-tiedosto) sisältää yhden tai useamman Emme-pankin (emmebank),
+ja jokainen pankki sisältää yhden tai useamman Emme-skenaarion.
+Kukin verkkovaihtoehto (esimerkiksi ennustevuosi tai hankevaihtoehto) tallennetaan omaksi Emme-skenaariokseen osamallin pankkiin.
+Usein on käytännöllistä luoda yksi Emme-projekti tarkastelua kohden ja koota siihen kaikki tarkastelun skenaariot (esimerkiksi nykytila ja vaihtoehdot).
 
-Käyttöliittymän _Luo Emmepankki_ -toiminto luo Emme-projektin `<projektikansio>\<projektin nimi>\<projektin nimi>.emp` (tai käyttää jo olemassa olevaa) ja lisää siihen uuden pankin kansioon `<projektikansio>\<projektin nimi>\<osamalli>\emmebank`. Pankki
+Käyttöliittymän _Luo Emmepankki_ -toiminto luo uuden pankin kansioon `<projektikansio>\<projektin nimi>\<osamalli>\emmebank`. Pankki
 - saa otsikokseen osamallin tunnuksen (esimerkiksi `uusimaa`)
 - käyttää UTF-8-merkistöä
 - käyttää koordinaattiyksikköä 0,001, eli solmujen koordinaatit ovat metreinä ja linkkien pituudet kilometreinä
 - sisältää yhden tyhjän Emme-skenaarion.
 
-Jos projektissa on vain yksi pankki, sitä käytetään sen otsikosta riippumatta. Älä nimeä käyttöliittymän luomia pankkeja uudelleen.
+Jos projektissa on vain yksi pankki, sitä käytetään sen otsikosta riippumatta. Älä nimeä kuitenkaan käyttöliittymän luomia pankkeja uudelleen.
 
 Pankin mitat asetetaan automaattisesti valitun osamallin mukaan:
 
@@ -121,79 +136,85 @@ Pankin mitat asetetaan automaattisesti valitun osamallin mukaan:
 | Joukkoliikennelinjat | 3 300 | 8 000 | 8 000 |
 | Joukkoliikennesegmentit | 320 000 | 700 000 | 500 000 |
 
-Lisäksi kaikissa pankeissa on tilaa 9 999 täydelle matriisille, 99 funktiolle, 40 joukkoliikenteen ajoneuvotyypille ja 5 000 operaattorille. Ekstra-attribuuteille varattava tila lasketaan verkon koon, sijoitteluluokkien määrän sekä sen perusteella, tallennetaanko ajanjaksot erillisiin skenaarioihin. Ennen jokaista malliajoa lähtötietojen tarkistus varmistaa, että pankissa on riittävästi tilaa mallin luomille ekstra-attribuuteille. Jos tilaa ei ole, ajo pysähtyy virheeseen _"At least N words required for extra attributes"_.
+Lisäksi kaikissa pankeissa on tilaa 9 999 täydelle matriisille, 99 funktiolle, 40 joukkoliikenteen ajoneuvotyypille ja 5 000 operaattorille.
+Ekstra-attribuuteille varattava tila lasketaan verkon koon, sijoitteluluokkien määrän sekä sen perusteella, tallennetaanko ajanjaksot erillisiin skenaarioihin.
+Ennen jokaista malliajoa lähtötietojen tarkistus varmistaa, että pankissa on riittävästi tilaa mallin luomille ekstra-attribuuteille.
+Jos tilaa ei ole, ajo pysähtyy virheeseen _"At least N words required for extra attributes"_.
 
-__Emme-projektin luominen käsin:__
+### Emme-pankin lisääminen käsin
 
-Projektin voi luoda myös EMME Desktop -sovelluksessa:
-1. Käynnistä OpenPaths EMME.
-2. Luo uusi projekti haluamaasi kansioon. EMME luo kansioon `projektin_nimi` tiedoston `projektin_nimi.emp` sekä muita tiedostoja ja kansioita.
-3. Lisää pankki jokaiselle käytettävälle osamallille vähintään edellä esitetyillä mitoilla. Anna pankin otsikoksi osamallin tunnus.
-4. Aseta koordinaattiyksikön pituudeksi 0,001.
+Emme-pankin voi luoda tai importoida myös EMME Desktop -sovelluksessa:
+1. Avaa projektin Emme-projekti `<projektikansio>\<projektin nimi>\<projektin nimi>.emp`.
+3. Lisää pankki käytettävälle osamallille vähintään edellä esitetyillä mitoilla. Anna pankin otsikoksi osamallin tunnus.
+   Emme-pankin sijainti voi olla mikä tahansa, kunhan Emme-projekti on `<projektikansio>\<projektin nimi>\<projektin nimi>.emp`.
+5. Aseta koordinaattiyksikön pituudeksi 0,001.
 
-__Verkon tuonti transaktiotiedostoina:__
+### Mallin luomat EMME-tiedot
 
-Jos verkko toimitetaan Emme-skenaariotiedoston sijaan EMMEn transaktiotiedostoina (yksi tiedostojoukko verkkoskenaariota ja osamallia kohden), tuo ne tyhjään Emme-skenaarioon seuraavassa järjestyksessä esimerkiksi Modellerin _Data Management_ -työkaluilla:
+Malli luo jokaisen ajon alussa tarvitsemansa matriisit, viivytys- ja joukkoliikenteen matka-aikafunktiot sekä ekstra-attribuutit.
+Pankissa jo olevat samannumeroiset funktiot ylikirjoitetaan.
+Poikkeuksena ovat linkkien ekstra-attribuutit `@ferry_wait_time` ja `@freight_gate`, joiden tulee olla verkossa valmiina (ks. [EMME-verkon kuvaus](emme_verkko.md)).
 
-| Järjestys | Tiedosto | Sisältö | Modeller-työkalu |
-|---|---|---|---|
-| 1 | `modes_xxx.txt` | Kulkumuodot | Process mode transaction file |
-| 2 | `vehicles_xxx.txt` | Joukkoliikenteen ajoneuvotyypit | Process vehicle transaction file |
-| 3 | `base_network_xxx.txt` | Solmut ja linkit | Process network transaction file |
-| 4 | `link_shape_xxx.txt` | Linkkien muodot (taitepisteet) | Process link shape transaction file |
-| 5 | `turns_xxx.txt` (jos toimitettu) | Kääntymisviiveet ja -kiellot | Process turn transaction file |
-| 6 | `transit_lines_xxx.txt` | Joukkoliikennelinjat ja niiden reitit | Process transit line transaction file |
-| 7 | `extra_links_xxx.txt` | Linkkien ekstra-attribuutit | Import attribute values |
-| 8 | `netfield_nodes_xxx.txt`, `netfield_links_xxx.txt`, `netfield_transit_lines_xxx.txt` | Network field -attribuutit | Import network fields |
+> HUOM: Jos matriisien tallennusta Emme-pankkiin ei ole valittu (ks. kohta _Lisävalinnat_ alempana),
+> henkilöliikenteen malliajon lopussa __pankista poistetaan kaikki matriisit__, myös ne, joita malli ei ole luonut.
+> Älä säilytä omia matriisejasi pankissa, jota käytetään VALMA-ajoihin.
 
-__Mallin luomat EMME-tiedot:__
+## VALMA-skenaariot
 
-Malli luo jokaisen ajon alussa tarvitsemansa matriisit, viivytys- ja joukkoliikenteen matka-aikafunktiot sekä ekstra-attribuutit. Pankissa jo olevat samannumeroiset funktiot ylikirjoitetaan. Poikkeuksena ovat linkkien ekstra-attribuutit `@ferry_wait_time` ja `@freight_gate`, joiden tulee olla verkossa valmiina (ks. [EMME-verkon kuvaus](emme_verkko.md)).
-
-> HUOM: Jos matriisien tallennusta Emme-pankkiin ei ole valittu (ks. kohta _Lisävalinnat_ alempana), henkilöliikenteen malliajon lopussa __pankista poistetaan kaikki matriisit__, myös ne, joita malli ei ole luonut. Älä säilytä omia matriisejasi pankissa, jota käytetään VALMA-ajoihin.
-
-### VALMA-skenaariot
-
-1. Luo VALMA-skenaario käyttöliittymässä. Voit luoda henkilöliikenteen skenaarion (_Uusi lyhyiden matkojen skenaario_) ja tavaraliikenteen skenaarion (_Uusi tavaraliikenteen skenaario_).
-   Erillistä pitkien matkojen skenaariotyyppiä ei ole: pitkien matkojen malli ajetaan tarvittaessa henkilöliikenteen skenaarion osana (ks. kohta _Työasiointi- ja yön yli -matkojen ennuste_ alla).
+1. Luo VALMA-skenaario käyttöliittymässä.
+   Voit luoda henkilöliikenteen skenaarion (_Uusi henkilöliikenteen skenaario_) tai tavaraliikenteen skenaarion (_Uusi tavaraliikenteen skenaario_).
    Skenaarion nimessä tulee olla vähintään kolme merkkiä, eikä projektissa saa olla toista samannimistä skenaariota.
-   > HUOM: Käyttöliittymän vanhemmilla versioilla luodut erilliset pitkien matkojen skenaariot (tyyppi `long_distance`) eivät näy käyttöliittymässä, kun projekti avataan. Niiden tiedostot jäävät projektikansioon, mutta skenaariot on luotava uudelleen henkilöliikenteen skenaarioina.
+   > HUOM: Käyttöliittymän vanhemmilla versioilla luodut erilliset pitkien matkojen skenaariot (tyyppi `long_distance`) eivät näy käyttöliittymässä, kun projekti avataan.
+   > Niiden tiedostot jäävät projektikansioon, mutta skenaariot on luotava uudelleen henkilöliikenteen skenaarioina.
 
-__Henkilöliikenteen skenaario:__
+### Henkilöliikenteen skenaario
 
-Yksi henkilöliikenteen skenaario kattaa sekä koko Suomen pitkien matkojen mallin että alueelliset osamallit. Kukin skenaario vastaa yhtä verkkojen, aluetietojen ja hintadatan yhdistelmää.
+Yksi henkilöliikenteen skenaario voi kattaa sekä työasiointi- ja yön yli -matkojen mallin (aina koko Suomen verkolla) että alueelliset osamalliajot.
+Kukin skenaario vastaa yhtä verkkojen, aluetietojen ja hintadatan yhdistelmää.
 
-- Viittaa lataamaasi aluetietoon (.gpkg) kohdassa syöttötiedot.
-- Viittaa lataamaasi hintadataan (.json) kohdassa liikenteen hintadata.
+- Viittaa lataamaasi aluetietoon (.gpkg) kohdassa Aluetiedot.
+- Viittaa lataamaasi hintadataan (.json) kohdassa Liikenteen hintadata.
 - Valitse iteraatioiden enimmäismäärä (oletus 15, sallittu 1–99) tai pelkkä loppusijoittelu (_Aja vain loppusijoittelu_).
+  Iteraatioiden enimmäismääräs koskee skenaarion osamalliajoja.
+  Työasionti - ja yön yli -matkojen sekä koko Suomen ajoissa iteraatioiden määrä on aina 1.
   - Jos ajat vain loppusijoittelun, kysyntämatriisit tulevat lähtödatasta.
-    Jos haluat, että kysyntämatriisit tulevat projektikohtaisten pohjamatriisien sijaan jo tehdystä Valma-skenaariokohtaisesta kysyntäennusteesta, luo sille skenaariolle uusi aliskenaario.
-- Tavaraliikenteen (kuorma-autojen) kysyntäennuste otetaan kohdassa _Tavaraliikenteen kysyntäennuste_ joko projektin lähtödatasta (_Ota projektin lähtödatasta_) tai malliajon tuloskansiosta (_Ota malliajon tuloskansiosta_).
+    Jos haluat, että kysyntämatriisit tulevat projektikohtaisten pohjamatriisien sijaan jo tehdystä Valma-skenaariokohtaisesta kysyntäennusteesta,
+    luo sille skenaariolle uusi aliskenaario.
+- Tavaraliikenteen (kuorma-autojen) kysyntäennuste otetaan kohdassa _Tavaraliikenteen kysyntäennuste_ joko projektin lähtödatasta (_Ota projektin lähtödatasta_)
+  tai malliajon tuloskansiosta (_Ota malliajon tuloskansiosta_).
   Kansiossa tulee olla vuorokauden kysyntätiedosto `demand_vrk.omx`, jossa ovat luokat `truck`, `semi_trailer` ja `trailer_truck`.
-  > HUOM: Tavaraliikenteen malli tallentaa kuorma-autojen kysynnän nimellä `freight_demand_vrk.omx`, mutta henkilöliikenteen malli lukee annetusta kansiosta tiedoston `demand_vrk.omx`. Jos käytät tavaraliikenteen malliajon tulosta, kopioi tiedosto erilliseen kansioon nimellä `demand_vrk.omx` ja viittaa siihen kansioon.
+  > HUOM: Tavaraliikenteen malli tallentaa kuorma-autojen kysynnän nimellä `freight_demand_vrk.omx`,
+  > mutta henkilöliikenteen malli lukee annetusta kansiosta tiedoston `demand_vrk.omx`.
+  > Jos käytät tavaraliikenteen malliajon tulosta, kopioi tiedosto erilliseen kansioon nimellä `demand_vrk.omx` ja viittaa siihen kansioon.
 - Valitse pitkien matkojen (työasiointi-, yön yli- ja ulkomaanmatkat) kysynnän lähde kohdassa _Työasionti - ja yön yli -matkojen ennuste_:
 
   | Valinta | Komentorivin arvo | Kuvaus |
   |---|---|---|
-  | _Ota projektin lähtödatasta_ (oletus) | `base` | Pitkien matkojen kysyntä luetaan lähtödatan tiedostosta `long_dist_demand_vrk.omx`. Käytä, kun skenaario ei muuta pitkiä matkoja. |
-  | _Ota malliajon tuloskansiosta_ | kansion polku | Pitkien matkojen kysyntä luetaan aiemman pitkien matkojen malliajon tuloksista. Viittaa kansioon `projektikansio\skenaarion_nimi\demand_matrices\koko_suomi`, jossa on tiedosto `demand_vrk.omx`. Voit luoda kansion valmiiksi ja viitata siihen, vaikka ajo ei olisi vielä suoritettu. |
-  | _Aja_ ja _Emme-skenaario (koko suomi)_ | `calc` | Pitkien matkojen malli ajetaan ensin annetussa koko Suomen Emme-skenaariossa, ja skenaarion alueelliset osamallit käyttävät sen tulosta. |
+  | _Ota projektin lähtödatasta_ (oletus) | `base` | Työasionti - ja yön yli -matkojen kysyntä luetaan lähtödatan tiedostosta `long_dist_demand_vrk.omx`. Käytä, kun tarkasteltu kohde ei olennaisesti muuta pitkiä, harvoin tehtyjä matkoja. |
+  | _Ota malliajon tuloskansiosta_ | kansion polku | Työasionti - ja yön yli -matkojen kysyntä luetaan aiemman malliajon tuloksista. Viittaa kansioon `projektikansio\skenaarion_nimi\demand_matrices\business_and_overnight`, jossa on tiedosto `demand_vrk.omx`. Voit luoda kansion valmiiksi ja viitata siihen, vaikka ajo ei olisi vielä suoritettu. |
+  | _Aja_ ja _Emme-skenaario (koko suomi)_ | `calc` | Työasionti - ja yön yli -matkojen malli ajetaan annetussa koko Suomen Emme-skenaariossa, ja skenaarion alueelliset osamallit käyttävät sen tulosta. |
 
-  Pitkien matkojen mallin ajossa lasketaan vain pitkien matkojen matkaryhmät yhdellä iteraatiolla, ja henkilöautot sijoitellaan koko vuorokaudelle vapaan nopeuden matka-ajoilla. Jos Emme-projektissa on useita Emme-pankkeja, mallijärjestelmä käyttää pankkia, jonka otsikko on "koko_suomi".
-  Jos pitkien matkojen kysyntä otetaan aiemmasta malliajosta, varmista, että ajossa on käytetty samaa malliversiota ja yhteensopivia lähtötietoja.
-- Valitse ajettavat osamallit valintaruuduilla (_Itä Suomi_, _Lounais Suomi_, _Pohjois Suomi_, _Uusimaa_) ja anna kullekin sen verkon sisältävän Emme-skenaarion numero (_Emme skenaario_).
+  Työasionti - ja yön yli -matkojen mallin ajossa henkilöautot sijoitellaan koko vuorokaudelle vapaan nopeuden matka-ajoilla.
+  Joukkoliikennesijoittelussa käytetään koko vuorokauden keskimääräisiä vuorovälejä.
+  Jos Emme-projektissa on useita Emme-pankkeja, mallijärjestelmä käyttää pankkia, jonka otsikko on "koko_suomi".
+  Jos työasionti - ja yön yli -matkojen kysyntä otetaan aiemmasta malliajosta, varmista, että ajossa on käytetty samaa malliversiota ja yhteensopivia lähtötietoja.
+- Valitse ajettavat osamallit valintaruuduilla (_Itä Suomi_, _Lounais Suomi_, _Pohjois Suomi_, _Uusimaa_)
+  ja anna kullekin sen verkon sisältävän Emme-skenaarion numero (_Emme skenaario_).
   Jos Emme-projektissa on useita emmepankkeja, mallijärjestelmä yrittää löytää osamallin mukaan nimetyn Emme-pankin tai Emme-pankin nimeltään "alueelliset_osamallit".
   Jos valitulle osamallille ei ole annettu Emme-skenaarion numeroa, käyttöliittymä antaa virheen _Tarkista valittujen mallien --first-scenario-id_.
-- Viimeinen valintaruutu _Koko Suomi – Tallennetun nopeuden sijoittelu_ on uusissa skenaarioissa valittuna oletuksena. Anna sille koko Suomen verkon sisältävän Emme-skenaarion numero. Koko Suomen osamalli ajetaan käyttöliittymästä aina tallennetun nopeuden sijoittelulla (koko Suomen ruuhkasijoittelu voisi viedä aikaa jopa viikon).
+- Koko Suomen koontiajo ajetaan käyttöliittymästä aina tallennetun nopeuden sijoittelulla (koko Suomen ruuhkasijoittelu voisi viedä aikaa jopa viikon).
+  Koko Suomen koontiajo on tarpeellinen vain, jos tarkastelukohde ulottuu useampaan osamalliin.
+  Jos skenaariossa on ajettavia osamalleja, niiden linkkimatka-ajat siirtyvät automaattisesti koko Suomen ajoon.
+  Lisää tietoja tästä kohdassa [Tallennetun nopeuden sijoittelu (koko Suomen koontiajo)](#tallennetun-nopeuden-sijoittelu-(koko-suomen-koontiajo).
 
 Kun skenaario ajetaan, käyttöliittymä ajaa sen osat peräkkäin erillisinä malliajoina tässä järjestyksessä:
-1. pitkien matkojen malli, jos _Aja_ on valittu
+1. Työasionti - ja yön yli -matkojen malli, jos _Aja_ on valittu
 2. valitut alueelliset osamallit (Itä-Suomi, Lounais-Suomi, Pohjois-Suomi, Uusimaa)
 3. koko Suomen tallennetun nopeuden sijoittelu, jos se on valittu.
 
 Kaikki osat kirjoittavat tuloksensa samaan skenaarion tuloskansioon osamallin mukaan nimettyihin alikansioihin.
 
-__Tavaraliikenteen skenaario:__
+### Tavaraliikenteen skenaario
 
 - Viittaa kohdassa "Liikenneverkon sisältävä Emme-skenaario" luomaasi Emme-skenaarioon.
 - Viittaa lataamaasi aluekohtaiseen lähtötietoon (.gpkg) kohdassa syöttötiedot, jossa on ennustevuoden tavaraliikenteen aluedata.
@@ -212,15 +233,19 @@ Tavaraliikenteen malli ajetaan yhdellä kierroksella:
 
 Tuloksena syntyvä kuorma-autojen vuorokausikysyntä tallentuu tiedostoon `projektikansio\skenaarion_nimi\demand_matrices\koko_suomi\freight_demand_vrk.omx`.
 
-__Tallennetun nopeuden sijoitttelu (koko Suomen koontiajo):__
+### Tallennetun nopeuden sijoittelu (koko Suomen koontiajo)
 
--  Tallennetun nopeuden sijoittelua käytetään aina koko Suomen osamalliajossa. Siinä autoliikenne sijoitellaan kaikki-tai-ei-mitään-menetelmällä verkolle tallennetuilla matka-ajoilla, ja ajossa on aina yksi iteraatio.
--  Matka-ajat luetaan linkkien network field -attribuuteista `#car_time_aht`, `#car_time_pt`, `#car_time_iht`, `#car_time_it` ja `#car_time_vrk`.
--  Alueellisten osamallien ajot tallentavat ruuhkautuneet auton linkkimatka-ajat tuloskansioon tiedostoihin `netfield_links_<osamalli>.txt` (vain osamallin oman alueen linkit, ks. [EMME-verkon kuvaus](emme_verkko.md), attribuutti `#subarea`). Tallennetun nopeuden sijoittelu tuo ennen sijoittelua koko Suomen verkolle kaikki skenaarion tuloskansiosta löytyvät `netfield_links`-tiedostot.
--  Tallennetun nopeuden sijoittelu voidaan tehdä kahdella tavalla riippuen, onko sinulla osamallit jo ajettu vai ei.
-   - Jos olet jo ajanut saman skenaarion alueelliset osamallit, valitse pelkästään _Koko Suomi – Tallennetun nopeuden sijoittelu_ ja koko Suomen Emme-skenaarion numero.
-   - Jos et ole vielä tehnyt alueellisia osamalliajoja, valitse sekä alueelliset osamallit että tallennetun nopeuden sijoittelu. Tällöin malli ajaa ensin osamallit, tuottaa linkkimatka-ajat ja siirtää ne automaattisesti koko Suomen verkolle. Vasta tämän jälkeen se suorittaa koko Suomen malliajon tallennetun nopeuden sijoittelulla.
--  Skenaarion _Lisävalinnat_-kohdan valinta _Tallennetun nopeuden sijoittelu_ koskee alueellisia osamalleja: kun se on valittu, myös alueelliset osamallit sijoitellaan tallennetuilla matka-ajoilla. Tämä mahdollistaa vaikutusten nopean arvioinnin; perusmalliajon jälkeen voidaan nopeasti arvioida vaikutuksia esim. pienistä muutoksista joukkoliikennetarjonnassa.
+- Tallennetun nopeuden sijoittelussa autoliikenne sijoitellaan kaikki-tai-ei-mitään-menetelmällä verkolle tallennetuilla matka-ajoilla, ja ajossa on aina yksi iteraatio.
+- Matka-ajat luetaan linkkien network field -attribuuteista `#car_time_aht`, `#car_time_pt`, `#car_time_iht`, `#car_time_it` ja `#car_time_vrk`.
+- Alueellisten osamallien ajot tallentavat ruuhkautuneet auton linkkimatka-ajat tuloskansioon tiedostoihin `netfield_links_<osamalli>.txt`
+  (vain osamallin oman alueen linkit, ks. [EMME-verkon kuvaus](emme_verkko.md), attribuutti `#subarea`).
+  Tallennetun nopeuden sijoittelu tuo ennen sijoittelua verkolle kaikki skenaarion tuloskansiosta löytyvät `netfield_links`-tiedostot.
+- Koko Suomen tallennetun nopeuden sijoittelu voidaan tehdä kahdella tavalla riippuen, onko sinulla kaikki osamallit jo ajettavissa vai ei.
+   - Jos olet ajamassa saman skenaarion kaikki alueelliset osamallit, malli tuottaa linkkimatka-ajat ja siirtää ne automaattisesti koko Suomen verkolle.
+     Vasta tämän jälkeen se suorittaa koko Suomen malliajon tallennetun nopeuden sijoittelulla.
+   - Jos et aja kaikkia alueellisia osamalleja (koska tarkastelukohde ei vaikuta ajonopeuksiin valtakunnallisesti), linkkimatka-ajat pitää tuoda muualta ennen ajoa.
+     Malliajossa tulee virheilmoitus jos linkkimatka-ajat puuttuvat tallennetun nopeuden sijoittelussa.
+- Skenaarion _Lisävalinnat_-kohdan valinta _Tallennetun nopeuden sijoittelu_ koskee alueellisia osamalleja: kun se on valittu, myös alueelliset osamallit sijoitellaan tallennetuilla matka-ajoilla. Tämä mahdollistaa vaikutusten nopean arvioinnin; perusmalliajon jälkeen voidaan nopeasti arvioida vaikutuksia esim. pienistä muutoksista joukkoliikennetarjonnassa.
 
 ### Aliskenaariot
 
