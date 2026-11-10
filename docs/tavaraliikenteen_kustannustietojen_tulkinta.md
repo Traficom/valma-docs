@@ -222,7 +222,7 @@ Kustannukset eriteltynä muodossa €/t/km. Myöhemmin se kerrotaan matkan pituu
 
 Löytyy json-tiedoston polusta:
 
-"freight" -> *tavararyhmä* -> "foreign_ship" -> *alustyyppi* -> *syväys*  "time"
+"freight" -> *tavararyhmä* -> "foreign_ship" -> *alustyyppi* -> *syväys* -> "time"
 
 Kustannukset eriteltynä muodossa €/t/min. Myöhemmin se kerrotaan matka-ajalla (laivamatkan aika liikenneverkolta laskettuna) ja saadaan kustannus muodossa €/t.
 
