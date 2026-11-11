@@ -456,19 +456,84 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 
 
 ## Tavaraliikenne
-Tavara- ja henkilöliikenteen verkot ovat pääosin yhteisiä ja ne on tehty mallissa samaan verkkokuvaukseen/skenaarioon. Prosessilla on mahdollista tuottaa myös pelkästään henkilöliikennettä koskeva kuvaus. Tavaraliikenteen kuvaus hyödyntää muutamia täydentäviä tietolähteitä raiteista ja vesiväylistä ja tietyt terminaalit/lastauspaikat ovat vaatineet erityiskäsittelyä verkossa. 
 
-Rautatie- ja vesiväylien sijoittelu- ja vastuslaskennan periaatteena on EMME:n joukkoliikennepohjainen sijoittelu. Jokaista vesiväylä- ja raidelinkkiä kohden on tehty "joukkoliikennelinja", jolla kuljetukset tapahtuvat. 
+Tavara- ja henkilöliikenteen verkot ovat pääosin yhteisiä ja ne on tehty mallissa samaan verkkokuvaukseen/skenaarioon. Prosessilla on mahdollista tuottaa myös pelkästään henkilöliikennettä koskeva kuvaus. Tavaraliikenteen kuvaus hyödyntää muutamia täydentäviä tietolähteitä raiteista ja vesiväylistä, ja tietyt terminaalit/lastauspaikat ovat vaatineet erityiskäsittelyä verkossa.
 
-Rautatieverkolle on liitetty tieto, kulkeeko siinä tavaraliikennettä vai ei. Lisäksi on tiedot raiteiden sähköistyksestä sekä tavaraliikenteen keskimääräisestä kuljetusnopeudesta. Tieto rataosien sähköistyksestä pohjautuu Väyläviraston Rautateiden verkkoselostukseen 2026. Tavaraliikenteen keskimääräinen kuljetusnopeus perustuu todellisiin kuljetustietoihin. Kuljetukset kuvataan kahdella kulkumuodolla, dieseljunalla ja sähköllä kulkevalla junalla. Liikennepaikoille on merkitty käsin tieto, käytetäänkö paikkaa raakapuun, muun tavaran vai molempien lastaukseen. Liikennepaikkatieto pohjautuu rataverkkoselostukseen. Näille paikoille on tehty linkit, joissa kuorma-auton liittyminen asemaan on mahdollista. Muiden kuin valtion omistuksessa olevat rataverkon osat (teollisuusraiteet) ja niillä sijaitsevat liikennepaikat kuvattu verkkoon erikseen suurimpien teollisuuslaitosten osalta.
+Rautatie- ja vesiväylien sijoittelu- ja vastuslaskennan periaatteena on EMME:n joukkoliikennepohjainen sijoittelu. Jokaista vesiväylä- ja raidelinkkiä kohden on tehty "joukkoliikennelinja", jolla kuljetukset tapahtuvat.
 
-Satamat yhdistyvät aina vesiväyliin ja niiden osalta, joihin on merkitty tieto yhdistymisestä raiteisiin, on luotu lähimpään rautatiesolmuun yhdistävä linkki.
+### Kotimaan verkko
 
-Verkolle on muodostettu myös @freight_gate attribuutti, joka kertoo satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id:n. Tämä attribuutti palvelee kuorma-autolla tehtävien osamatkojen tallennusta matriisimuotoiseksi sijoittelun yhteydessä. Attribuuttia käytetään EMME:n traversal matrix työkalussa.
+Kotimaan verkkokuvaus perustuu pitkälti samoihin tietoihin ja kuvaustapoihin kuin henkilöliikenteen verkko. Alla on kuvattu tavaraliikenteen osalta tehdyt tarkennukset.
 
-Digiroadin ajoneuvon suurin sallittu pituus ja suurin sallittu massa -kenttiä on hyödynnetty raskaan liikenteen rajoitusten kuvaamisessa. Jos linkillä ajoneuvon suurin sallittu pituus on enintään 22 metriä tai massarajoitus enintään 42 000 kg, on sen käyttö kielletty yhdistelmäajoneuvoilta. Jos ajoneuvon suurin sallittu pituus on 6 metriä tai massarajoitus 8000 kg, on linkeillä lisäksi kielletty kuorma-autot.
+#### Tieverkko
 
-Tiekuljetukset voivat käyttää pääosin kaikkea tieverkkoa. Suurten kaupunkien keskusta-alueille on kuitenkin kuvattu raskaiden ajoneuvojen rajoituksia. Kattavaa tietoa rajoituksista ei ole. Rajoituksia voidaan jatkossa kuvata myös muille, nyt rajoittamattomille alueille tai yksittäisille tienkohdille. Rajoitukset on kuvattu siten, että rajoitusalueen läpi ei pääse ajamaan, mutta jokaiselle osa-alueelle pääsee yhtä reittiä myös eri ajoneuvoluokkien raskailla ajoneuvoilla.
+Tieliikenteen verkkokuvaus on yhteinen henkilöliikenteen kanssa.
+
+- Tiekuljetukset voivat käyttää pääosin kaikkea tieverkkoa.
+- Suurten kaupunkien keskusta-alueille on kuvattu raskaiden ajoneuvojen rajoituksia. Kattavaa tietoa rajoituksista ei ole, ja rajoituksia voidaan jatkossa kuvata myös muille alueille tai yksittäisille tienkohdille.
+- Rajoitukset on kuvattu siten, että rajoitusalueen läpi ei pääse ajamaan, mutta jokaiselle osa-alueelle pääsee yhtä reittiä myös eri ajoneuvoluokkien raskailla ajoneuvoilla.
+- Digiroadin ajoneuvon suurin sallittu pituus ja suurin sallittu massa -kenttiä on hyödynnetty raskaan liikenteen rajoitusten kuvaamisessa. Jos linkillä ajoneuvon suurin sallittu pituus on enintään 22 metriä tai massarajoitus enintään 42 000 kg, on sen käyttö kielletty yhdistelmäajoneuvoilta. Jos ajoneuvon suurin sallittu pituus on 6 metriä tai massarajoitus 8000 kg, on linkeillä lisäksi kielletty kuorma-autot.
+
+#### Rataverkko
+
+Rataverkon kuvaus pohjautuu henkilöliikenteen rataverkon kuvaukseen. Tavaraliikenteen osalta siihen on tehty seuraavat tarkennukset ja täydennykset:
+
+- Vain henkilöliikenteelle sallituilta rataosilta on poistettu tavaraliikenteen kulkutapa. Rautatieverkolle on liitetty tieto siitä, kulkeeko linkillä tavaraliikennettä, sekä tieto sähköistyksestä (pohjautuu Väyläviraston Rautateiden verkkoselostukseen 2026).
+- Tavaraliikenteelle on määritetty keskinopeudet todellisten kulkutietojen pohjalta. Keskinopeustiedot on tuotettu Finntrafficin LIIKE-järjestelmän tiedoista.
+- Kuljetukset kuvataan kahdella kulkumuodolla: dieseljunalla (`D`) ja sähköjunalla (`J`).
+- Tavarajunat on kuvattu verkolle linjastona, jossa jokainen linkki muodostaa oman junalinjansa.
+- Tavaraliikennepaikat on kuvattu rataverkkoselostuksen mukaisesti. Ne on luokiteltu käsin sen perusteella, käytetäänkö niitä raakapuun, muun tavaran vai molempien lastaamiseen. Liikennepaikoille on tehty linkit, joiden kautta kuorma-auton liittyminen asemaan on mahdollista.
+- Muiden kuin valtion omistuksessa olevat rataverkon osat (teollisuusraiteet) ja niillä sijaitsevat liikennepaikat on kuvattu verkkoon erikseen suurimpien teollisuuslaitosten osalta. Tietoa täydennetään mallin jatkokehityksessä.
+- Kun tavaraliikennepaikka sijaitsee osa-alueen sisällä, sille on kuvattu suora syöttö aluesentroidista (alueen keskipiste). Näin on pyritty kuvaamaan teollisuuslaitosten ratapihoja, joille ei tarvita erillistä liityntäkuljetusta.
+
+#### Kotimaan vesiliikenne
+
+Kotimaan vesiliikenteen kuvaus sisältää rannikon ja sisävesien satamat, laivaväylät ja niitä käyttävän linjaston. Se sisältää myös uiton, jonka ominaisuudet vastaavat mallissa raakapuun laiva- ja proomukuljetusta.
+
+- Linjastossa jokainen laivaväylälinkki on oma laivalinjansa.
+- Kotimaan kuljetuksille on määritelty vain yksi alustyyppi, jolla on vakionopeus. Keskikuormitus riippuu kuljetettavasta hyödykkeestä.
+- Satamat on luokiteltu samalla logiikalla kuin rataverkon liikennepaikat: sen mukaan, voidaanko niissä lastata raakapuuta, muuta tavaraa vai molempia. Satamat yhdistyvät aina vesiväyliin, ja ne satamat, joihin on merkitty yhteys raiteisiin, on yhdistetty lähimpään rautatiesolmuun.
+- Vesikuljetukset sijoitellaan joukkoliikennesijoitteluna, ja liityntäkuljetustapana käytetään tiekuljetusta.
+- Kun satama sijaitsee osa-alueen sisällä, sille on kuvattu suora syöttö aluesentroidista. Näin on pyritty kuvaamaan teollisuuslaitoksia, joille ei tarvita erillistä liityntäkuljetusta.
+
+#### Kuorma-autoliikenteen osamatkojen tallennus
+
+Verkolle on muodostettu `@freight_gate`-attribuutti, joka kertoo satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id:n. Attribuutti palvelee kuorma-autolla tehtävien osamatkojen tallennusta matriisimuotoon sijoittelun yhteydessä, ja sitä käytetään EMMEn traversal matrix -työkalussa.
+
+### Ulkomaan verkko
+
+Ulkomaan kuljetusten reitinvalintamalli on rakennettu siten, että kukin valittavissa oleva reitti muodostuu kolmesta osuudesta:
+
+1. **Kotimaan osuus** Suomen osa-alueelta satamaan tai maaraja-asemalle. Ominaisuudet tulevat kotimaan verkkokuvauksesta.
+2. **Raja-asemien välinen osuus** (satama–satama tai maaraja–maaraja):
+   - laivayhteys Suomen satamasta Euroopan satamaan
+   - suora laivayhteys Suomen satamasta Euroopan ulkopuoliseen satamaan
+   - lyhyt maayhteys Suomen ja naapurimaan raja-asemien välillä
+3. **Ulkomaan osuus** ulkomaan satamasta tai maarajalta ulkomaan alueelle:
+   - maayhteys Euroopan satamasta osa-alueille Euroopassa
+   - jatkoyhteys laivalla Euroopan satamasta muun maanosan osa-alueelle
+   - maayhteys Euroopan ulkopuolisesta satamasta osa-alueelle (lyhyt virtuaalinen linkki)
+   - maayhteys maaraja-asemalta Euroopan osa-alueelle
+
+Reitinvalintamallin keskeisin tulos on ulkomaan liikenteessä käytettävä Suomen satama tai maaraja-asema. Maaliikenteen yhteydet sekä yhteydet Euroopan ulkopuolelle on kuvattu mallissa karkealla tasolla. Reitinvalinta perustuu pitkälti kotimaan yhteyksiin satamiin sekä kotimaan ja ulkomaan satamien välisiin laivayhteyksiin.
+
+#### Alusliikenne
+
+Ulkomaan alusliikenteen kuvaus kattaa laivayhteydet Suomen ja ulkomaiden satamien välillä sekä konttilaivojen jatkoyhteydet Euroopan satamien ja muiden maanosien välillä.
+
+- **Satamaklusterit:** Satamat on kuvattu klusteroituna tarkkuustasolla, joka vastaa mallin aluejaon tarkkuutta ulkomailla. Kutakin Euroopan ulkopuolista markkina-aluetta vastaa yksi satamaklusteri. Euroopassa on kuvattu useampia satamaklustereita markkina-aluetta kohden, jos niillä on katsottu olevan merkitystä reitinvalinnan kannalta. Kotimaan satamat on niin ikään klusteroitu mallin estimointivaiheessa, ja mallia käytettäessä klustereita on mahdollista jakaa tarkemmin yksittäisiksi satamiksi.
+- **Satamien ominaisuudet:** Satamista on kuvattu maksimisyväys sekä tavaralajikohtaisia luokittelutekijöitä.
+- **Laivayhteydet:** Yhteydet Suomen ja ulkomaan satamien välillä on poimittu vuoden 2021 meriliikennetilastosta. Yhtä laivaa käyttäen mahdollinen yhteys Suomen ja ulkomaan sataman välillä kuvataan yhdeksi laivalinjaksi. Useissa satamissa välipysähdyksiä tekevä linjaliikenne kuvautuu siten useampana erillisenä laivayhteytenä.
+- **Laivalinjojen ominaisuudet:** pituus (`ut1`), frekvenssi eli lähtöjen määrä vuodessa (`ut2`) ja matka-aika. Matka-aika on määritetty kullekin laivatyypille ja yhteydelle tyypillisen syväyksen ja sitä vastaavan keskinopeuden mukaan.
+- **Konttilaivojen jatkoyhteydet:** Konttilaivoille on kuvattu jatkoyhteydet keskeisistä Euroopan satamista muihin maanosiin. Näille yhteyksille on kuvattu pituus ja matka-aika, mutta ei frekvenssiä.
+
+#### Tieverkko
+
+Tieverkon kuvaus Suomen ulkopuolella kattaa manner-Euroopan. Verkkokuvauksen pohjana on käytetty Sampers-mallin verkkoa ja sen nopeustasoja. Verkkoa on karsittu siten, että se kattaa vain Suomen ulkomaanyhteyksien kannalta olennaisen verkon. Verkko on yhdistetty kotimaan verkkoon Suomen maarajoilla.
+
+#### Rataverkko
+
+Ulkomaan verkolle ei ole kuvattu erikseen tavaraliikenteen rataverkkoa. Ulkomaan satamasta tai raja-asemalta jatkuvan tavaraliikenteen vastukset on laskettu tieverkon ominaisuuksien mukaisesti, koska jatkoyhteyden todellisista kuljetustavoista ei ole käytettävissä tietoa eikä valintamallin estimoinnille ole edellytyksiä.
 
 ## Verkon tarkistukset
 
