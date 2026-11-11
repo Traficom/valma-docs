@@ -3,9 +3,9 @@ Tavaraliikenteen kuljetuskustannusten kustannusfunktioiden komponentit löytyvä
 
 Kustannustiedoston parametrit muuttuvat ennustevuoden mukaan. Esimerkiksi käyttövoiman hinta muuttuu ennustettavan vuoden mukaan ja sähköautojen osuus kannassa samaten. ***Eri ennustevuosille tarvitaan näin ollen erilliset kustannustiedostot.*** 
 
-Tieliikenteen kustannuskomponentit luodaan yhdistelemällä kustannustiedostosta löytyviä yksikkökustannuksia/kustannuskomponentteja. Tässä tiedostossa selitetään, miten yhdistely toimii käytännössä. ***Kaikki tarvittava yhdistely tehdään automaattisesti mallijärjestelmässä (eikä käyttäjän tarvitse miettiä sitä erikseen). Mikäli käyttäjä haluaa muuttaa kustannuksia tarkasteluita varten, on hänen kuitenkin hyvä ymmärtää, miten laskenta toimii.***  
+Tavaraliikenteen mallissa käytettävät kustannukset muodostuvat yhdistelemällä kustannustiedostosta löytyviä yksikkökustannuksia/kustannuskomponentteja. Tässä tiedostossa selitetään, miten yhdistely toimii käytännössä. ***Kaikki tarvittava yhdistely tehdään automaattisesti mallijärjestelmässä (eikä käyttäjän tarvitse miettiä sitä erikseen). Mikäli käyttäjä haluaa muuttaa kustannuksia tarkasteluita varten, on hänen kuitenkin hyvä ymmärtää, miten laskenta toimii.***  
 
-Huomionarvoista on, että tiedoston kustannuskomponentit vastaavat muuten kappaleissa tavaraliikennemallin dokumentaatiossa esitettyjä yksikkökustannuksia, mutta hallintokulujen kerroin ei ole mukana tieliikenteen kustannuksissa, vaan se huomioidaan vasta mallijärjestelmän laskennassa.
+Huomionarvoista on, että tiedoston kustannuskomponentit vastaavat muuten tavaraliikennemallin dokumentaatiossa kappaleessa 3.4. esitettyjä yksikkökustannuksia, mutta hallintokulujen kerroin ei ole mukana tieliikenteen kustannuksissa, vaan se huomioidaan vasta mallijärjestelmän laskennassa.
 
 Kustannustiedostoon sisältyvien tavararyhmien (12 tavararyhmää = estimointiryhmittely) selitteet löytyvät taulukosta 1. 
 
