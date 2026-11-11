@@ -1,6 +1,10 @@
 # **Kustannustiedoston tulkinta tavaraliikenteen mallissa**
 Tavaraliikenteen kuljetuskustannusten kustannusfunktioiden komponentit löytyvät mallin lähtötietona json-tiedostosta. Samaan tiedostoon sisältyy sekä henkilöliikenteen- että tavaraliikenteen yksikkökustannukset. Tässä tiedostossa käydään läpi kustannustiedoston (json) sisältöä ja tiedostosta löytyviä tavaraliikennemallin kuljetuskustannusten laskentaan vaikuttavia yksikkökustannuksia/kustannuskomponentteja. 
 
+Kustannustiedoston parametrit muuttuvat ennustevuoden mukaan. Esimerkiksi käyttövoiman hinta muuttuu ennustettavan vuoden mukaan ja sähköautojen osuus kannassa samaten. ***Eri ennustevuosille tarvitaan näin ollen erilliset kustannustiedostot.*** 
+
+Tieliikenteen kustannuskomponentit luodaan yhdistelemällä kustannustiedostosta löytyviä yksikkökustannuksia/kustannuskomponentteja. Tässä tiedostossa selitetään, miten yhdistely toimii käytännössä. ***Kaikki tarvittava yhdistely tehdään automaattisesti mallijärjestelmässä (eikä käyttäjän tarvitse miettiä sitä erikseen). Mikäli käyttäjä haluaa muuttaa kustannuksia tarkasteluita varten, on hänen kuitenkin hyvä ymmärtää, miten laskenta toimii.***  
+
 Huomionarvoista on, että tiedoston kustannuskomponentit vastaavat muuten kappaleissa tavaraliikennemallin dokumentaatiossa esitettyjä yksikkökustannuksia, mutta hallintokulujen kerroin ei ole mukana tieliikenteen kustannuksissa, vaan se huomioidaan vasta mallijärjestelmän laskennassa.
 
 Kustannustiedostoon sisältyvien tavararyhmien (12 tavararyhmää = estimointiryhmittely) selitteet löytyvät taulukosta 1. 
@@ -53,11 +57,9 @@ Tiedostoon sisältyvien kuljetusmuotojen ja -tyyppien mallissa käytetyt nimet j
 | Kotimaan laivaliikenne | ship_W |
 
 
-Kustannustiedoston parametrit muuttuvat ennustevuoden mukaan. Esimerkiksi käyttövoiman hinta muuttuu ennustettavan vuoden mukaan ja sähköautojen osuus kannassa samaten. ***Eri ennustevuosille tarvitaan näin ollen erilliset kustannustiedostot.*** 
-
 ## **Kotimaan mallin kuljetuskustannusfunktioiden yksikköarvot tiedostossa**
 
-Yksikköarvojen/kustannuskomponenttien sisältöä on avattu tarkemmin tavraliikennemallin dokumentaatiossa luvussa 3.4. Tieliikenteen kustannuskomponentit luodaan yhdistelemällä kustannustiedostosta löytyviä yksikkökustannuksia. ***Kaikki tarvittava yhdistely tehdään automaattisesti mallijärjestelmässä (eikä käyttäjän tarvitse miettiä sitä erikseen). Kun kustannuksia muutetaan tarkasteluissa, on käyttäjän kuitenkin hyvä ymmärtää, miten laskenta toimii.***  
+Yksikköarvojen/kustannuskomponenttien sisältöä on avattu tarkemmin tavraliikennemallin dokumentaatiossa luvussa 3.4. 
 
 ### **Tiekuljetusten kustannukset (kotimaa)**
 
@@ -178,7 +180,7 @@ Kustannukset eriteltynä muodossa €/t/min. Myöhemmin se kerrotaan matka-ajall
 
 ## **Ulkomaan mallin kuljetuskustannusfunktioiden yksikköarvot tiedostossa**
 
-Ulkomaan mallin kustannuksia lasketaan vain ulkomailla ajettavan osuuden osalta. Kotimaan osuudessa kuljetustapavalinnat jakaantuvat kunkin alueparin välillä kotimaan mallin kyseisen hyödykeryhmän kuljetustapajaon mukaisesti. 
+Ulkomaan mallin kustannuksia lasketaan vain ulkomailla ajettavan osuuden osalta. Kotimaan osuudessa kuljetustapavalinnat jakaantuvat kunkin alueparin välillä kotimaan mallin kyseisen hyödykeryhmän kuljetustapajaon mukaisesti (vain tie- ja rautatieliikenteeseen). Yksikköarvojen/kustannuskomponenttien sisältöä on avattu tarkemmin tavraliikennemallin dokumentaatiossa luvussa 3.4.  
 
 ### **Tiekuljetusten kustannukset (ulkomaa)**
 
