@@ -365,7 +365,7 @@ Jokaiselle joukkoliikennelinjalle tulee määrittää hintatunnus eli hinta-id (
 
 Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinkertaisesti EMME-mallissa. Tämä on ongelma seudullisilla junilla, joita voi käyttää paikallisen toimivaltaisen viranomaisen lipuilla (HSL, NYSSE), mutta alueen ulkopuolella tarvitaan VR:n lippu. Tästä johtuen HSL:n ja NYSSE:n alueelle päättyvät R, T, Z, M ja D-junat on lisätty malliin tuplana: Toisella linjalla nousut/poistumiset on kielletty HSL/NYSSE-alueella siten, että linjaa voi käyttää vain seuturajat ylittävään matkaan. Toinen linja on katkaistu seudun sisälle, jolloin sitä käytetään vain seudun sisäisiin matkoihin. Näille linjoille on eri hintafunktiot. Tässä on hyödynnetty custom transit lines –ominaisuutta. 
 
-*Taulukko x. Joukkoliikennelinjojen hintatunnukset*
+*Taulukko 12. Joukkoliikennelinjojen hintatunnukset*
 
 | Hinta-id | Alue |
 |---|---|
@@ -407,11 +407,11 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 | 36 | lautta Vaasa-Uumaja |
 | 37 | lautta Helsinki-Tallinna |
 
-**Kuva x. Joukkoliikenteen hinnoittelualueet**
+**Kuva 1. Joukkoliikenteen hinnoittelualueet**
 
 ![Joukkoliikenteen hinnoittelualueet](images/joukkoliikenteen_hinnoittelualueet.png)
 
-*Taulukko x. Joukkoliikennelinjan perusattribuutit*
+*Taulukko 13. Joukkoliikennelinjan perusattribuutit*
 
 | Attribuutti | Kuvaus | Pakollinen henkilöliikenteessä | Pakollinen tavaraliikenteessä |
 |---|---|---|---|
@@ -438,7 +438,7 @@ Samalla joukkoliikennelinjalla ei pystytä kuvaamaan eri hintafunktioita yksinke
 
 *✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
-*Taulukko x. Joukkoliikennesegmenttien perusattribuutit*
+*Taulukko 14. Joukkoliikennesegmenttien perusattribuutit*
 
 | attribuutti | kuvaus |
 |---|---|
