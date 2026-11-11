@@ -19,7 +19,8 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 - liikenneverkon solmut
 - sijoittelualueiden sentroidit
 
-*Taulukko x. Solmuavaruuden jako, sentroidit*
+
+*Taulukko 1. Solmuavaruuden jako, sentroidit*
 
 | numeroavaruus | selitys |
 |---------------|---------|
@@ -31,7 +32,7 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 | 60 000 - 60 999 | ulkomaan sentroidit (Viro, Ruotsi, Norja, Tanska, Latvia) |
 | 61 000 - 99 999 | VAPAA |
 
-*Taulukko x. Solmuavaruuden jako, muut solmut kuin sentroidit*
+*Taulukko 2. Solmuavaruuden jako, muut solmut kuin sentroidit*
 
 | numeroavaruus | selitys |
 |---------------|---------|
@@ -41,7 +42,7 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 
 
 
-*Taulukko x. Solmujen attribuuttitiedot*
+*Taulukko 3. Solmujen attribuuttitiedot*
 
 | attribuutti      | selitys                                                      | Pakollinen |
 |-------|------|------|
@@ -80,7 +81,7 @@ Joukkoliikenteen kulkumuodot (transit) määrittävät joukkoliikennelinjojen k�
 
 
 
-*Taulukko x. Kulkumuotojen (modes) kuvaus*
+*Taulukko 4. Kulkumuotojen (modes) kuvaus*
 
 | **Kulkumuoto** | **Kuvaus** | **Tyyppi** 
 |---|---|---|
@@ -121,7 +122,7 @@ Joukkoliikenteen kulkumuodot (transit) määrittävät joukkoliikennelinjojen k�
 
 Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linkillä sallitut kulkumuodot (modes) sekä kaistamäärä (lanes). Malliajossa määritetään linkkityypin perusteella automaattisesti muut tarvittavat attribuutit, eli sijoittelufunktion numero (vdf), kaistakapasiteetti (ul1) sekä vapaa nopeus (ul2).
 
-*Taulukko x. Linkkien ominaisuudet*
+*Taulukko 5. Linkkien ominaisuudet*
 
 | kenttä          | kuvaus                                                 | Pakollinen |
 |-----------------|--------|---|
@@ -137,10 +138,10 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 | @toll_cost_vrk      | Tienkäyttömaksu VRK-ajanjaksolla |
 | @freight_gate      |  Tavaraliikenteen satamiin ja raiteisiin johtavan kuorma-autolinkin lähimmän aluesyötön id (positiivinen lähdesolmuille, negatiivinen kohdesolmuille). 0, jos linkki ei johda satamaan tai raiteille.  | ✓ |
 | #buslane            | Tosi, jos linkillä on joukkoliikennekaista. Viivytysfunktioksi vaihdetaan tällöin bussikaistaversio (funktiot 6–10), jossa yksi kaista on varattu busseille, eikä busseja lasketa autoliikenteen taustaliikenteeksi. | ✓ |
-| #car_time_aht      | Ennalta määritetty auton matka-aika (AHT)    | ✓ |
-| #car_time_iht      |  Ennalta määritetty auton matka-aika (IHT)   | ✓ |
-| #car_time_it      |  Ennalta määritetty auton matka-aika (IT)   | ✓ |
-| #car_time_pt      | Ennalta määritetty auton matka-aika (PT)    | ✓ |
+| #car_time_aht      | Ennalta määritetty auton matka-aika (AHT)    | ✓ (tallennetun nopeuden sijoittelu) |
+| #car_time_iht      |  Ennalta määritetty auton matka-aika (IHT)   | ✓ (tallennetun nopeuden sijoittelu) |
+| #car_time_it      |  Ennalta määritetty auton matka-aika (IT)   | ✓ (tallennetun nopeuden sijoittelu)|
+| #car_time_pt      | Ennalta määritetty auton matka-aika (PT)    | ✓ (tallennetun nopeuden sijoittelu)|
 | #car_time_vrk      |  Ennalta määritetty auton matka-aika (VRK)   | ✓ (pitkien matkojen malli) |
 | #dr_leveys      | Linkin leveys (Digiroad) |
 | #dr_linkkityyp      | Linkin tyyppi (Digiroad) |
@@ -155,7 +156,7 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 | #road_part_nr_max      |  Suurin tienosan numero linkillä   |
 | #road_part_nr_min      | Pienin tienosan numero linkillä    |
 | #street_name      | Kadun nimi suomeksi    |
-| #traffic_light      | Tosi, jos linkki on lähellä liikennevaloa. Jos linkin vapaa nopeus on alle 65 km/h, kaistakapasiteetti kerrotaan luvulla 0,9 ja vapaa nopeus luvulla 0,85.    |
+| #traffic_light      | Tosi, jos linkki on lähellä (< 60 m) liikennevaloa. Jos linkin vapaa nopeus on alle 65 km/h, kaistakapasiteetti kerrotaan luvulla 0,9 ja vapaa nopeus luvulla 0,85.    |
 
 *✓ = Pakollinen attribuutti, joka tulee määrittää verkkotiedostossa.*
 
@@ -164,7 +165,7 @@ Ennalta määritetyt auton matka-ajat (`#car_time_*`) ovat minuutteja. Niitä k�
 Jos tienkäyttömaksukentät (`#hinta_*`) ovat verkossa, maksut huomioidaan autoliikenteen reitinvalinnassa ja tuloksiin tuotetaan tienkäyttömaksumatriisit.
 
 
-*Taulukko 9. Linkkityypit (link type)*
+*Taulukko 6. Linkkityypit (link type)*
 
 | linkkityyppi (link type) | selitys | modes |
 |--------------------------|---------|---------|
@@ -181,11 +182,11 @@ Jos tienkäyttömaksukentät (`#hinta_*`) ovat verkossa, maksut huomioidaan auto
 Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään verkkoon. Jokaisesta sentroidista on olemassa yksi autoliikenteen ja yksi kävely- ja pyöräliikenteen syöttölinkki lähimpiin solmuihin. Autoliikenteen syöttölinkkiä ei saa yhdistää moottoritiehen, ramppeihin, liikenneympyröihin tai kaksiajorataisiin katuihin/teihin.
 
 
-*Taulukko x. Sijoittelufunktioiden jako väylätyyppeihin*
+*Taulukko 7. Sijoittelufunktioiden jako väylätyyppeihin*
 
 | Linkkityyppi | Kuvaus | Toiminnallinen luokka | Nopeusrajoitus (km/h) | Tien leveys | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) |
 |---|---|---|---|---|---|---|---|
-| 101 | moottoritie | 1 | 120 | pääväylä | 1 | 2100 | 113 |
+| 101 | moottoritie | 1 | 120 | | 1 | 2100 | 113 |
 | 103 | moottoritie, kaistoja ≥3 | 1| 120 | | 1 | 1900 | 113 |
 | 104 | moottoritie |1 | 100 | | 1 | 2000 | 97 |
 | 105 | moottoritie, kaistoja ≥3 | 1| 100 | | 1 | 1800 | 97 |
@@ -234,14 +235,14 @@ Syöttölinkeillä (linkkityyppi 99) sentroidit yhdistetään ympäröivään ve
 
 Edellisen taulukon lisäksi malli tuntee seuraavat linkkityypit, joille se asettaa viivytysfunktion, kaistakapasiteetin ja vapaan nopeuden:
 
-*Taulukko x. Muut linkkityypit*
+*Taulukko 8. Muut linkkityypit*
 
 | Linkkityyppi | Kuvaus | Viivytysfunktio (vdf) | Kaistakapasiteetti (ul1) (ajon./h/kaista) | Vapaa nopeus (ul2) (km/h) |
 |---|---|---|---|---|
 | 102 | moottoritie | 1 | 2100 | 113 |
 | 118 | pääväylä | 3 | 1400 | 97 |
 | 119 | pääväylä | 3 | 1400 | 90 |
-| 120 | | 3 | 1350 | 81 |
+| 120 | pääväylä | 3 | 1350 | 81 |
 | 123 | pääväylä | 3 | 1250 | 54 |
 | 130 | kokoojaväylä | 5 | 900 | 48 |
 | 131 | kokoojaväylä | 5 | 900 | 41 |
@@ -256,7 +257,7 @@ Muut linkkityyppejä koskevat säännöt:
 - __Kielletyt linkkityypit:__ linkkityyppejä 100 ja 999 ei saa käyttää.
 - __Linkit ilman autoliikennettä__ (ei autokulkumuotoja) saavat viivytysfunktion 0.
 
-*Taulukko x. Malliajon alussa luotavat viivytysfunktiot*
+*Taulukko 9. Malliajon alussa luotavat viivytysfunktiot*
 
 | Funktio | Käyttö |
 |---|---|
@@ -289,7 +290,7 @@ Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto 
 
 ### Joukkoliikenteen ajoneuvotyypit
 
-*Taulukko x. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.
+*Taulukko 10. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.
 
 | Ajoneuvotyyppi (vehicle) | Kuvaus | Kulkumuoto (mode) | Ajoneuvossa vietetyn ajan painokerroin |
 |---|---|---|---|
@@ -319,9 +320,11 @@ Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto 
 
 Ajoneuvotyyppien numeroilla on mallissa kiinteä merkitys. Ajoneuvossa vietetty aika painotetaan (koettu matka-aika) taulukon kertoimella. Ajoneuvojen istuma- ja kokonaiskapasiteetit annetaan ajoneuvotiedostossa.
 
-### Nousu- ja vaihtosakot
+### Nousu- ja vaihtovastukset
 
-Noususakot (min) riippuvat kulkumuodosta. Pitkien matkojen sijoittelussa pitkän matkan kulkumuodoille käytetään suurempia sakkoja.
+Nousuvastukset (min) riippuvat kulkumuodosta. Pitkien matkojen sijoittelussa pitkän matkan kulkumuodoille käytetään suurempia vastuksia.
+
+*Taulukko 11. Nousuvastukset kulkumuodoittain*
 
 | Kulkumuoto | Paikallinen sijoittelu | Pitkien matkojen sijoittelu |
 |---|---|---|
@@ -333,7 +336,7 @@ Noususakot (min) riippuvat kulkumuodosta. Pitkien matkojen sijoittelussa pitkän
 | Kaukojuna `j` | 0 | 25 |
 | Lentoliikenne `l` | 0 | 25 |
 
-Lisäksi jokaisesta vaihdosta lisätään 10 minuutin vaihtosakko. Odotusaika lasketaan efektiivisistä vuoroväleistä (ks. kohta _Joukkoliikennelinjastot_), ja siihen lisätään vuorovälin vaihtelusta laskettu odotusaikasakko (`@wait_time_dev`) kertoimella 3,5. Kävelyaika (aux. transit) painotetaan sijoitteluluokassa `transit` kertoimella 1,75 ja muissa joukkoliikenteen sijoitteluluokissa (lentoliikenne sekä auto- ja taksiliityntäluokat) kertoimella 2,5.
+Lisäksi jokaisesta vaihdosta lisätään 10 minuutin vaihtovastus. Odotusaika lasketaan efektiivisistä vuoroväleistä (ks. kohta _Joukkoliikennelinjastot_), ja siihen lisätään vuorovälin vaihtelusta laskettu odotusaikavastus (`@wait_time_dev`) kertoimella 3,5. Kävelyaika (aux. transit) painotetaan sijoitteluluokassa `transit` kertoimella 1,75 ja muissa joukkoliikenteen sijoitteluluokissa (lentoliikenne sekä auto- ja taksiliityntäluokat) kertoimella 2,5.
 
 ### Joukkoliikennelinjojen pysähtymiskäyttäytyminen
 Joukkoliikennelinjoilla on linja-attribuutti `#keep_stops`, jolla määritetään, miten linjan pysähtymiskäyttäytyminen määräytyy.
