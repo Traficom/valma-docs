@@ -151,7 +151,7 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 | #hinta_aht      | Tienkäyttö- tai ruuhkamaksu AHT-ajanjaksolla (€) |
 | #hinta_pt      | Tienkäyttö- tai ruuhkamaksu PT-ajanjaksolla (€) |
 | #hinta_iht      | Tienkäyttö- tai ruuhkamaksu IHT-ajanjaksolla (€) |
-| #hinta_vrk      | Hinta VRK-ajanjaksolla |
+| #hinta_vrk      | Tienkäyttö- tai ruuhkamaksu VRK-ajanjaksolla (€) |
 | #road_number      |  Tien numero valtion omistamilla teillä   |
 | #road_part_nr_max      |  Suurin tienosan numero linkillä   |
 | #road_part_nr_min      | Pienin tienosan numero linkillä    |
