@@ -60,7 +60,7 @@ Seuraavassa esitetty malliajon tuottamien tulostiedostojen sisältö. Kaikki tul
 
 | Tiedoston nimi                               | Kuvaus | Tarkempi kuvaus | Yksikkö |
 |----------------------------------------------|--------|-----------------|-----------------|
-| accessibility.txt | Logsum-saavutettavuus. | Kysyntämallista laskettu aluekohtainen logsum-saavutettavuus (1), joka lasketaan matkaryhmittäin ja kulkutavoittain. Esitetään välimatka-asteikolla, joten suhdelukujen käyttö ei mahdollista. | Yksikötön |
+| accessibility.txt | Logsum-saavutettavuus. | Kulkutapa- ja suuntaumismallista laskettu aluekohtainen logsum-saavutettavuus (1), joka lasketaan matkaryhmittäin ja kulkutavoittain. Esitetään välimatka-asteikolla, joten suhdelukujen käyttö ei mahdollista. | Yksikötön |
 | aggregated_demand_[county/municipality/..].txt | Alueelta alueelle kysyntä | Kiertomatkojen kysyntä alueelta alueelle kulkutavoittain ja matkaryhmittäin. Sisältää vain kiertomatkat lähtöpaikasta pääasialliseen matkakohteeseen, eli ei vastaa suoraan liikenneverkolle tulevaa liikennettä. Uusia alueita voi määrittää Zonedatan kautta. | Kiertomatkaa / vrk |
 | car_ownership | Kotitalouden autonomistus | hh_lic, cars koostuu kotitaloudesta (hh), jossa voi olla 1 tai 2 aikuista, ajokortillisista henkilöistä (lic), joita voi olla 1 tai 2 sekä kotitalouden autoista, joita voi olla 0, 1 tai 2+.| Prosenttiosuus desimaalina 0-1 |
 | zone_attraction_by_mode/purpose.txt | Alueen attraktoimat kiertomatkat  | Aluetasolla esitetty attraktio, eli saapuvien kiertomatkojen lukumäärä vuorokaudessa. | Kiertomatkaa / vrk |
