@@ -34,7 +34,7 @@ Tiedostoon sisältyvien kuljetusmuotojen ja -tyyppien mallissa käytetyt nimet j
 | Kuorma-auto, N2 (<12t)  | truck_2n |
 | Kuorma-auto, KAIP (12 t - ~40t) | truck |
 | Puoliperävaunuyhdist. KAPP (~40t) | semi_trailer |
-| Täysperävaunuyhdist, KATP (<64t) | trailer-truck |
+| Täysperävaunuyhdist, KATP (<64t) | trailer_truck |
 | HCT-rekka, HCT (<76t)  | trailer_truck_76t |
 
 
