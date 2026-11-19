@@ -105,7 +105,7 @@ Löytyy json tiedoston avaimesta:
 Avaimesta löytyvistä ajoneuvoluokkien parametreista käytetään samoja ajoneuvoluokkia kuin kilometriperusteisten liikennöintikustannusten yhteydessä (ks. yllä).
 
 Aikaperusteiset kustannukset painottuvat samalla tavalla sähköön ja poltto-moottoriliikennöintiin "domestic_distribution"- parametrin (kotimaan mallissa) mukaan kuin kilometrikustannus ja ne kerrotaan samaan tapaan tyhänäajon kertoimella kuin kilometriperusteiset kustannukset (ks. yllä). 
-€/t/min-muotoinen kustannus saadaan jakamalla tuntikustannus tavararyhmittäisellä keskikuormituksella samalla tavalla kuin kilometrikustannuksen laskennan yhteydessä (ks. yllä). *Aikakustannukset on raportoitu minuuteissa, koska sijoitteluohjelma (EMME) toimii minuuttipohjaisesti.*  
+€/t/min-muotoinen kustannus saadaan jakamalla tuntikustannus tavararyhmittäisellä keskikuormituksella samalla tavalla kuin kilometrikustannuksen laskennan yhteydessä (ks. yllä). *Aikakustannukset on raportoitu json-tiedostossa tunneissa. Mallijärjestelmä jakaa kustannuksen automaattisesti minuuteiksi, koska sijoitteluohjelma (EMME) toimii minuuttipohjaisesti.*  
 
 ### **Rautaiekuljetusten kustannukset (kotimaa)**
 
