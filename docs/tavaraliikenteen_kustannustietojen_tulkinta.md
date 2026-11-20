@@ -80,7 +80,7 @@ Avaimesta löytyy niin tavaraliikenteen yksikkökustannusten lisäksi henkilöli
 
 Kilometrikustannus painottuu jokaisen ajoneuvoluokan osalta luokan sähköistymisen mukaan. Ajoneuvoluokan käyttövoimittainen jakautuminen suhteessa koko tavaraliikenteen ajoneuvokantaan löytyy polusta: 
 
-"freight" -> *tavararyhmä* -> "truck" -> "fleet" -> *ajoneuvoluokka* 
+"freight" -> *tavararyhmä* -> "truck" -> "fleet" -> *ajoneuvoluokka* -> "domestic_distribution"
 
 Avaimesta löytyvä "domestic_distribution"-parametri kuvaa ajoneuvoluokan liikennöinnin osuutta kaikesta kotimaan liikennöinnistä tonnikilometreinä mitattuna. "foreign_distribution" puolestaan tarkoittaa ajoneuvoluokan osuutta kaikesta ulkomaan tavaraliikenteen liikennöinnistä tonnikilometreissä mitattuna. Domestic_distribution - parametri on ajoneuvokantamallin tulos, joka toimii syötteenä tavaraliikennemallin kustannuslaskentaan. Foreign_distribution - parametri pysyy kiinteänä ennusteissa (kuljetustilastoista laskettu), mutta ryhmien sisäistä käyttövoimien osuutta varioidaan kotimaan jakauman mukaisesti.  
 
