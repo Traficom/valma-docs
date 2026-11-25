@@ -51,7 +51,7 @@ Solmut kuvaavat liikenneverkon risteyksiä, pysäkkejä, asemia ja sijoittelualu
 | ui2   | VAPAA                                |
 | ui3   | VAPAA |
 | #municipality | Kunnan nimi |
-| #park_cost_n | Liityntäpysäköinnin hinta (e/h) |
+| #park_cost_n | Liityntäpysäköinnin hinta (e/vrk) |
 | #subarea | 2 = osamallin oma alue. Vain linkit, joiden alkusolmun arvo on 2, lasketaan mukaan osamallin ajoneuvo- ja henkilökilometreihin, linkkipituuksiin ja joukkoliikenteen suoritteisiin, ja vain niiden auton matka-ajat tallennetaan tiedostoon netfield_links_<osamalli>.txt (tallennetun nopeuden sijoittelu). Muita arvoja malli ei käytä. |  ✓ |
 | #transit_stop_b | Bussipysäkki |  |
 | #transit_stop_e | Kaukobussipysäkki |  |
