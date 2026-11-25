@@ -34,7 +34,7 @@ Tiedostoon sisältyvien kuljetusmuotojen ja -tyyppien mallissa käytetyt nimet j
 | Kuorma-auto, N2 (<12t)  | truck_2n |
 | Kuorma-auto, KAIP (12 t - ~40t) | truck |
 | Puoliperävaunuyhdist. KAPP (~40t) | semi_trailer |
-| Täysperävaunuyhdist, KATP (<64t) | trailer-truck |
+| Täysperävaunuyhdist, KATP (<64t) | trailer_truck |
 | HCT-rekka, HCT (<76t)  | trailer_truck_76t |
 
 
@@ -80,7 +80,7 @@ Avaimesta löytyy niin tavaraliikenteen yksikkökustannusten lisäksi henkilöli
 
 Kilometrikustannus painottuu jokaisen ajoneuvoluokan osalta luokan sähköistymisen mukaan. Ajoneuvoluokan käyttövoimittainen jakautuminen suhteessa koko tavaraliikenteen ajoneuvokantaan löytyy polusta: 
 
-"freight" -> *tavararyhmä* -> "truck" -> "fleet" -> *ajoneuvoluokka* 
+"freight" -> *tavararyhmä* -> "truck" -> "fleet" -> *ajoneuvoluokka* -> "domestic_distribution"
 
 Avaimesta löytyvä "domestic_distribution"-parametri kuvaa ajoneuvoluokan liikennöinnin osuutta kaikesta kotimaan liikennöinnistä tonnikilometreinä mitattuna. "foreign_distribution" puolestaan tarkoittaa ajoneuvoluokan osuutta kaikesta ulkomaan tavaraliikenteen liikennöinnistä tonnikilometreissä mitattuna. Domestic_distribution - parametri on ajoneuvokantamallin tulos, joka toimii syötteenä tavaraliikennemallin kustannuslaskentaan. Foreign_distribution - parametri pysyy kiinteänä ennusteissa (kuljetustilastoista laskettu), mutta ryhmien sisäistä käyttövoimien osuutta varioidaan kotimaan jakauman mukaisesti.  
 
@@ -105,7 +105,7 @@ Löytyy json tiedoston avaimesta:
 Avaimesta löytyvistä ajoneuvoluokkien parametreista käytetään samoja ajoneuvoluokkia kuin kilometriperusteisten liikennöintikustannusten yhteydessä (ks. yllä).
 
 Aikaperusteiset kustannukset painottuvat samalla tavalla sähköön ja poltto-moottoriliikennöintiin "domestic_distribution"- parametrin (kotimaan mallissa) mukaan kuin kilometrikustannus ja ne kerrotaan samaan tapaan tyhänäajon kertoimella kuin kilometriperusteiset kustannukset (ks. yllä). 
-€/t/min-muotoinen kustannus saadaan jakamalla tuntikustannus tavararyhmittäisellä keskikuormituksella samalla tavalla kuin kilometrikustannuksen laskennan yhteydessä (ks. yllä). *Aikakustannukset on raportoitu minuuteissa, koska sijoitteluohjelma (EMME) toimii minuuttipohjaisesti.*  
+€/t/h-muotoinen kustannus saadaan jakamalla tuntikustannus tavararyhmittäisellä keskikuormituksella samalla tavalla kuin kilometrikustannuksen laskennan yhteydessä (ks. yllä). *Aikakustannukset on raportoitu json-tiedostossa tunneissa. Mallijärjestelmä jakaa kustannuksen automaattisesti minuuteiksi, koska sijoitteluohjelma (EMME) toimii minuuttipohjaisesti.*  
 
 ### **Rautaiekuljetusten kustannukset (kotimaa)**
 

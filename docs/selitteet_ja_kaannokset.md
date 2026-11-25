@@ -22,10 +22,8 @@ Alla esitetty mallin kuvaamien matkaryhmien nimet ja selitteet. Matkaryhmä mä�
 | hb_work    | Kotiperäinen työmatka, jonka pääasiallinen matkakohde on työpaikka.  |
 | hb_edu_basic    | Kotiperäinen koulumatka, jonka pääasiallinen matkakohde on koulu ja matkustaja on alle 15 vuotias.  |
 | hb_edu_student    | Kotiperäinen opiskelumatka, jonka pääasiallinen matkakohde on opiskelupaikka ja matkustaja on yli 15 vuotias.  |
-| hb_grocery | Kotiperäinen päivittäistavaroiden ostosmatka, jonka pääasiallinen matkakohde on päivittäistavarakauppa.  |
-| hb_other_shop | Kotiperäinen muu ostos- tai asiointimatka, jonka pääasiallinen matkakohde on kauppakeskus, muu kauppa tai asiointipaikka. Sisältää myös sosiaali- ja terveyspalveluiden asioinnin. |
-| hb_leisure | Kotiperäinen vapaa-ajan matka, jonka pääasiallinen matkakohde on ravintola, kahvila, kulttuurikohde tai muu vapaa-ajan kohde.  |
-| hb_sport | Kotiperäinen urheilumatka, jonka pääasiallinen matkakohde on liikuntapaikka.  |
+| hb_shop | Kotiperäinen ostosmatka, jonka pääasiallinen matkakohde on kauppa tai asiointipaikka. Sisältää myös sosiaali- ja terveyspalveluiden asioinnin. |
+| hb_leisure | Kotiperäinen vapaa-ajan matka, jonka pääasiallinen matkakohde on ravintola, kahvila, kulttuurikohde, liikuntapaikka tai muu vapaa-ajan kohde.  |
 | hb_visit | Kotiperäinen vierailumatka, jonka pääasiallinen matkakohde on vierailupaikka ystävien, sukulaisten tai tuttavien luona.  |
 | hb_escort | Kotiperäinen saattomatka, jonka pääasiallinen matkakohde on paikka henkilön noutamiseen tai jättöön kyydistä.  |
 | hb_business | Kotiperäinen työasiamatka, jonka pääasiallinen matkakohde on työasiointikohde.  |

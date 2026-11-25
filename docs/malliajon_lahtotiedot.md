@@ -30,7 +30,7 @@ Malli antaa varoituksen, jos tiedostoa ei ole järjestetty `input_zone_id`-sarak
 
 | Kenttä | Kuvaus |
 |---|---|
-| __input_zone_id__ | Alueen yksilöllinen tunniste. Tiedosto tulee järjestää tämän sarakkeen mukaan. |
+| __zone_id__ | Alueen yksilöllinen tunniste. Tiedosto tulee järjestää tämän sarakkeen mukaan. |
 | __municipality__ | Alueen kunnan nimi. Käyttäjän ei tule muuttaa tätä saraketta. Käytetään koulu- ja saattomatkojen kotikunnan sisäisiä ja ulkopuolisia matkoja kuvaavissa muuttujissa sekä kunta-kunta-kalibroinnissa. |
 | __county__ | Alueen maakunnan nimi. Käyttäjän ei tule muuttaa tätä saraketta. Sähköautojen osuudet luetaan maakunnittain kustannustietojen kohdasta `car_shares`. Lapilla (`Lappi`) on joissakin malleissa omat vakionsa. |
 | __submodel__ | Alueen osamallin nimi. Käyttäjän ei tule muuttaa tätä saraketta. Käytetään tulosten alueluokituksena. |
@@ -86,7 +86,6 @@ Kotitalouksien määrää ei lueta tiedostosta. Malli laskee sen asukasluvusta j
 | __sh_wrk_hospitality__ | Majoitus- ja ravitsemistoiminnan (TOL I) työpaikkojen osuus. Vaikuttaa kotiperäisten vapaa-ajan matkojen ja yön yli -matkojen sekä työperäisten muiden matkojen ja ei-kotiperäisten matkojen kohdevalintaan. |
 | __sh_wrk_recreation__ | Taiteiden, viihteen ja virkistyksen (TOL R) työpaikkojen osuus. Vaikuttaa kotiperäisten vapaa-ajan matkojen sekä työperäisten muiden matkojen ja ei-kotiperäisten matkojen kohdevalintaan. |
 | __sh_wrk_edu_higher__ | Korkea-asteen koulutuksen (P854) työpaikkojen osuus. Malli ei lue tätä saraketta; korkea-asteen opiskelumatkojen kohdevalinta perustuu sarakkeeseen students_higher_education. |
-| __sh_office__ | Toimistoammateissa työskentelevien osuus desimaalimuodossa 0–1. |
 
 Työpaikkojen lukumäärä vaikuttaa eri tyypisten matkojen määränpään valintaan. Työpaikkojen kokonaismäärä määrittää työmatkojen suuntautumista ja kaupan työpaikkojen lukumäärä ostos- ja asiointimatkojen suuntautumista. Muuttujien käytöstä kysyntämalleissa voi lukea tarkemmin kysyntämallin raportista.
 
@@ -99,7 +98,8 @@ TOL 2008 on Tilastokeskuksen toimialaluokitus.
 | Kenttä | Kuvaus |
 |---|---|
 | __students_comprehensive__ | Perusopetuksen oppilaiden määrä kokonaislukuna. Luku vaikuttaa perusopetuksen matkojen kohdevalintaan. Oppilaat lasketaan opiskelupaikan mukaan, ja luku vaikuttaa myös kotiperäisten saattomatkojen kohdevalintaan. |
-| __students_upper_secondary__ | Toisen asteen opiskelijoiden määrä opiskelupaikan mukaan kokonaislukuna. Vaikuttaa kotiperäisten opiskelumatkojen kohdevalintaan. |
+| __students_upper_secondary__ | Lukioiden opiskelijoiden määrä opiskelupaikan mukaan kokonaislukuna. Vaikuttaa kotiperäisten opiskelumatkojen kohdevalintaan. |
+| __students_vocational__ | Ammattikoulujen opiskelijoiden määrä opiskelupaikan mukaan kokonaislukuna. Vaikuttaa kotiperäisten opiskelumatkojen kohdevalintaan. |
 | __students_higher_education__ | Korkea-asteen opiskelijoiden määrä opiskelupaikan mukaan kokonaislukuna. Vaikuttaa kotiperäisten opiskelumatkojen kohdevalintaan. |
 | __sport_facility_indoor__ | Sisäliikuntapaikkojen pinta-ala Lipas-tietojen mukaan (JYU 2023). Vaikuttaa kotiperäisten urheilumatkojen kohdevalintaan. |
 | __sport_facility_outdoor__ | Ulkoliikuntapaikkojen pinta-ala Lipas-tietojen mukaan (JYU 2023). Vaikuttaa kotiperäisten urheilumatkojen kohdevalintaan. |
@@ -109,9 +109,7 @@ TOL 2008 on Tilastokeskuksen toimialaluokitus.
 | __avg_park_time__ | Keskimääräinen pysäköintipaikan etsintäaika minuutteina. Lisätään alueelle suuntautuvien automatkojen matka-aikaan. Pysäköintipaikan ja lähtö- tai määräpaikan välinen kävelyaika annetaan erikseen sarakkeessa avg_walk_time. Arvo on laskettu kansallisesti kaavalla: 5,7 + 0,0452 × sqrt(population + workplaces / land_area). |
 | __avg_walk_time__ | Keskimääräinen kävelyaika pysäköintipaikan ja lähtö- tai määräpaikan välillä minuutteina. Lisätään automatkojen matka-aikaan matkan molemmissa päissä. |
 | __land_area__ | Alueen maapinta-ala neliökilometreinä. Lasketaan poistamalla vesialue alueen kokonaispinta-alasta. Käytetään väestötiheyden (autonomistus) sekä väestön ja työpaikkojen tiheyden (kohdevalinta) laskennassa. |
-| __intra_dist_walk__ | Alueen sisäisen kävelymatkan keskimääräinen yhdensuuntainen pituus kilometreinä. Määritetty rakennusten keskinäisistä etäisyyksistä, ja se määrittää alueen sisäisen vastuksen kävelylle. |
-| __intra_dist_bike__ | Kuten intra_dist_walk, pyöräilylle. |
-| __intra_dist_car__ | Kuten intra_dist_walk, autolle. Alueen sisäinen auton matka-aika lasketaan nopeudella 20 km/h ja kustannus hintadatan kilometrikustannuksella. |
+| __avg_intra_dist__ | Alueen sisäisen matkan yhdensuuntainen pituus kilometreinä. Määritetty alueen sisältämien ruutujen etäisyyksien keskiarvona painottaen asukkaiden ja työpaikkojen määrillä. Määrittää alueen sisäisen vastuksen kävelylle. |
 | __sh_row_or_detached__ | Rivi- tai pientaloasuntojen osuus asunnoista desimaalimuodossa 0–1. |
 
 Pysäköintitiedot vaikuttavat voimakkaasti alueelle saapuvien matkojen kulkutapajakaumaan. Niitä on siksi syytä päivittää alueellisissa malleissa, jos tiedossa on tarkempia tietoja pysäköinnistä.
