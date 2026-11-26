@@ -290,7 +290,7 @@ Joukkoliikennekaistat on laskettu mukaan kaistamäärään ja näistä on tieto 
 
 ### Joukkoliikenteen ajoneuvotyypit
 
-*Taulukko 10. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.
+*Taulukko 10. Joukkoliikenteen ajoneuvotyypit, niitä vastaavat kulkumuodot ja kuvaus.*
 
 | Ajoneuvotyyppi (vehicle) | Kuvaus | Kulkumuoto (mode) | Ajoneuvossa vietetyn ajan painokerroin |
 |---|---|---|---|
