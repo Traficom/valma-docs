@@ -126,10 +126,10 @@ Uusia linkkejä luodessa tulee määrittää linkille linkkityyppi (type), linki
 
 | kenttä          | kuvaus                                                 | Pakollinen |
 |-----------------|--------|---|
-| type            | ks. taulukko x  |  ✓ |
+| type            | ks. taulukko 6  |  ✓ |
 | length          | linkin pituus   |  |
 | lanes           | kaistamäärä |  ✓ |
-| modes           | kulkumuodot (taulukko x)   |  ✓ |
+| modes           | kulkumuodot (taulukko 4)   |  ✓ |
 | vdf             | sijoittelufunktion nro (määritetään malliajossa automaattisesti)   |
 | ul1 | linkin yhden kaistan kapasiteetti (ajon./h/kaista) (määritetään malliajossa automaattisesti) |
 | ul2             | linkin vapaa nopeus (km/h) (määritetään malliajossa automaattisesti)      |
